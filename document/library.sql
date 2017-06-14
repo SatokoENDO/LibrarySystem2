@@ -70,3 +70,11 @@ reserved_time20 TIMESTAMP);
 create table library.libraries(
 id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
 name varchar(20));
+
+create table library.shelves(
+id int,
+name varchar(20));
+
+create table library.kinds(
+id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
+name varchar(20));
