@@ -38,7 +38,7 @@
 		<form action="registration" method="post">
 <table class="registration">
 	<tr>
-	<th>図書館番号</th><td><select name="libraryNumber">
+	<th>図書館番号</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
 						<option value="${library.id}">
 							<c:out value="${library.name}" />
@@ -64,9 +64,15 @@
 	<tr>
 	<th>著者名</th><td><input type="text" name="authorName" value="${authorName}" /></td>
 	<tr>
-	<th>出版者名</th><td><input type="text" name="publisherName" value="${publisherName}" /></td>
+	<th>出版社名</th><td><input type="text" name="publisherName" value="${publisherName}" /></td>
 	<tr>
-		<th>書類種類</th><td><input type="text" name="kind" value="${kind}" /></td>
+	<th>書類種類</th><td><select name="kind">
+				<c:forEach items="${kinds}" var="kind">
+						<option value="${kind.id}">
+							<c:out value="${kind.name}" />
+						</option>
+				</c:forEach>
+			</select></td>
 	</tr>
 	</table>
 
