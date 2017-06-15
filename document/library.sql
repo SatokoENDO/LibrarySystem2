@@ -3,17 +3,16 @@ create database library;
 create table books
 (id integer primary key not null auto_increment,
 library_id int(1) not null,
-shelf_number int(2) not null,
+shelf_id int(2) not null,
 isbn varchar(17) not null,
 name varchar(255) not null,
-author_name varchar(255) not null,
-publisher_name varchar(255) not null,
+author varchar(255) not null,
+publisher varchar(255) not null,
 kind int(1) not null,
 status int(1) not null,
 borrower int(11) not null,
 borrowed_time TimeStamp not null,
 returned_time TimeStamp not null,
-reserved_time TimeStamp not null,
 reservation_number int(3) not null);
 
 create table library.users(
