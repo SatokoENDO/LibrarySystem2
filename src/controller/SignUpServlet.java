@@ -39,7 +39,7 @@ public class SignUpServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 
 		User user = new User();
 //		if(isValid(request, messages) == true) {
@@ -56,7 +56,7 @@ public class SignUpServlet extends HttpServlet{
 			}else{
 			user.setIsAdmin(Integer.parseInt(request.getParameter("isAdmin")));
 			}
-			System.out.println(password);
+
 			new UserService().register(user);
 
 			int userId = new UserService().getUserId();
