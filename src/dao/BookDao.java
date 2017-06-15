@@ -23,15 +23,27 @@ public class BookDao {
 			mySql.append(", author_name");
 			mySql.append(", publisher_name");
 			mySql.append(", kind");
+			mySql.append(", status");
+			mySql.append(", borrower");
+			mySql.append(", borrowed_time");
+			mySql.append(", returned_time");
+			mySql.append(", reserved_time");
+			mySql.append(", reservation_number");
 			//status, borrower, borrowed_time, returned_time, reserved_time, reservation_numberもデフォルト値を設定する
 			mySql.append(") values (");
-			mySql.append("?");
-			mySql.append(", ?");
-			mySql.append(", ?");
-			mySql.append(", ?");
-			mySql.append(", ?");
-			mySql.append(", ?");
-			mySql.append(", ?");
+			mySql.append("?"); //library_id
+			mySql.append(", ?"); //shelf_number
+			mySql.append(", ?"); //isbn
+			mySql.append(", ?"); //name
+			mySql.append(", ?"); //author_name
+			mySql.append(", ?"); //publisher_name
+			mySql.append(", ?"); //kind
+			mySql.append(", ?"); //status
+			mySql.append(", ?"); //borrower
+			mySql.append(", 0000-00-00"); //borrowed_time
+			mySql.append(", 0000-00-00"); //returned_time
+			mySql.append(", 0000-00-00"); //reserved_time
+			mySql.append(", 0"); //reservation_number
 			mySql.append(")");
 
 			ps = connection.prepareStatement(mySql.toString());
@@ -43,6 +55,8 @@ public class BookDao {
 			ps.setString(5, book.getAuthorName());
 			ps.setString(6, book.getPublisherName());
 			ps.setInt(7, book.getKind());
+			ps.setInt(8, 0);
+			ps.setInt(9, 0);
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
