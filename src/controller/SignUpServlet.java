@@ -26,7 +26,7 @@ public class SignUpServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		User user = new User();
 
-		List<Library> libraries = new LibraryService().getLibraries();
+		List<Library> libraries = new LibraryService().getLibraryList();
 
 		session.setAttribute("libraries", libraries);
 		request.setAttribute("user", user);
@@ -54,14 +54,14 @@ public class SignUpServlet extends HttpServlet{
 			}else{
 			user.setIsAdmin(Integer.parseInt(request.getParameter("isAdmin")));
 			}
-			System.out.println(user.getId());
 			new UserService().register(user);
 
+			int userId = new UserService().getUserId();
 			DecimalFormat dformat = new DecimalFormat("0000000");
 			int libraryNumber = user.getLibraryId();
-			user.setCardNumber(Integer.parseInt(libraryNumber + dformat.format(user.getId())));
-			System.out.println(user.getId());
-			new UserService().register(user);
+			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
+			new UserService().registerCardNumber(cardNumber);
+			System.out.println(cardNumber);
 
 			response.sendRedirect("admin");
 

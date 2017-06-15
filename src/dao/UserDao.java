@@ -4,13 +4,15 @@ import static utils.CloseableUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import beans.User;
 import exception.SQLRuntimeException;
 
-
 public class UserDao {
+	// ユーザーの登録
 	public void insert(Connection connection, User user) {
 
 		PreparedStatement ps = null;
@@ -52,6 +54,45 @@ public class UserDao {
 			ps.setInt(8, user.getIsAdmin());
 
 			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
+	// 最新に登録したユーザーのidを取得
+	public int getUserId(Connection connection) {
+
+		try {
+			Statement statement = connection.createStatement();
+			String mySql = "select id from users WHERE  id=(SELECT MAX(id) FROM users )";
+			ResultSet rs = statement.executeQuery(mySql);
+
+			int userId = 0;
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				userId = id;
+			}
+			return userId;
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		}
+	}
+
+	// 利用者番号の登録
+	public void insert(Connection connection, int cardNumber) {
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE users SET card_number =? WHERE id=(SELECT MAX(id) FROM (select * from users ) as users) ");
+
+			ps = connection.prepareStatement(sql.toString());
+
+			ps.setLong(1, cardNumber);
+			ps.executeUpdate();
+			System.out.print(cardNumber);
 		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally {

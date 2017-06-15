@@ -34,4 +34,48 @@ public class UserService {
 		}
 	}
 
+	public int getUserId() {
+
+		Connection connection = null;
+		try {
+			connection = getConnection();
+
+			UserDao idDao = new UserDao();
+			int ret = idDao.getUserId(connection);
+
+			commit(connection);
+
+			return ret;
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
+	}
+
+	public void registerCardNumber(int cardNumber){
+		Connection connection = null;
+		try {
+			connection = getConnection();
+
+			UserDao userDao = new UserDao();
+			userDao.insert(connection, cardNumber);
+
+			commit(connection);
+			System.out.println(cardNumber);
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
+	}
+
 }
