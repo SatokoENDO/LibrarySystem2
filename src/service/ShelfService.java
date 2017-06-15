@@ -6,19 +6,19 @@ import static utils.DBUtil.*;
 import java.sql.Connection;
 import java.util.List;
 
-import beans.Library;
-import dao.LibraryDao;
+import beans.Shelf;
+import dao.ShelfDao;
 
-public class LibraryService {
+public class ShelfService {
 
-	public List<Library> getLibraries() {
+	public List<Shelf> getShelfList() {
 
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
-			LibraryDao libraryDao = new LibraryDao();
-			List<Library> ret = libraryDao.getLibraries(connection);
+			ShelfDao listDao = new ShelfDao();
+			List<Shelf> ret = listDao.getShelfList(connection);
 
 			commit(connection);
 
@@ -33,4 +33,5 @@ public class LibraryService {
 			close(connection);
 		}
 	}
+
 }
