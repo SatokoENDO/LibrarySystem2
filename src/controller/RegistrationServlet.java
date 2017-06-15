@@ -55,11 +55,11 @@ public class RegistrationServlet extends HttpServlet {
 		if (isValid(request, messages) == true) {
 			Book book = new Book();
 			book.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
-			book.setShelfNumber(Integer.parseInt(request.getParameter("ShelfNumber")));
+			book.setShelfId(Integer.parseInt(request.getParameter("shelfId")));
 			book.setISBN(request.getParameter("ISBN"));
 			book.setName(request.getParameter("name"));
-			book.setAuthorName(request.getParameter("authorName"));
-			book.setPublisherName(request.getParameter("publisherName"));
+			book.setAuthor(request.getParameter("author"));
+			book.setPublisher(request.getParameter("publisher"));
 			book.setKind(Integer.parseInt(request.getParameter("kind")));
 			new BookService().register(book);
 			response.sendRedirect("./");
@@ -70,11 +70,11 @@ public class RegistrationServlet extends HttpServlet {
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
 		String name = request.getParameter("name");
-		String authorName = request.getParameter("authorName");
+		String author = request.getParameter("author");
 		if (StringUtils.isEmpty(name) == true) {
 			messages.add("アカウント名を入力してください");
 		}
-		if (StringUtils.isEmpty(authorName) == true) {
+		if (StringUtils.isEmpty(author) == true) {
 			messages.add("パスワードを入力してください");
 		}
 		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要

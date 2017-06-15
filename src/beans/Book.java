@@ -8,16 +8,15 @@ public class Book implements Serializable {
 
 	private int id;
 	private int libraryId;
-	private int shelfNumber;
+	private int shelfId;
 	private String ISBN;
 	private String name;
-	private String authorName;
-	private String publisherName;
+	private String author;
+	private String publisher;
 	private int kind;
 	private int status;
 	private int borrower;
 	private Timestamp borrowedTime;
-	private Timestamp reservedTime;
 	private Timestamp returnedTime;
 	private int reservationNumber;
 
@@ -33,11 +32,11 @@ public class Book implements Serializable {
 	public void setLibraryId(int libraryId) {
 		this.libraryId = libraryId;
 	}
-	public int getShelfNumber() {
-		return shelfNumber;
+	public int getShelfId() {
+		return shelfId;
 	}
-	public void setShelfNumber(int shelfNumber) {
-		this.shelfNumber = shelfNumber;
+	public void setShelfId(int shelfId) {
+		this.shelfId = shelfId;
 	}
 	public String getISBN() {
 		return ISBN;
@@ -51,17 +50,17 @@ public class Book implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAuthorName() {
-		return authorName;
+	public String getAuthor() {
+		return author;
 	}
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	public String getPublisherName() {
-		return publisherName;
+	public String getPublisher() {
+		return publisher;
 	}
-	public void setPublisherName(String publisherName) {
-		this.publisherName = publisherName;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 	public int getKind() {
 		return kind;
@@ -69,7 +68,6 @@ public class Book implements Serializable {
 	public void setKind(int kind) {
 		this.kind = kind;
 	}
-
 	public int getStatus() {
 		return status;
 	}
@@ -88,12 +86,6 @@ public class Book implements Serializable {
 	public void setBorrowedTime(Timestamp borrowedTime) {
 		this.borrowedTime = borrowedTime;
 	}
-	public Timestamp getReservedTime() {
-		return reservedTime;
-	}
-	public void setReservedTime(Timestamp reservedTime) {
-		this.reservedTime = reservedTime;
-	}
 	public Timestamp getReturnedTime() {
 		return returnedTime;
 	}
@@ -106,7 +98,4 @@ public class Book implements Serializable {
 	public void setReservationNumber(int reservationNumber) {
 		this.reservationNumber = reservationNumber;
 	}
-
 }
-
-
