@@ -1,9 +1,10 @@
 create database library;
 
+create table books
 (id integer primary key not null auto_increment,
 library_id int(1) not null,
 shelf_number int(2) not null,
-isbn varchar(10) not null,
+isbn varchar(17) not null,
 name varchar(255) not null,
 author_name varchar(255) not null,
 publisher_name varchar(255) not null,
