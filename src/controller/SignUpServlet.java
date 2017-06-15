@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -37,12 +40,32 @@ public class SignUpServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 
 		User user = new User();
-		if(isValid(request, messages) == true) {
-			user.setCardNumber(Integer.parseInt("cardNumber"));
-			user.setName("name");
-			user.setAddress("address");
-			user.setTel(Integer.parseInt("tel"));
-		}
+//		if(isValid(request, messages) == true) {
+
+
+			user.setName(request.getParameter("name"));
+			user.setAddress(request.getParameter("address"));
+			user.setTel(request.getParameter("tel"));
+			user.setMail(request.getParameter("mail"));
+			user.setPassword(request.getParameter("password"));
+			user.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
+			if(request.getParameter("isAdmin") == null){
+				user.setIsAdmin(0);
+			}else{
+			user.setIsAdmin(Integer.parseInt(request.getParameter("isAdmin")));
+			}
+			System.out.println(user.getId());
+			new UserService().register(user);
+
+			DecimalFormat dformat = new DecimalFormat("0000000");
+			int libraryNumber = user.getLibraryId();
+			user.setCardNumber(Integer.parseInt(libraryNumber + dformat.format(user.getId())));
+			System.out.println(user.getId());
+			new UserService().register(user);
+
+			response.sendRedirect("admin");
+
+//		}
 	}
 
 }

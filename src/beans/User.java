@@ -7,7 +7,7 @@ public class User {
 	private long cardNumber;
 	private String name;
 	private String address;
-	private long tel;
+	private String tel;
 	private String mail;
 	private Timestamp registerTime;
 	private String password;
@@ -331,10 +331,10 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(long tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getMail() {
