@@ -26,9 +26,6 @@
 
 <form action="signup" method="post"><br />
 
-	<label for="cardNumber">利用者証番号:</label>
-	<input name="cardNumber" value="${user.cardNumber }" id="cardNumber"/><br />
-
 	<label for="name">名前:</label>
 	<input name="name" value="${user.name }" id="name"/><br />
 
@@ -40,12 +37,6 @@
 
 	<label for="mail">メールアドレス:</label>
 	<input name="mail" value="${user.mail }" id="mail"/><br />
-
-	<label for="password">パスワード:</label>
-	<input name="password" type="password" id="password"/><br />
-
-	<label for="confirmPassword">パスワード確認:</label>
-	<input name="confirmPassword" type="password" id="confirmPassword"/><br />
 
 	<label for="isAdmin">権限:</label>
 	<input type="checkbox" name="isAdmin" value="1">運営<br />

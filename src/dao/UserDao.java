@@ -92,7 +92,7 @@ public class UserDao {
 
 			ps.setLong(1, cardNumber);
 			ps.executeUpdate();
-			System.out.print(cardNumber);
+
 		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally {

@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.LibraryService;
-import service.UserService;
+import org.apache.commons.lang.RandomStringUtils;
+
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -42,18 +44,19 @@ public class SignUpServlet extends HttpServlet{
 		User user = new User();
 //		if(isValid(request, messages) == true) {
 
-
+			String password = RandomStringUtils.randomAlphabetic(8);
 			user.setName(request.getParameter("name"));
 			user.setAddress(request.getParameter("address"));
 			user.setTel(request.getParameter("tel"));
 			user.setMail(request.getParameter("mail"));
-			user.setPassword(request.getParameter("password"));
+			user.setPassword(password);
 			user.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
 			if(request.getParameter("isAdmin") == null){
 				user.setIsAdmin(0);
 			}else{
 			user.setIsAdmin(Integer.parseInt(request.getParameter("isAdmin")));
 			}
+			System.out.println(password);
 			new UserService().register(user);
 
 			int userId = new UserService().getUserId();
@@ -61,7 +64,6 @@ public class SignUpServlet extends HttpServlet{
 			int libraryNumber = user.getLibraryId();
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
 			new UserService().registerCardNumber(cardNumber);
-			System.out.println(cardNumber);
 
 			response.sendRedirect("admin");
 

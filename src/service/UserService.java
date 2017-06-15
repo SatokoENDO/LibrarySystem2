@@ -66,7 +66,7 @@ public class UserService {
 			userDao.insert(connection, cardNumber);
 
 			commit(connection);
-			System.out.println(cardNumber);
+
 		} catch (RuntimeException e) {
 			rollback(connection);
 			throw e;
