@@ -47,7 +47,7 @@
 			</select></td>
 	</tr>
 	<tr>
-	<th>棚番号</th><td><select name="ShelfNumber">
+	<th>棚番号</th><td><select name="shelfId">
 				<c:forEach items="${shelves}" var="shelf">
 						<option value="${shelf.id}">
 							<c:out value="${shelf.name}" />
@@ -62,9 +62,9 @@
 		<th>書籍名</th><td><input type="text" name="name" value="${name}" /></td>
 	</tr>
 	<tr>
-	<th>著者名</th><td><input type="text" name="authorName" value="${authorName}" /></td>
+	<th>著者名</th><td><input type="text" name="author" value="${author}" /></td>
 	<tr>
-	<th>出版社名</th><td><input type="text" name="publisherName" value="${publisherName}" /></td>
+	<th>出版社名</th><td><input type="text" name="publisher" value="${publisher}" /></td>
 	<tr>
 	<th>書類種類</th><td><select name="kind">
 				<c:forEach items="${kinds}" var="kind">
