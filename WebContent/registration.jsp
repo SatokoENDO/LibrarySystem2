@@ -32,7 +32,7 @@
 		<font size="6" color="#00aced "><b>新規書籍登録</b></font>
 	</Marquee>
 
-		<br><br><a href = "top">戻る</a>
+		<br><br><a href = "./">戻る</a>
 
 
 		<form action="registration" method="post">
