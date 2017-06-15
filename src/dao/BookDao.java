@@ -23,15 +23,12 @@ public class BookDao {
 			mySql.append(", author_name");
 			mySql.append(", publisher_name");
 			mySql.append(", kind");
-<<<<<<< HEAD
-=======
 			mySql.append(", status");
 			mySql.append(", borrower");
 			mySql.append(", borrowed_time");
 			mySql.append(", returned_time");
 			mySql.append(", reserved_time");
 			mySql.append(", reservation_number");
->>>>>>> 81f42805c7fb3bedbacd964fa48c9cfcf0e2e4a5
 			//status, borrower, borrowed_time, returned_time, reserved_time, reservation_numberもデフォルト値を設定する
 			mySql.append(") values (");
 			mySql.append("?"); //library_id

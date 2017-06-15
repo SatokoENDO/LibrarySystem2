@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Library;
-import beans.User;
 import service.LibraryService;
 import service.UserService;
+import beans.Library;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -26,7 +26,7 @@ public class SignUpServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		User user = new User();
 
-		List<Library> libraries = new LibraryService().getLibraries();
+		List<Library> libraries = new LibraryService().getLibraryList();
 
 		session.setAttribute("libraries", libraries);
 		request.setAttribute("user", user);
