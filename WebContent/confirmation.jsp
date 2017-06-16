@@ -10,6 +10,7 @@
 <title>登録確認画面</title>
 </head>
 <body>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 	<div class="main-contents">
 		<c:choose>
 			<c:when test = "${userCardNumber != null }">

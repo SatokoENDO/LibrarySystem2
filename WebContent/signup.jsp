@@ -10,7 +10,7 @@
 <title>利用者登録画面</title>
 </head>
 <body>
-<center><img src="Tottori-Library.png"></center>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <a href="admin">戻る</a>
 
 <div class="main=contents">
@@ -43,9 +43,7 @@
 		<tr>
 		<th>権限</th><td><input type="checkbox" name="isAdmin" value="1">運営</td>
 	</tr>
-		<tr>
-		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角英数字6～20字)</td>
-	</tr>
+
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">

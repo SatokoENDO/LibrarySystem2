@@ -11,7 +11,7 @@
 <title>新規書籍登録</title>
 </head>
 <body>
-<center><img src="Tottori-Library.png"></center>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 	<c:if test = "${not empty errorMessages}">
 		<div class ="errorMessages">
 			<ul>
@@ -29,14 +29,9 @@
 	<c:remove var = "validationMessage" scope = "session"/>
 	</c:if>
 	<div class="main">
-		<Marquee onmouseover=this.stop() onmouseout=this.start()>
-		<font size="6" color="#00aced "><b>新規書籍登録</b></font>
-	</Marquee>
 
-		<br><br><a href = "admin">戻る</a>
-
-
-		<form action="registration" method="post">
+		<br><a href = "admin">戻る</a>
+<form action="registration" method="post">
 <table class="registration">
 	<tr>
 	<th>図書館番号</th><td><select name="libraryId">
@@ -84,17 +79,6 @@
 	</div>
 	<br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+
 </body>
 </html>
