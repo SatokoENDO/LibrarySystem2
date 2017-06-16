@@ -9,13 +9,20 @@
 <title>登録確認画面</title>
 </head>
 <body>
-利用者証番号: ${userCardNumber } <br />
-氏名: ${userName } <br />
-住所: ${userAddress } <br />
-電話番号: ${userTel } <br />
-メールアドレス: ${userMail } <br />
-パスワード: ${userPassword } <br />
-受取図書館: ${userLibraryId } <br />
-権限: ${userIsAdmin } <br />
+	<div class="main-contents">
+
+		利用者証番号: ${userCardNumber } <br />
+		氏名: ${userName } <br />
+		住所: ${userAddress } <br />
+		電話番号: ${userTel } <br />
+		メールアドレス: ${userMail } <br />
+		パスワード: ${userPassword } <br />
+		受取図書館: ${userLibraryId } <br />
+		権限: ${userIsAdmin } <br />
+
+		<form action="confirm" method="post"><br />
+			<input type="submit" value="登録" /><br />
+		</form>
+	</div>
 </body>
 </html>

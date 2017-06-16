@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import service.LibraryService;
-import service.UserService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -41,7 +41,7 @@ public class SignUpServlet extends HttpServlet{
 
 		HttpSession session = request.getSession();
 
-		User user = new User();
+
 //		if(isValid(request, messages) == true) {
 
 			String password = RandomStringUtils.randomAlphabetic(8);
@@ -61,16 +61,9 @@ public class SignUpServlet extends HttpServlet{
 			DecimalFormat dformat = new DecimalFormat("0000000");
 			int libraryNumber = Integer.parseInt(request.getParameter("libraryId")) ;
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
-			System.out.println(cardNumber);
 			session.setAttribute("userCardNumber", cardNumber);
 
-<<<<<<< HEAD
 			response.sendRedirect("confirm");
-=======
-			System.out.println(password);
-
-			response.sendRedirect("admin");
->>>>>>> 9e551a9681900950f57ff75ce050435857d56dd3
 
 //		}
 	}
