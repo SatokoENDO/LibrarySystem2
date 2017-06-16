@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import beans.Library;
-import beans.User;
 import service.LibraryService;
 import service.UserService;
+import beans.Library;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -64,7 +64,13 @@ public class SignUpServlet extends HttpServlet{
 			System.out.println(cardNumber);
 			session.setAttribute("userCardNumber", cardNumber);
 
+<<<<<<< HEAD
 			response.sendRedirect("confirm");
+=======
+			System.out.println(password);
+
+			response.sendRedirect("admin");
+>>>>>>> 9e551a9681900950f57ff75ce050435857d56dd3
 
 //		}
 	}

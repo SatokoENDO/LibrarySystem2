@@ -11,6 +11,7 @@
 <title>新規書籍登録</title>
 </head>
 <body>
+<center><img src="Tottori-Library.png"></center>
 	<c:if test = "${not empty errorMessages}">
 		<div class ="errorMessages">
 			<ul>

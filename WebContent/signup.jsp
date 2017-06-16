@@ -9,6 +9,7 @@
 <title>利用者登録画面</title>
 </head>
 <body>
+<center><img src="Tottori-Library.png"></center>
 <a href="admin">戻る</a>
 
 <div class="main=contents">
