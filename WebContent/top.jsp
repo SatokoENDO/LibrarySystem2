@@ -19,6 +19,9 @@
 <c:if test="${loginUser == null}" >
 <a href="login">ログイン</a>
 </c:if>
+<c:if test="${loginUser != null}" >
+<marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
+</c:if>
 
 
 </body>
