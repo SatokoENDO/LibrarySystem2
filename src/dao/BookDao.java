@@ -4,7 +4,10 @@ import static utils.CloseableUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.Book;
 import exception.SQLRuntimeException;
@@ -64,4 +67,55 @@ public class BookDao {
 		}
 	}
 
+	public Book getBook(Connection connection, int id){
+
+		PreparedStatement ps = null;
+		try{
+			String sql = "SELECT * FROM books WHERE ID = ? ";
+
+			ps = connection.prepareStatement(sql);
+
+			ps.setInt(1, id);
+
+			ResultSet rs = ps.executeQuery();
+			List<Book> bookList = toBookList(rs);
+
+			System.out.println(bookList);
+
+			if(bookList.isEmpty() == true) {
+				return null;
+			}else{
+				return bookList.get(0);
+			}
+		}catch (SQLException e){
+			throw new SQLRuntimeException(e);
+		}finally{
+			close(ps);
+		}
+	}
+
+	private List<Book> toBookList(ResultSet rs) throws SQLException {
+
+		List<Book> ret = new ArrayList<Book>();
+		try {
+			while (rs.next()) {
+				int libraryId = rs.getInt("library_id");
+				String bookName = rs.getString("name");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+
+				Book book = new Book();
+
+				book.setLibraryId(libraryId);
+				book.setName(bookName);
+				book.setAuthor(author);
+				book.setPublisher(publisher);
+
+				ret.add(book);
+			}
+			return ret;
+		} finally {
+			close(rs);
+		}
+	}
 }

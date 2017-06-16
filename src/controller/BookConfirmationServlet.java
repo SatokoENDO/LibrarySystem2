@@ -13,7 +13,7 @@ import beans.Book;
 import service.BookService;
 
 @WebServlet(urlPatterns = { "/book-confirm"})
-public class BookConfirmation extends HttpServlet{
+public class BookConfirmationServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override

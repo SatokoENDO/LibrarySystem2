@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Book;
 import beans.Kind;
 import beans.Library;
 import beans.Shelf;
@@ -47,7 +46,6 @@ public class RegistrationServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		Book book = new Book();
 		session.setAttribute("bookLibraryId", request.getParameter("libraryId"));
 		session.setAttribute("shelfId", request.getParameter("shelfId"));
 		session.setAttribute("ISBN", request.getParameter("ISBN"));
