@@ -10,7 +10,7 @@
 <title>運営業務画面</title>
 </head>
 <body>
-<center><img src="Tottori-Library.png"></center>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <a href="./">戻る</a>
 
 <a href="lend">貸し出し</a>

@@ -71,10 +71,7 @@
 			</select></td>
 	</tr>
 	</table>
-
-
-
-<div class="userSubmit"><input type="submit" value="登録"></div>
+<br><center><input type = "submit" value ="登録"></center><br/><br>
 </form>
 	</div>
 	<br>
