@@ -27,30 +27,35 @@
 </c:if>
 
 <form action="signup" method="post"><br />
-
-	<label for="name">名前:</label>
-	<input name="name" value="${user.name }" id="name"/><br />
-
-	<label for="address">住所:</label>
-	<input name="address" value="${user.address }" id="address"/><br />
-
-	<label for="tel">電話番号:</label>
-	<input name="tel" value="${user.tel }" id="tel"/><br />
-
-	<label for="mail">メールアドレス:</label>
-	<input name="mail" value="${user.mail }" id="mail"/><br />
-
-	<label for="isAdmin">権限:</label>
-	<input type="checkbox" name="isAdmin" value="1">運営<br />
-
-	<label for="libraryId">受取図書館:</label>
-	<select name = "libraryId" size = "1">
-		<c:forEach items="${libraries}" var="library">
-			<option value = "${library.id}" <c:if test = "${user.libraryId == library.id}">selected</c:if>>
-				<c:out value ="${library.name}"/>
-			</option>
-		</c:forEach>
-	</select><br />
+<table class="signup">
+	<tr>
+		<th>氏名</th><td><input type="text" name="name" value="${user.name}" /></td>
+	</tr>
+		<tr>
+		<th>住所</th><td><input type="text" name="address" value="${user.address}"/></td>
+	</tr>
+		<tr>
+		<th>電話番号</th><td><input type="text" name="tel" value="${user.tel}"/></td>
+	</tr>
+		<tr>
+		<th>メールアドレス</th><td><input type="text" name="mail" value="${user.mail}"/></td>
+	</tr>
+		<tr>
+		<th>権限</th><td><input type="checkbox" name="isAdmin" value="1">運営</td>
+	</tr>
+		<tr>
+		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角英数字6～20字)</td>
+	</tr>
+		<tr>
+	<th>受取図書館</th><td><select name="libraryId">
+				<c:forEach items="${libraries}" var="library">
+						<option value="${library.id}"><c:if test = "${user.libraryId == library.id}">selected</c:if>
+							<c:out value="${library.name}" />
+						</option>
+				</c:forEach>
+			</select></td>
+	</tr>
+	</table>
 
 	<input type="submit" value="登録" /><br />
 </form>

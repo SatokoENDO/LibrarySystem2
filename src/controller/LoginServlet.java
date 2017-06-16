@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", user);
 			response.sendRedirect("./");
 
-		} else{
+		} else {
 			messages.add("ログインに失敗しました");
 			session.setAttribute("errorMessages", messages);
 			response.sendRedirect("login");
