@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/common.css" rel="stylesheet" type="text/css">
 <title>利用者登録画面</title>
 </head>
 <body>

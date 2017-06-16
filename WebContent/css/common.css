@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+/* ========BASIC======== */
+html {
+    overflow-y:scroll;
+}
+
+body {
+	margin:auto;
+
+	padding:0;
+    line-height:1.6;
+    letter-spacing:1px;
+    font-family:"Hiragino Kaku Gothic Pro",HiraKakugoyro-W3,"ヒラギノ角ゴ Pro W3","メイリオ", Meiryo,"ＭＳ Ｐゴシック",verdana,sans-serif;
+    font-size:30px;
+    background:linear-gradient(#FFE600, #ffffff );
+    word-wrap: break-word;
+}
+
+.mainMessage {
+	position: relative;
+	background: #e1e8ef;
+	border: 1px solid #555873;
+	border-radius:10px;
+	padding:10px;
+	width:300px;
+}
+.mainMessage:after, .mainMessage:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.mainMessage:after {
+	border-color: rgba(189, 189, 189, 0);
+	border-right-color: #e1e8ef;
+	border-width: 20px;
+	margin-top: -20px;
+}
+.mainMessage:before {
+	border-color: rgba(9, 152, 213, 0);
+	border-right-color: #555873;
+	border-width: 21px;
+	margin-top: -21px;
+}
+
+.comments {
+	position: relative;
+	background: #afcfee;
+	border: 1px solid #555873;
+	border-radius:10px;
+	padding:10px;
+	width:300px;
+	margin-left:160px;
+}
+.comments:after, .comments:before {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+
+
+}
+
+.comments:after {
+	border-color: rgba(121, 176, 213, 0);
+	border-left-color: #afcfee;
+	border-width: 20px;
+	margin-top: -20px;
+	margin-left:0px;
+
+}
+.comments:before {
+	border-color: rgba(85, 88, 115, 0);
+	border-left-color: #555873;
+	border-width: 21px;
+	margin-top: -21px;
+	margin-left:0px;
+
+}
+
+.comments-form{
+	margin-left:141px;
+}
+.comments-form-end {
+	margin-left:270px;
+}
+
+.errorMessages {
+	color:red;
+}
+
+.validationMessages {
+	color:blue;
+}
+
+.login{
+	margin-left:50px;
+}
+
+.messageSubmit{
+	margin-left:auto;
+}
+
+.update{
+	margin-left:10px;
+}
+
+.userSubmit{
+	margin-left:10px;
+}
+
+.title{
+	margin-left:auto;
+}
+
+.category{
+	margin-left:auto;
+}
+
+.text{
+	margin-left:auto;
+}
+
+.deleteComment{
+	margin-left:-1px;
+}
+
+.deleteMessage{
+	margin-left:-2px;
+}
+
+.deleteUser{
+	color:red;
+}
+input {
+font-size: 100%;
+}
+
+br {
+    letter-spacing:normal;
+}
+
+a {
+    color:#134D99;
+    text-decoration:none;
+}
+
+p {
+    margin:10px;
+}
+
+table {
+    font-size:12px;
+}
+
+table {
+    width:800px;
+    margin:40px;
+    border-collapse:collapse;
+    border:1px solid #999;
+    border-spacing:0;
+    line-height:1.8;
+    text-align:middle;
+}
+
+table th {
+    padding:5px;
+    width:400px;
+    border:1px solid #999;
+    border-width:0 0 1px 1px;
+    background:#EFEBEF;
+    font-weight:bold;
+    font-size:40px;
+    text-align:middle;
+}
+
+table td {
+    padding:5px;
+    border:1px solid #999;
+    border-width:0 0 1px 1px;
+    text-align:middle;
+    background:#ffffff;
+    font-size:40px;
+}
