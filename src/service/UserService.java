@@ -10,6 +10,7 @@ import dao.UserDao;
 import utils.CipherUtil;
 
 public class UserService {
+//  登録
 	public void register(User user) {
 
 		Connection connection = null;
@@ -33,7 +34,7 @@ public class UserService {
 			close(connection);
 		}
 	}
-
+//  最後に追加されたユーザーのidをゲットする
 	public int getUserId() {
 
 		Connection connection = null;
@@ -56,7 +57,7 @@ public class UserService {
 			close(connection);
 		}
 	}
-
+//  自動生成したカード番号を登録する
 	public void registerCardNumber(int cardNumber){
 		Connection connection = null;
 		try {
@@ -77,5 +78,4 @@ public class UserService {
 			close(connection);
 		}
 	}
-
 }

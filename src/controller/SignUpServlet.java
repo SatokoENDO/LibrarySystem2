@@ -39,33 +39,32 @@ public class SignUpServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
 		User user = new User();
 //		if(isValid(request, messages) == true) {
 
 			String password = RandomStringUtils.randomAlphabetic(8);
-			user.setName(request.getParameter("name"));
-			user.setAddress(request.getParameter("address"));
-			user.setTel(request.getParameter("tel"));
-			user.setMail(request.getParameter("mail"));
-			user.setPassword(password);
-			user.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
+
+			session.setAttribute("userName", request.getParameter("name"));
+			session.setAttribute("userAddress", request.getParameter("address"));
+			session.setAttribute("userTel", request.getParameter("tel"));
+			session.setAttribute("userMail", request.getParameter("mail"));
+			session.setAttribute("userPassword", password);
+			session.setAttribute("userLibraryId", request.getParameter("libraryId"));
 			if(request.getParameter("isAdmin") == null){
-				user.setIsAdmin(0);
+				session.setAttribute("userIsAdmin", 0);
 			}else{
-			user.setIsAdmin(Integer.parseInt(request.getParameter("isAdmin")));
+				session.setAttribute("userIsAdmin", request.getParameter("isAdmin"));
 			}
-
-			new UserService().register(user);
-
-			int userId = new UserService().getUserId();
+			int userId = new UserService().getUserId()+1;   //まだDB登録されていないから最後に登録されている人の次のidを付加する
 			DecimalFormat dformat = new DecimalFormat("0000000");
-			int libraryNumber = user.getLibraryId();
+			int libraryNumber = Integer.parseInt(request.getParameter("libraryId")) ;
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
-			new UserService().registerCardNumber(cardNumber);
+			System.out.println(cardNumber);
+			session.setAttribute("userCardNumber", cardNumber);
 
-			response.sendRedirect("admin");
+			response.sendRedirect("confirm");
 
 //		}
 	}
