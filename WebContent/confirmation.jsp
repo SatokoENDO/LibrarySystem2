@@ -20,7 +20,7 @@
 		受取図書館: ${userLibraryId } <br />
 		権限: ${userIsAdmin } <br />
 
-		<form action="confirm" method="post"><br />
+		<form action="user-confirm" method="post"><br />
 			<input type="submit" value="登録" /><br />
 		</form>
 	</div>

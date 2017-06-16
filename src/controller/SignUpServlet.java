@@ -63,7 +63,7 @@ public class SignUpServlet extends HttpServlet{
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
 			session.setAttribute("userCardNumber", cardNumber);
 
-			response.sendRedirect("confirm");
+			response.sendRedirect("user-confirm");
 
 //		}
 	}
