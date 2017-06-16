@@ -50,7 +50,7 @@
 	</tr>
 	</table>
 		<form action="user-confirm" method="post"><br />
-					<input type="submit" value="登録" /><br />
+					<center><input type="submit" value="登録" /></center><br />
 				</form>
 			</c:when>
 			<c:otherwise>
@@ -94,7 +94,7 @@
 	</tr>
 	</table>
 	<form action="book-confirm" method="post"><br />
-					<input type = "submit" value="登録" /><br />
+					<center><input type = "submit" value="登録" /></center><br />
 				</form>
 			</c:otherwise>
 		</c:choose>
