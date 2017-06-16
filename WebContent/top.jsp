@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>TOP</title>
+<title>トップ</title>
 </head>
 <body>
 <center><img src="Tottori-Library.png"></center>
