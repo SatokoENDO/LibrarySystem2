@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import beans.Library;
-import beans.User;
 import service.LibraryService;
 import service.UserService;
+import beans.Library;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -64,6 +64,8 @@ public class SignUpServlet extends HttpServlet{
 			int libraryNumber = user.getLibraryId();
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));
 			new UserService().registerCardNumber(cardNumber);
+
+			System.out.println(password);
 
 			response.sendRedirect("admin");
 

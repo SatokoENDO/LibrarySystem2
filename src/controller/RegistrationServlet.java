@@ -69,13 +69,21 @@ public class RegistrationServlet extends HttpServlet {
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
+		String ISBN = request.getParameter("ISBN");
 		String name = request.getParameter("name");
-		String author = request.getParameter("author");
+		String author = request.getParameter("auhtor");
+		String publisher = request.getParameter("publisher");
+		if (StringUtils.isEmpty(ISBN) == true) {
+			messages.add("ISBNを入力してください");
+		}
 		if (StringUtils.isEmpty(name) == true) {
-			messages.add("アカウント名を入力してください");
+			messages.add("書籍名を入力してください");
 		}
 		if (StringUtils.isEmpty(author) == true) {
-			messages.add("パスワードを入力してください");
+			messages.add("著者名を入力してください");
+		}
+		if (StringUtils.isEmpty(publisher) == true) {
+			messages.add("出版社名を入力してください");
 		}
 		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
 		if (messages.size() == 0) {
