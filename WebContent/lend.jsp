@@ -16,6 +16,8 @@
 
 			<label for="cardNumber">利用者証番号:</label>
 			<input name="cardNumber" id="id" /><br />
+
+			<input type = "submit" value ="登録">
 		</form>
 	</div>
 </body>
