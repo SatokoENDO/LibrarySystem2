@@ -45,6 +45,9 @@ public class UserConfirmation extends HttpServlet{
 		new UserService().register(user);
 
 		response.sendRedirect("admin");
+
+		session.invalidate();
+
 	}
 
 }

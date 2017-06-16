@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,16 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
-
-import service.BookService;
-import service.KindService;
-import service.LibraryService;
-import service.ShelfService;
 import beans.Book;
 import beans.Kind;
 import beans.Library;
 import beans.Shelf;
+import service.KindService;
+import service.LibraryService;
+import service.ShelfService;
 
 @WebServlet(urlPatterns = { "/registration" })
 public class RegistrationServlet extends HttpServlet {
@@ -49,48 +45,18 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-
-		List<String> messages = new ArrayList<String>();
 		HttpSession session = request.getSession();
-		if (isValid(request, messages) == true) {
-			Book book = new Book();
-			book.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
-			book.setShelfId(Integer.parseInt(request.getParameter("shelfId")));
-			book.setISBN(request.getParameter("ISBN"));
-			book.setName(request.getParameter("name"));
-			book.setAuthor(request.getParameter("author"));
-			book.setPublisher(request.getParameter("publisher"));
-			book.setKind(Integer.parseInt(request.getParameter("kind")));
-			new BookService().register(book);
-			response.sendRedirect("./");
-		} else {
-			session.setAttribute("errorMessages", messages);
-			response.sendRedirect("registration");
-		}
-	}
-	private boolean isValid(HttpServletRequest request, List<String> messages) {
-		String ISBN = request.getParameter("ISBN");
-		String name = request.getParameter("name");
-		String author = request.getParameter("auhtor");
-		String publisher = request.getParameter("publisher");
-		if (StringUtils.isEmpty(ISBN) == true) {
-			messages.add("ISBNを入力してください");
-		}
-		if (StringUtils.isEmpty(name) == true) {
-			messages.add("書籍名を入力してください");
-		}
-		if (StringUtils.isEmpty(author) == true) {
-			messages.add("著者名を入力してください");
-		}
-		if (StringUtils.isEmpty(publisher) == true) {
-			messages.add("出版社名を入力してください");
-		}
-		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
-		if (messages.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
+
+		Book book = new Book();
+		session.setAttribute("bookLibraryId", request.getParameter("libraryId"));
+		session.setAttribute("shelfId", request.getParameter("shelfId"));
+		session.setAttribute("ISBN", request.getParameter("ISBN"));
+		session.setAttribute("bookName", request.getParameter("name"));
+		session.setAttribute("author", request.getParameter("author"));
+		session.setAttribute("publisher", request.getParameter("publisher"));
+		session.setAttribute("kind", request.getParameter("kind"));
+
+		response.sendRedirect("book-confirm");
 	}
 }
 

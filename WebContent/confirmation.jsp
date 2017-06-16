@@ -10,19 +10,35 @@
 </head>
 <body>
 	<div class="main-contents">
+		<c:choose>
+			<c:when test = "${userCardNumber != null }">
+				利用者証番号: ${userCardNumber } <br />
+				氏名 : ${userName } <br />
+				住所 : ${userAddress } <br />
+				電話番号 : ${userTel } <br />
+				メールアドレス : ${userMail } <br />
+				パスワード : ${userPassword } <br />
+				受取図書館 : ${userLibraryId } <br />
+				権限 : ${userIsAdmin } <br />
+				<form action="user-confirm" method="post"><br />
+					<input type="submit" value="登録" /><br />
+				</form>
+			</c:when>
+			<c:otherwise>
+				図書館番号 : ${bookLibraryId } <br />
+				棚番号 : ${shelfId } <br />
+				ISBN : ${ISBN } <br />
+				書名 : ${bookName } <br />
+				著者名 : ${author } <br />
+				出版社名 : ${publisher } <br />
+				書類種類 : ${kind } <br />
+				<form action="book-confirm" method="post"><br />
+					<input type = "submit" value="登録" /><br />
+				</form>
+			</c:otherwise>
+		</c:choose>
 
-		利用者証番号: ${userCardNumber } <br />
-		氏名: ${userName } <br />
-		住所: ${userAddress } <br />
-		電話番号: ${userTel } <br />
-		メールアドレス: ${userMail } <br />
-		パスワード: ${userPassword } <br />
-		受取図書館: ${userLibraryId } <br />
-		権限: ${userIsAdmin } <br />
 
-		<form action="user-confirm" method="post"><br />
-			<input type="submit" value="登録" /><br />
-		</form>
 	</div>
 </body>
 </html>
