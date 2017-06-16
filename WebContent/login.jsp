@@ -13,7 +13,7 @@
 <body>
 
 <div class = "main-contents">
-<center><img src="Tottori-Library.png"></center>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 
 
 <c:if test = "${not empty errorMessages}">
@@ -28,21 +28,18 @@
 </c:if>
 
 <form action = "login" method = "post">
+<br>
 <table class="login">
 	<tr>
-		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角英数字6～20字)</td>
+		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角数字8文字)</td>
 	</tr>
 	<tr>
-		<th>パスワード</th><td><input type="password" name="password" />&nbsp;(記号含む半角文字6～255字)</td>
+		<th>パスワード</th><td><input type="password" name="password" /></td>
 	</tr>
-</table>
-<div class="login"><br><input type = "submit" value ="ログイン"><br/></div>
+</table><br><center><input type = "submit" value ="ログイン"></center><br/><br>
 </form>
 </div>
 
-
-
-<br>
 
 
 </body>

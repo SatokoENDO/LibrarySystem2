@@ -7,7 +7,6 @@ html {
 
 body {
 	margin:auto;
-
 	padding:0;
     line-height:1.6;
     letter-spacing:1px;
@@ -15,6 +14,18 @@ body {
     font-size:30px;
     background:linear-gradient(#FFE600, #ffffff );
     word-wrap: break-word;
+}
+
+
+select{
+font-size:30px;
+border:1px;
+}
+
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .mainMessage {
@@ -103,10 +114,6 @@ body {
 	color:blue;
 }
 
-.login{
-	margin-left:50px;
-}
-
 .messageSubmit{
 	margin-left:auto;
 }
@@ -165,7 +172,7 @@ table {
 
 table {
     width:800px;
-    margin:40px;
+    margin:auto;
     border-collapse:collapse;
     border:1px solid #999;
     border-spacing:0;
@@ -175,12 +182,12 @@ table {
 
 table th {
     padding:5px;
-    width:400px;
+    width:500px;
     border:1px solid #999;
     border-width:0 0 1px 1px;
     background:#EFEBEF;
     font-weight:bold;
-    font-size:40px;
+    font-size:30px;
     text-align:middle;
 }
 
@@ -190,5 +197,6 @@ table td {
     border-width:0 0 1px 1px;
     text-align:middle;
     background:#ffffff;
-    font-size:40px;
+    font-size:30px;
 }
+

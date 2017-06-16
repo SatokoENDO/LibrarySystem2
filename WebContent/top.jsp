@@ -8,7 +8,8 @@
 <title>トップ</title>
 </head>
 <body>
-<center><img src="Tottori-Library.png"></center>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
+
 
 <a href="login">ログイン</a>
 
