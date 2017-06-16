@@ -8,11 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <title>ログイン</title>
+
 </head>
 <body>
-<center><img src="Tottori-Library.png"></center>
-<div class = "main-contents">
 
+<div class = "main-contents">
+<center><img src="Tottori-Library.png"></center>
 
 
 <c:if test = "${not empty errorMessages}">
@@ -29,7 +30,7 @@
 <form action = "login" method = "post">
 <table class="login">
 	<tr>
-		<th>利用者番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角英数字6～20字)</td>
+		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角英数字6～20字)</td>
 	</tr>
 	<tr>
 		<th>パスワード</th><td><input type="password" name="password" />&nbsp;(記号含む半角文字6～255字)</td>
@@ -42,27 +43,7 @@
 
 
 <br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 </body>
 </html>
