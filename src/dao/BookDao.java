@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Book;
+import exception.NoRowsUpdatedRuntimeException;
 import exception.SQLRuntimeException;
 
 public class BookDao {
@@ -40,8 +41,8 @@ public class BookDao {
 			mySql.append(", ?"); //author_name
 			mySql.append(", ?"); //publisher_name
 			mySql.append(", ?"); //kind
-			mySql.append(", ?"); //status
-			mySql.append(", ?"); //borrower
+			mySql.append(", 0"); //status
+			mySql.append(", 0"); //borrower
 			mySql.append(", 0000-00-00"); //borrowed_time
 			mySql.append(", 0000-00-00"); //returned_time
 			mySql.append(", 0"); //reservation_number
@@ -56,8 +57,6 @@ public class BookDao {
 			ps.setString(5, book.getAuthor());
 			ps.setString(6, book.getPublisher());
 			ps.setInt(7, book.getKind());
-			ps.setInt(8, 0);
-			ps.setInt(9, 0);
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -116,6 +115,34 @@ public class BookDao {
 			return ret;
 		} finally {
 			close(rs);
+		}
+	}
+
+	public void returnBook(Connection connection, int bookId) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder mySql = new StringBuilder();
+			mySql.append("update books set");
+			mySql.append(" status = 0");
+			mySql.append(",borrowed_time = 0000-00-00");
+			mySql.append(", returned_time =CURRENT_TIMESTAMP ");
+			mySql.append(" where");
+			mySql.append(" id = ?");
+			mySql.append(";");
+
+			ps = connection.prepareStatement(mySql.toString());
+
+			ps.setInt(1, bookId);
+
+			int count = ps.executeUpdate();
+			if (count == 0) {
+				throw new NoRowsUpdatedRuntimeException();
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
 		}
 	}
 }

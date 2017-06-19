@@ -53,7 +53,7 @@ public class ConfirmationServlet extends HttpServlet{
 
 		session.invalidate();
 
-		response.sendRedirect("admin");//test
+		response.sendRedirect("admin");
 
 
 
