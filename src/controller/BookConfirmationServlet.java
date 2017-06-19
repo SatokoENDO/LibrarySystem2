@@ -38,7 +38,7 @@ public class BookConfirmationServlet extends HttpServlet{
 		book.setName((String) session.getAttribute("bookName"));
 		book.setAuthor((String) session.getAttribute("author"));
 		book.setPublisher((String) session.getAttribute("publisher"));
-		String kind = (String) session.getAttribute("kind");
+		String kind = (String) session.getAttribute("kindId");
 		book.setKind(Integer.parseInt(kind));
 
 		new BookService().register(book);

@@ -67,41 +67,43 @@
 			<c:otherwise>
 	<table class="registration">
 	<tr>
-	<th>図書館番号</th><td><select name="libraryId">
-				<c:forEach items="${libraries}" var="library">
-						<option value="${bookLibraryId }">
-							<c:out value="${library.name}" />
-						</option>
-				</c:forEach>
-			</select></td>
+		<th>一連番号</th><td><c:out value="${bookId }" /></td>
 	</tr>
 	<tr>
-	<th>棚番号</th><td><select name="shelfId">
-				<c:forEach items="${shelves}" var="shelf">
-						<option value="${shelfId}">
-							<c:out value="${shelf.name}" />
-						</option>
-				</c:forEach>
-			</select></td>
+	<th>登録図書館</th><td>
+			<c:forEach items="${libraries}" var="library">
+					<c:if test = "${bookLibraryId  == library.id}">
+						<c:out value="${library.name}" />
+					</c:if>
+			</c:forEach>
+			</td>
 	</tr>
 	<tr>
-		<th>ISBN</th><td><input type="text" name="ISBN" value="${ISBN}"/></td>
+	<th>棚番号</th><td>
+			<c:forEach items="${shelves}" var="shelf">
+					<c:if test = "${shelfId  == shelf.id}">
+						<c:out value="${shelf.name}" />
+					</c:if>
+			</c:forEach>
+			</td>
 	</tr>
 	<tr>
-		<th>書籍名</th><td><input type="text" name="name" value="${bookName}" /></td>
+		<th>ISBN</th><td><c:out value="${ISBN}"/></td>
 	</tr>
 	<tr>
-	<th>著者名</th><td><input type="text" name="author" value="${author}" /></td>
+		<th>書籍名</th><td><c:out value="${bookName}" /></td>
+	</tr>
 	<tr>
-	<th>出版社名</th><td><input type="text" name="publisher" value="${publisher}" /></td>
+	<th>著者名</th><td><c:out value="${author}" /></td>
 	<tr>
-	<th>書類種類</th><td><select name="kind">
-				<c:forEach items="${kinds}" var="kind">
-						<option value="${kind}">
-							<c:out value="${kind.name}" />
-						</option>
-				</c:forEach>
-			</select></td>
+	<th>出版社名</th><td><c:out value="${publisher}" /></td>
+	<tr>
+	<th>書類種類</th><td>
+			<c:forEach items="${kinds}" var="kind">
+					<c:if test = "${kindId  == kind.id}">
+						<c:out  value="${kind.name}" />
+					</c:if>
+				</c:forEach></td>
 	</tr>
 	</table>
 	<form action="book-confirm" method="post"><br />

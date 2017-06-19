@@ -67,4 +67,28 @@ public class BookService {
 
 	}
 
+//  最後に追加されたユーザーのidをゲットする
+	public int getBookId() {
+
+		Connection connection = null;
+		try {
+			connection = getConnection();
+
+			BookDao idDao = new BookDao();
+			int ret = idDao.getBookId(connection);
+
+			commit(connection);
+
+			return ret;
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
+	}
+
 }

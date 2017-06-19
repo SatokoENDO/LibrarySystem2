@@ -63,7 +63,7 @@ public class UserDao {
 		}
 	}
 
-	// 最新に登録したユーザーのidを取得
+	// 最後に登録したユーザーのidを取得
 	public int getUserId(Connection connection) {
 
 		try {
