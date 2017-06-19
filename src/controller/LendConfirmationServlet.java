@@ -25,8 +25,12 @@ public class LendConfirmationServlet extends HttpServlet {
 		String bookId = (String)session.getAttribute("bookId");
 
 		Book bookInfo = new BookService().getBook(Integer.parseInt(bookId));
-		request.setAttribute("book", bookInfo);
+		session.setAttribute("name", bookInfo.getName());
+		session.setAttribute("author", bookInfo.getAuthor());
+		session.setAttribute("publisher", bookInfo.getPublisher());
+
 		System.out.println(bookInfo.getName());
+
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);
 

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.LibraryService;
-import service.UserService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/user-confirm"})
 public class ConfirmationServlet extends HttpServlet{
@@ -24,7 +24,9 @@ public class ConfirmationServlet extends HttpServlet{
 			throws ServletException, IOException{
 		HttpSession session = request.getSession();
 
+		session.getAttribute("userLibraryId");
 		List<Library> libraries = new LibraryService().getLibraryList();
+		System.out.println(libraries.get(0));
 		session.setAttribute("libraries", libraries);
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);

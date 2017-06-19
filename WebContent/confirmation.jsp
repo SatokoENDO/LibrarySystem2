@@ -17,36 +17,43 @@
 			<c:when test = "${userCardNumber != null }">
 			<table class="signup">
 			<tr>
-		<th>利用者証番号</th><td><input type="text" name="name" value="${userCardNumber }" /></td>
+		<th>利用者証番号</th><td><c:out value="${userCardNumber }" /></td>
 	</tr>
 	<tr>
-		<th>氏名</th><td><input type="text" name="name" value="${userName }" /></td>
+		<th>氏名</th><td><c:out value="${userName }" /></td>
 	</tr>
 		<tr>
-		<th>住所</th><td><input type="text" name="address" value="${userAddress }"/></td>
+		<th>住所</th><td><c:out value="${userAddress }"/></td>
 	</tr>
 		<tr>
-		<th>電話番号</th><td><input type="text" name="tel" value="${userTel }"/></td>
+		<th>電話番号</th><td><c:out value="${userTel }"/></td>
 	</tr>
 		<tr>
-		<th>メールアドレス</th><td><input type="text" name="mail" value="${userMail }"/></td>
+		<th>メールアドレス</th><td><c:out value="${userMail }"/></td>
 	</tr>
 		<tr>
 		<tr>
-		<th>初期パスワード</th><td><input type="text" name="password" value="${userPassword }"/></td>
+		<th>初期パスワード</th><td><c:out value="${userPassword }"/></td>
 	</tr>
 	<tr>
-		<th>権限</th><td><input type="checkbox" name="isAdmin" value=" ${userIsAdmin }">運営</td>
+		<th>権限</th><td>
+		<c:choose>
+			<c:when test = "${userIsAdmin == 0 }">
+				<c:out value="一般"/>
+			</c:when>
+			<c:otherwise>
+				<c:out value="運営"/>
+			</c:otherwise>
+
+		</c:choose>
+			</td>
+
 	</tr>
 
 		<tr>
-	<th>受取図書館</th><td><select name="libraryId">
-				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"><c:if test = "$ {userLibraryId  == library.id}">selected</c:if>
-							<c:out value="${library.name}" />
-						</option>
-				</c:forEach>
-			</select></td>
+	<th>受取図書館</th><td>
+
+	<c:out value="${userLibraryId.name}" /></td>
 	</tr>
 	</table>
 		<form action="user-confirm" method="post"><br />
