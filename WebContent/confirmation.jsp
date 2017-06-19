@@ -50,7 +50,7 @@
 
 	</tr>
 
-		<tr>
+	<tr>
 	<th>受取図書館</th><td>
 
 	<c:out value="${userLibraryId.name}" /></td>
