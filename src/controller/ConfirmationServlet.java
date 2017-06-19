@@ -26,7 +26,6 @@ public class ConfirmationServlet extends HttpServlet{
 
 		session.getAttribute("userLibraryId");
 		List<Library> libraries = new LibraryService().getLibraryList();
-		System.out.println(libraries.get(0));
 		session.setAttribute("libraries", libraries);
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);
