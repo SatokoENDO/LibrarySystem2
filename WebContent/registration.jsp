@@ -34,7 +34,7 @@
 <form action="registration" method="post">
 <table class="registration">
 	<tr>
-	<th>図書館番号</th><td><select name="libraryId">
+	<th>登録図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
 						<option value="${library.id}">
 							<c:out value="${library.name}" />
