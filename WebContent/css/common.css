@@ -58,6 +58,21 @@ input[type=checkbox] {
 	border: dotted 1px #FFF;
 }
 
+.register-btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #FE2E9A;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #FE2E9A;
+    border: dashed 1px #FFF;
+}
+
+.register-btn:hover{
+	border: dotted 1px #FFF;
+}
+
 .mainMessage {
 	position: relative;
 	background: #e1e8ef;

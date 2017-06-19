@@ -50,7 +50,7 @@
 
 	</tr>
 
-		<tr>
+	<tr>
 	<th>受取図書館</th><td>
 				<c:forEach items="${libraries}" var="library">
 					<c:if test = "${userLibraryId  == library.id}">

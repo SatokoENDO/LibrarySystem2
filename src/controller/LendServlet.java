@@ -25,7 +25,7 @@ public class LendServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		session.setAttribute("bookId", request.getParameter("id"));
+		session.setAttribute("bookId", request.getParameter("bookId"));
 		session.setAttribute("cardNumber", request.getParameter("cardNumber"));
 
 		response.sendRedirect("lend-confirm");
