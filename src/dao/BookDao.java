@@ -119,26 +119,6 @@ public class BookDao {
 		}
 	}
 
-	//最新のid（一連番号）を取得
-	public int getBookId(Connection connection) {
-
-		try {
-			Statement statement = connection.createStatement();
-			String mySql = "select id from books WHERE  id=(SELECT MAX(id) FROM books )";
-			ResultSet rs = statement.executeQuery(mySql);
-
-			int bookId = 0;
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				bookId = id;
-			}
-			return bookId;
-
-		} catch (SQLException e) {
-			throw new SQLRuntimeException(e);
-		}
-	}
-
 	public void returnBook(Connection connection, int bookId) {
 
 		PreparedStatement ps = null;
