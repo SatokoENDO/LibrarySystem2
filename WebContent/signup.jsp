@@ -54,7 +54,7 @@
 			</select></td>
 	</tr>
 	</table>
-<br><center><input type = "submit" value ="登録"></center><br/><br>
+<br><center><input type = "submit" value ="登録"></center>
 </form>
 </div>
 </body>

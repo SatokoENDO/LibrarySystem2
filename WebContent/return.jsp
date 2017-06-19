@@ -38,6 +38,7 @@
 	</tr>
 
 	</table>
+	<br>
 	<center><input type = "submit" value ="返却"></center><br/><br>
 
 	</form>
