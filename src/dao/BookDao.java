@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,6 +144,26 @@ public class BookDao {
 			throw new SQLRuntimeException(e);
 		} finally {
 			close(ps);
+		}
+	}
+
+	//最後に登録した本のidを取得
+	public int getBookId(Connection connection) {
+
+		try {
+			Statement statement = connection.createStatement();
+			String mySql = "select id from books WHERE  id=(SELECT MAX(id) FROM books )";
+			ResultSet rs = statement.executeQuery(mySql);
+
+			int bookId = 0;
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				bookId = id;
+			}
+			return bookId;
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
 		}
 	}
 }

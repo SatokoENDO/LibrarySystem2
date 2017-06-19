@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import beans.Kind;
 import beans.Library;
 import beans.Shelf;
+import service.BookService;
 import service.KindService;
 import service.LibraryService;
 import service.ShelfService;
@@ -52,7 +53,10 @@ public class RegistrationServlet extends HttpServlet {
 		session.setAttribute("bookName", request.getParameter("name"));
 		session.setAttribute("author", request.getParameter("author"));
 		session.setAttribute("publisher", request.getParameter("publisher"));
-		session.setAttribute("kind", request.getParameter("kind"));
+		session.setAttribute("kindId", request.getParameter("kind"));
+
+		int bookId = new BookService().getBookId()+1;   //まだDB登録されていないから最後に登録されている人の次のidを付加する
+		session.setAttribute("bookId", bookId);
 
 		response.sendRedirect("book-confirm");
 	}
