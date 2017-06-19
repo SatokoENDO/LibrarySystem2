@@ -43,6 +43,27 @@ public class BookService {
 		}finally{
 
 		}
+	}
+
+	public void returnBook(int bookId){
+		Connection connection = null;
+		try {
+			connection = getConnection();
+
+			BookDao bookDao = new BookDao();
+			bookDao.returnBook(connection, bookId);
+
+			commit(connection);
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
 
 	}
+
 }

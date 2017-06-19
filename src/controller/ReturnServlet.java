@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import service.BookService;
+
+
 @WebServlet(urlPatterns = { "/return" })
 public class ReturnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,9 +28,9 @@ public class ReturnServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		session.setAttribute("bookId", request.getParameter("bookId"));
+		int bookId = Integer.parseInt(request.getParameter("bookId"));
+		new BookService().returnBook(bookId);
 
-
-		response.sendRedirect("book-confirm");
+		response.sendRedirect("admin");
 	}
 }
