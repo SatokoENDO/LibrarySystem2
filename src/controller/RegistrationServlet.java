@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Kind;
-import beans.Library;
-import beans.Shelf;
 import service.KindService;
 import service.LibraryService;
 import service.ShelfService;
+import beans.Kind;
+import beans.Library;
+import beans.Shelf;
 
 @WebServlet(urlPatterns = { "/registration" })
 public class RegistrationServlet extends HttpServlet {
