@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.BookService;
 import beans.Book;
+import service.BookService;
 
 @WebServlet(urlPatterns = { "/book-confirm"})
 public class BookConfirmationServlet extends HttpServlet{
@@ -43,8 +43,10 @@ public class BookConfirmationServlet extends HttpServlet{
 
 		new BookService().register(book);
 
+		session.invalidate();
+
 		response.sendRedirect("admin");
 
-		session.invalidate();
+
 	}
 }
