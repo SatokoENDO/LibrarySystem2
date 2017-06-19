@@ -12,9 +12,9 @@
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <a href="./">戻る</a>
-
-<a href="lend">貸し出し</a>
-<a href="return">返却</a>
+<br>
+<a href="lend" class="lend-btn">貸し出し</a>&nbsp;
+<a href="return" class="return-btn">返却</a>
 <a href="registration">書籍登録</a>
 <a href="signup">利用者登録</a>
 <a href="demand">督促</a>

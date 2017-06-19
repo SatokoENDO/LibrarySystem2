@@ -74,8 +74,6 @@
 <br><center><input type = "submit" value ="登録"></center><br/><br>
 </form>
 	</div>
-	<br>
-			<br>
 
 </body>
 </html>
