@@ -40,8 +40,8 @@
 		<select name = "kind" size = "1">
 			<option value = ""/>
 			<c:forEach items = "${kinds }" var = "kind">
-				<option value = "${kind. kind }" <c:if test = "${selected.equals(kind.kind)}">selected</c:if>>
-					<c:out value = "${kind. kind }"/>
+				<option value = "${kind. kinds }" <c:if test = "${selected.equals(kind.kinds)}">selected</c:if>>
+					<c:out value = "${kind. kinds }"/>
 				</option>
 			</c:forEach>
 		</select><br />
