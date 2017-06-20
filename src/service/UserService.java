@@ -78,4 +78,23 @@ public class UserService {
 			close(connection);
 		}
 	}
+
+	public User getUser(long cardNumber){
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			UserDao userDao = new UserDao();
+			User user = userDao.getUser(connection, cardNumber);
+
+			commit(connection);
+
+			return user;
+		}catch (RuntimeException e){
+			rollback(connection);
+			throw e;
+		}finally{
+			close(connection);
+		}
+	}
 }
