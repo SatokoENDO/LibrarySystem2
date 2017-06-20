@@ -12,7 +12,7 @@ body {
     letter-spacing:1px;
     font-family:"Hiragino Kaku Gothic Pro",HiraKakugoyro-W3,"ヒラギノ角ゴ Pro W3","メイリオ", Meiryo,"ＭＳ Ｐゴシック",verdana,sans-serif;
     font-size:30px;
-    background:linear-gradient(#FFE600, #ffffff )fixed;;
+    background:linear-gradient(#ffffff, #bfffde )fixed;;
     word-wrap: break-word;
 }
 
@@ -28,9 +28,10 @@ input[type=checkbox] {
 }
 
 .lend-btn{
-	margin-left:40px;;
+	margin-left:40px;
+	font-size: 50px;
     display: inline-block;
-    padding: 0.5em 1em;
+    padding:50px 50px;
     text-decoration: none;
     background: #668ad8;
     color: #FFF;
@@ -45,7 +46,9 @@ input[type=checkbox] {
 
 .return-btn{
     display: inline-block;
-    padding: 0.5em 1em;
+     padding:50px 50px;
+     font-size: 50px;
+
     text-decoration: none;
     background: #2EFE2E;
     color: #FFF;
