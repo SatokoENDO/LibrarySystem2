@@ -36,6 +36,7 @@
 		<input type = "text" name = "author" value = "${author }"><br />
 		出版社名:
 		<input type = "text" name = "publisher" value = "${publisher }"><br />
+<<<<<<< HEAD
 		ジャンル:
 		<select name = "kind" size = "1">
 			<option value = ""/>
@@ -54,6 +55,23 @@
 				</option>
 			</c:forEach>
 		</select>
+=======
+		ジャンル:<select name="kinds">
+				<c:forEach items="${kinds}" var="kind">
+						<option value="${kind.id}">
+							<c:out value="${kind.name}" />
+						</option>
+				</c:forEach>
+			</select>
+		登録図書館:<select name="libraryId">
+				<c:forEach items="${libraries}" var="library">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+				</c:forEach>
+			</select>
+
+>>>>>>> f8ec59590dae5b52bb87c99a96846c3071a73399
 		<input type = "submit" value ="検索">
 	</form>
 </div>
