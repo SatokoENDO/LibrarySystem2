@@ -28,6 +28,35 @@
 <marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
 </c:if>
 
+<div class="search">
+	<form action="./" method="get">
+		書名:
+		<input type = "text" name = "bookName" value = "${bookName }" ><br />
+		著者名:
+		<input type = "text" name = "author" value = "${author }"><br />
+		出版社名:
+		<input type = "text" name = "publisher" value = "${publisher }"><br />
+		ジャンル:
+		<select name = "kind" size = "1">
+			<option value = ""/>
+			<c:forEach items = "${kinds }" var = "kind">
+				<option value = "${kind. kind }" <c:if test = "${selected.equals(kind.kind)}">selected</c:if>>
+					<c:out value = "${kind. kind }"/>
+				</option>
+			</c:forEach>
+		</select><br />
+		登録図書館:
+		<select name = "library" size = "1">
+			<option value = ""/>
+			<c:forEach items = "${libraries }" var = "library">
+				<option value = "${library. library }" <c:if test = "${selected.equals(library.library)}">selected</c:if>>
+					<c:out value = "${library. library }"/>
+				</option>
+			</c:forEach>
+		</select>
+		<input type = "submit" value ="検索">
+	</form>
+</div>
 
 </body>
 </html>
