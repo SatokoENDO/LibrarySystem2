@@ -38,5 +38,27 @@ public class LendDao {
 		} finally {
 			close(ps);
 		}
+
+		PreparedStatement ps1 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE users SET");
+			sql.append(" borrow_books = borrow_books + 1 ");
+			sql.append(" WHERE");
+			sql.append(" id = ?");
+
+			ps1 = connection.prepareStatement(sql.toString());
+
+			ps1.setInt(1, book.getBorrower());
+
+			int count = ps1.executeUpdate();
+			if (count == 0) {
+				throw new NoRowsUpdatedRuntimeException();
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps1);
+		}
 	}
 }
