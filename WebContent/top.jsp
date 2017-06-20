@@ -36,24 +36,21 @@
 		<input type = "text" name = "author" value = "${author }"><br />
 		出版社名:
 		<input type = "text" name = "publisher" value = "${publisher }"><br />
-		ジャンル:
-		<select name = "kind" size = "1">
-			<option value = ""/>
-			<c:forEach items = "${kinds }" var = "kind">
-				<option value = "${kind. kind }" <c:if test = "${selected.equals(kind.kind)}">selected</c:if>>
-					<c:out value = "${kind. kind }"/>
-				</option>
-			</c:forEach>
-		</select><br />
-		登録図書館:
-		<select name = "library" size = "1">
-			<option value = ""/>
-			<c:forEach items = "${libraries }" var = "library">
-				<option value = "${library. library }" <c:if test = "${selected.equals(library.library)}">selected</c:if>>
-					<c:out value = "${library. library }"/>
-				</option>
-			</c:forEach>
-		</select>
+		ジャンル:<select name="kinds">
+				<c:forEach items="${kinds}" var="kind">
+						<option value="${kind.id}">
+							<c:out value="${kind.name}" />
+						</option>
+				</c:forEach>
+			</select>
+		登録図書館:<select name="libraryId">
+				<c:forEach items="${libraries}" var="library">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+				</c:forEach>
+			</select>
+
 		<input type = "submit" value ="検索">
 	</form>
 </div>
