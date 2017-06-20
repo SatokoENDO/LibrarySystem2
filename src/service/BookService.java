@@ -45,14 +45,14 @@ public class BookService {
 		}
 	}
 
-
-	public void returnBook(int bookId){
+	//返却：棚に戻す
+	public void returnBookToShelf(int bookId){
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
 			BookDao bookDao = new BookDao();
-			bookDao.returnBook(connection, bookId);
+			bookDao.returnBookToShelf(connection, bookId);
 
 			commit(connection);
 		} catch (RuntimeException e) {
@@ -64,10 +64,30 @@ public class BookService {
 		} finally {
 			close(connection);
 		}
-
 	}
 
-//  最後に追加されたユーザーのidをゲットする
+	//返却：整理中にする
+	public void returnBookToFront(int bookId){
+		Connection connection = null;
+		try {
+			connection = getConnection();
+
+			BookDao bookDao = new BookDao();
+			bookDao.returnBookToFront(connection, bookId);
+
+			commit(connection);
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
+	}
+
+//  最後に追加された本のidをゲットする
 	public int getBookId() {
 
 		Connection connection = null;

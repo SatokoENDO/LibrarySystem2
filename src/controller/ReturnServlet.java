@@ -29,7 +29,17 @@ public class ReturnServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		int bookId = Integer.parseInt(request.getParameter("bookId"));
-		new BookService().returnBook(bookId);
+
+		int reservationNumber = new BookService().getBook(bookId).getReservationNumber();
+		if(reservationNumber>0){
+			new BookService().returnBookToFront(bookId);
+			System.out.println("reservation aruyo");
+
+		}else{
+			new BookService().returnBookToShelf(bookId);
+		}
+
+
 
 		response.sendRedirect("admin");
 	}
