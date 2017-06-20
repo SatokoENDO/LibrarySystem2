@@ -17,11 +17,12 @@
 	<br>
 	<table class="lend">
 	<tr>
-		<th>一連番号</th><td><input type="text" name="bookId" value="${bookId}"/></td>
-	</tr>
-	<tr>
 		<th>利用者証番号</th><td><input type="text" name="cardNumber" value="${cardNumber}"/></td>
 	</tr>
+	<tr>
+		<th>一連番号</th><td><input type="text" name="bookId" value="${bookId}"/></td>
+	</tr>
+
 	</table>
 <br>
 <center><input type = "submit" value ="貸出確認"></center><br/><br>
