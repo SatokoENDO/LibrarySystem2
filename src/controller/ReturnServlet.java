@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.BookService;
 import beans.Book;
+import service.BookService;
 
 
 @WebServlet(urlPatterns = { "/return" })
@@ -27,15 +27,18 @@ public class ReturnServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 
-		Book bookInfo =  new BookService().getBook(Integer.parseInt(request.getParameter("bookId")));
+		int id = Integer.parseInt(request.getParameter("bookId"));
+		Book book =  new BookService().getBook(id);
 
-		int reservationNumber = new BookService().getBook(Integer.parseInt(request.getParameter("bookId"))).getReservationNumber();
+		System.out.println(book.getId());
+
+		int reservationNumber = book.getReservationNumber();
 		if(reservationNumber>0){
-			new BookService().returnBookToFront(bookInfo);
+			new BookService().returnBookToFront(book);
 			System.out.println("reservation aruyo");
 
 		}else{
-			new BookService().returnBookToShelf(bookInfo);
+			new BookService().returnBookToShelf(book);
 		}
 
 

@@ -67,13 +67,13 @@ public class BookService {
 	}
 
 	//返却：整理中にする
-	public void returnBookToFront(Book bookInfo){
+	public void returnBookToFront(Book book){
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
 			BookDao bookDao = new BookDao();
-			bookDao.returnBookToFront(connection, bookInfo);
+			bookDao.returnBookToFront(connection, book);
 
 			commit(connection);
 		} catch (RuntimeException e) {

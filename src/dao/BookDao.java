@@ -80,8 +80,6 @@ public class BookDao {
 			ResultSet rs = ps.executeQuery();
 			List<Book> bookList = toBookList(rs);
 
-			System.out.println(bookList);
-
 			if(bookList.isEmpty() == true) {
 				return null;
 			}else{
@@ -99,6 +97,7 @@ public class BookDao {
 		List<Book> ret = new ArrayList<Book>();
 		try {
 			while (rs.next()) {
+				int bookId = rs.getInt("id");
 				int libraryId = rs.getInt("library_id");
 				String bookName = rs.getString("name");
 				String author = rs.getString("author");
@@ -110,6 +109,7 @@ public class BookDao {
 
 				Book book = new Book();
 
+				book.setId(bookId);
 				book.setLibraryId(libraryId);
 				book.setName(bookName);
 				book.setAuthor(author);
@@ -133,17 +133,20 @@ public class BookDao {
 		PreparedStatement ps = null;
 		try {
 			StringBuilder mySql = new StringBuilder();
-			mySql.append("update books set");
-			mySql.append(" status = 0");
-			mySql.append(",borrowed_time = 0000-00-00");
+			mySql.append("update books set ");
+			mySql.append(" status = 0 ");
+			mySql.append(",borrowed_time = 0000-00-00 ");
 			mySql.append(", returned_time =CURRENT_TIMESTAMP ");
-			mySql.append(" where");
+			mySql.append(",borrower = 0 ");
+			mySql.append(" where ");
 			mySql.append(" id = ?");
 			mySql.append(";");
 
 			ps = connection.prepareStatement(mySql.toString());
 
 			ps.setInt(1, book.getId());
+
+			System.out.println(ps);
 
 			int count = ps.executeUpdate();
 			if (count == 0) {
@@ -188,6 +191,7 @@ public class BookDao {
 			mySql.append(" status = 2");
 			mySql.append(",borrowed_time = 0000-00-00");
 			mySql.append(", returned_time =CURRENT_TIMESTAMP ");
+			mySql.append(",borrower = 0 ");
 			mySql.append(" where");
 			mySql.append(" id = ?");
 			mySql.append(";");
