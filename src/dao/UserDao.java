@@ -126,6 +126,29 @@ public class UserDao {
 		}
 	}
 
+	public User getUser(Connection connection, long cardNumber) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM users WHERE card_number = ? ");
+			ps = connection.prepareStatement(sql.toString());
+			ps.setLong(1, cardNumber);
+			ResultSet rs = ps.executeQuery();
+			List<User> userList = toUserList(rs);
+
+			if (userList.isEmpty() == true) {
+				return null;
+			} else {
+				return userList.get(0);
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
 	private List<User> toUserList(ResultSet rs) throws SQLException {
 
 		List<User> ret = new ArrayList<User>();

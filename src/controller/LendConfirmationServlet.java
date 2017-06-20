@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import beans.Book;
 import beans.Kind;
+import beans.User;
 import service.BookService;
 import service.KindService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/lend-confirm" })
 public class LendConfirmationServlet extends HttpServlet {
@@ -36,7 +38,9 @@ public class LendConfirmationServlet extends HttpServlet {
 		List<Kind> kinds = new KindService().getKindList();
 		session.setAttribute("kinds", kinds);
 
-		System.out.println(session.getAttribute("kinds"));
+		String cardNumber = (String)session.getAttribute("cardNumber");
+		User userInfo = new UserService().getUser(Integer.parseInt(cardNumber));
+		session.setAttribute("userName", userInfo.getName());
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);
 

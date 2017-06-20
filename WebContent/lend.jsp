@@ -24,7 +24,7 @@
 	</tr>
 	</table>
 <br>
-<center><input type = "submit" value ="貸し出し"></center><br/><br>
+<center><input type = "submit" value ="貸出確認"></center><br/><br>
 		</form>
 	</div>
 </body>

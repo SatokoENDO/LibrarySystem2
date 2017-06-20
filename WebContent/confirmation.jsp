@@ -66,9 +66,20 @@
 			</c:when>
 			<c:otherwise>
 	<table class="registration">
+	<c:if test = "${cardNumber  != null}">
+	<tr>
+		<th>利用者番号</th><td><c:out value="${cardNumber }" /></td>
+	</tr>
+	<tr>
+		<th>利用者名</th><td><c:out value="${userName }" /></td>
+	</tr>
+	</c:if>
+	<c:if test = "${bookId  != null}">
 	<tr>
 		<th>一連番号</th><td><c:out value="${bookId }" /></td>
 	</tr>
+	</c:if>
+	<c:if test = "${bookLibraryId  != null}">
 	<tr>
 	<th>登録図書館</th><td>
 			<c:forEach items="${libraries}" var="library">
@@ -78,6 +89,8 @@
 			</c:forEach>
 			</td>
 	</tr>
+	</c:if>
+	<c:if test = "${shelfId  != null}">
 	<tr>
 	<th>棚番号</th><td>
 			<c:forEach items="${shelves}" var="shelf">
@@ -87,16 +100,28 @@
 			</c:forEach>
 			</td>
 	</tr>
+	</c:if>
+	<c:if test = "${ISBN  != null}">
 	<tr>
 		<th>ISBN</th><td><c:out value="${ISBN}"/></td>
 	</tr>
+	</c:if>
+	<c:if test = "${bookName  != null}">
 	<tr>
 		<th>書籍名</th><td><c:out value="${bookName}" /></td>
 	</tr>
+	</c:if>
+	<c:if test = "${author  != null}">
 	<tr>
 	<th>著者名</th><td><c:out value="${author}" /></td>
+	</tr>
+	</c:if>
+	<c:if test = "${publisher != null}">
 	<tr>
 	<th>出版社名</th><td><c:out value="${publisher}" /></td>
+	</tr>
+	</c:if>
+	<c:if test = "${kindId != null}">
 	<tr>
 	<th>書類種類</th><td>
 			<c:forEach items="${kinds}" var="kind">
@@ -105,10 +130,31 @@
 					</c:if>
 				</c:forEach></td>
 	</tr>
+	</c:if>
+	<c:if test = "${cardNumber != null}">
+	<tr>
+	<th>書類種類</th><td>
+			<c:forEach items="${kinds}" var="kind">
+					<c:if test = "${kindId  == kind.id}">
+						<c:out  value="${kind.name}" />
+					</c:if>
+			</c:forEach></td>
+	</tr>
+	</c:if>
 	</table>
-	<form action="book-confirm" method="post"><br />
+	<c:choose>
+		<c:when test = "${ISBN  != null}">
+			<form action="book-confirm" method="post"><br />
 					<center><input type = "submit" value="登録" /></center><br />
-				</form>
+			</form>
+		</c:when>
+		<c:otherwise>
+			<form action="lend-confirm" method="post"><br />
+					<center><input type = "submit" value="貸出" /></center><br />
+			</form>
+		</c:otherwise>
+	</c:choose>
+
 			</c:otherwise>
 		</c:choose>
 	</div>
