@@ -15,6 +15,7 @@ import beans.Kind;
 import beans.User;
 import service.BookService;
 import service.KindService;
+import service.LendService;
 import service.UserService;
 
 @WebServlet(urlPatterns = { "/lend-confirm" })
@@ -44,5 +45,27 @@ public class LendConfirmationServlet extends HttpServlet {
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);
 
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
+		HttpSession session = request.getSession();
+
+		Book book = new Book();
+		String bookId = (String)session.getAttribute("bookId");
+		book.setId(Integer.parseInt(bookId));
+
+		String cardNumber = (String)session.getAttribute("cardNumber");
+		User userCardNumber = new UserService().getUser(Integer.parseInt(cardNumber));
+
+		book.setBorrower(userCardNumber.getId());
+
+		new LendService().lend(book);
+
+		session.invalidate();
+
+		response.sendRedirect("admin");
 	}
 }

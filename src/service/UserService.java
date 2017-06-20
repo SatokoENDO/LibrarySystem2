@@ -57,6 +57,8 @@ public class UserService {
 			close(connection);
 		}
 	}
+
+
 //  自動生成したカード番号を登録する
 	public void registerCardNumber(int cardNumber){
 		Connection connection = null;
