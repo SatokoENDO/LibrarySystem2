@@ -103,6 +103,9 @@ public class BookDao {
 				String bookName = rs.getString("name");
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
+				int status = rs.getInt("status");
+				int borrower = rs.getInt("borrower");
+				int kind = rs.getInt("kind");
 
 				Book book = new Book();
 
@@ -110,6 +113,9 @@ public class BookDao {
 				book.setName(bookName);
 				book.setAuthor(author);
 				book.setPublisher(publisher);
+				book.setStatus(status);
+				book.setBorrower(borrower);
+				book.setKind(kind);
 
 				ret.add(book);
 			}
