@@ -7,9 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import service.BookService;
+import beans.Book;
 
 
 @WebServlet(urlPatterns = { "/return" })
@@ -26,17 +26,16 @@ public class ReturnServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
 
-		int bookId = Integer.parseInt(request.getParameter("bookId"));
+		Book bookInfo =  new BookService().getBook(Integer.parseInt(request.getParameter("bookId")));
 
-		int reservationNumber = new BookService().getBook(bookId).getReservationNumber();
+		int reservationNumber = new BookService().getBook(Integer.parseInt(request.getParameter("bookId"))).getReservationNumber();
 		if(reservationNumber>0){
-			new BookService().returnBookToFront(bookId);
+			new BookService().returnBookToFront(bookInfo);
 			System.out.println("reservation aruyo");
 
 		}else{
-			new BookService().returnBookToShelf(bookId);
+			new BookService().returnBookToShelf(bookInfo);
 		}
 
 

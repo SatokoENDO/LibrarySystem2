@@ -46,13 +46,13 @@ public class BookService {
 	}
 
 	//返却：棚に戻す
-	public void returnBookToShelf(int bookId){
+	public void returnBookToShelf(Book bookInfo){
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
 			BookDao bookDao = new BookDao();
-			bookDao.returnBookToShelf(connection, bookId);
+			bookDao.returnBookToShelf(connection, bookInfo);
 
 			commit(connection);
 		} catch (RuntimeException e) {
@@ -67,13 +67,13 @@ public class BookService {
 	}
 
 	//返却：整理中にする
-	public void returnBookToFront(int bookId){
+	public void returnBookToFront(Book bookInfo){
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
 			BookDao bookDao = new BookDao();
-			bookDao.returnBookToFront(connection, bookId);
+			bookDao.returnBookToFront(connection, bookInfo);
 
 			commit(connection);
 		} catch (RuntimeException e) {

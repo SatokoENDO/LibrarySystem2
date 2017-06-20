@@ -128,7 +128,7 @@ public class BookDao {
 	}
 
 	//返却：棚に戻す
-	public void returnBookToShelf(Connection connection, int bookId) {
+	public void returnBookToShelf(Connection connection, Book book) {
 
 		PreparedStatement ps = null;
 		try {
@@ -143,7 +143,7 @@ public class BookDao {
 
 			ps = connection.prepareStatement(mySql.toString());
 
-			ps.setInt(1, bookId);
+			ps.setInt(1, book.getId());
 
 			int count = ps.executeUpdate();
 			if (count == 0) {
@@ -154,10 +154,32 @@ public class BookDao {
 		} finally {
 			close(ps);
 		}
+
+		PreparedStatement ps1 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE users SET");
+			sql.append(" borrow_books = borrow_books - 1 ");
+			sql.append(" WHERE");
+			sql.append(" id = ?");
+
+			ps1 = connection.prepareStatement(sql.toString());
+
+			ps1.setInt(1, book.getBorrower());
+
+			int count = ps1.executeUpdate();
+			if (count == 0) {
+				throw new NoRowsUpdatedRuntimeException();
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps1);
+		}
 	}
 
 	//返却：整理中にする
-	public void returnBookToFront(Connection connection, int bookId) {
+	public void returnBookToFront(Connection connection, Book book) {
 
 		PreparedStatement ps = null;
 		try {
@@ -172,7 +194,7 @@ public class BookDao {
 
 			ps = connection.prepareStatement(mySql.toString());
 
-			ps.setInt(1, bookId);
+			ps.setInt(1, book.getId());
 
 			int count = ps.executeUpdate();
 			if (count == 0) {
@@ -182,6 +204,27 @@ public class BookDao {
 			throw new SQLRuntimeException(e);
 		} finally {
 			close(ps);
+		}
+		PreparedStatement ps1 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE users SET");
+			sql.append(" borrow_books = borrow_books - 1 ");
+			sql.append(" WHERE");
+			sql.append(" id = ?");
+
+			ps1 = connection.prepareStatement(sql.toString());
+
+			ps1.setInt(1, book.getBorrower());
+
+			int count = ps1.executeUpdate();
+			if (count == 0) {
+				throw new NoRowsUpdatedRuntimeException();
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps1);
 		}
 	}
 
