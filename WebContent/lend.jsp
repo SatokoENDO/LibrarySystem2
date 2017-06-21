@@ -13,6 +13,7 @@
 <body>
 	<div class="main-contents">
 	<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
+	<a href = "admin">戻る</a>
 	<form action="lend" method="post">
 	<br>
 	<table class="lend">
