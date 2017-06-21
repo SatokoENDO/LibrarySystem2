@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.LibraryService;
-import service.UserService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/user-confirm"})
 public class ConfirmationServlet extends HttpServlet{
@@ -45,10 +45,13 @@ public class ConfirmationServlet extends HttpServlet{
 		user.setPassword((String) session.getAttribute("userPassword"));
 		String libraryId = (String) session.getAttribute("userLibraryId");
 		user.setLibraryId(Integer.parseInt(libraryId));
-		int isAdmin = (Integer) session.getAttribute("userIsAdmin");
-		user.setIsAdmin(isAdmin);
-		int cardNumber = (Integer) session.getAttribute("userCardNumber");
-		user.setCardNumber(cardNumber);
+		String isAdmin = (String) session.getAttribute("userIsAdmin");
+		user.setIsAdmin(Integer.parseInt(isAdmin));
+
+		System.out.println(session.getAttribute("userCardNumber"));
+
+		String cardNumber = (String) session.getAttribute("userCardNumber");
+		user.setCardNumber(Integer.parseInt(cardNumber));
 
 		new UserService().register(user);
 

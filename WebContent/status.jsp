@@ -14,6 +14,12 @@
 	<th>貸出中</th>
 	<th>返却日</th>
 </tr>
+<c:forEach>
+	<tr>
+		<td>
+		</td>
+	</tr>
+</c:forEach>
 
 </table>
 <table class="reservation">
