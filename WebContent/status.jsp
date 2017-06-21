@@ -16,6 +16,7 @@
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <a href="admin">戻る</a>
+<a href="userinfo">登録情報の確認</a>
 <table class="status">
 <tr>
 	<th>貸出中</th>
