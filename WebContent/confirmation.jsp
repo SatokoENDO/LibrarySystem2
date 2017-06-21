@@ -131,16 +131,7 @@
 				</c:forEach></td>
 	</tr>
 	</c:if>
-	<c:if test = "${cardNumber != null}">
-	<tr>
-	<th>書類種類</th><td>
-			<c:forEach items="${kinds}" var="kind">
-					<c:if test = "${kindId  == kind.id}">
-						<c:out  value="${kind.name}" />
-					</c:if>
-			</c:forEach></td>
-	</tr>
-	</c:if>
+
 	</table>
 	<c:choose>
 		<c:when test = "${ISBN  != null}">
