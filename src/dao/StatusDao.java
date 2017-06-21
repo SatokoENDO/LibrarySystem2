@@ -56,6 +56,7 @@ public class StatusDao {
 				int kind = rs.getInt("kind");
 				int reservationNumber = rs.getInt("reservation_number");
 				Timestamp borrowedTime = rs.getTimestamp("borrowed_time");
+				Timestamp dueDate = rs.getTimestamp("due_date");
 
 				Book book = new Book();
 
@@ -69,6 +70,8 @@ public class StatusDao {
 				book.setKind(kind);
 				book.setReservationNumber(reservationNumber);
 				book.setBorrowedTime(borrowedTime);
+				book.setDueDate(dueDate);
+
 
 				ret.add(book);
 			}

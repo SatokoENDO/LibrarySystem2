@@ -21,7 +21,7 @@
 <c:forEach var="borrowBookList" items="${borrowBooks }">
 	<tr>
 		<td>${borrowBookList.name }</td>
-		<td><fmt:formatDate value="${borrowBookList.borrowedTime }" pattern="yyyy年MM月dd日（E）"/></td>
+		<td><fmt:formatDate value="${borrowBookList.dueDate }" pattern="yyyy年MM月dd日（E）"/></td>
 	</tr>
 </c:forEach>
 
