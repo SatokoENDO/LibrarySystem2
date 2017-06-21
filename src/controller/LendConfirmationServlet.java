@@ -28,7 +28,7 @@ public class LendConfirmationServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		String bookId = (String)session.getAttribute("bookId");
+		String bookId = (String) session.getAttribute("bookId");
 
 		Book bookInfo = new BookService().getBook(Integer.parseInt(bookId));
 		session.setAttribute("bookName", bookInfo.getName());
@@ -39,7 +39,7 @@ public class LendConfirmationServlet extends HttpServlet {
 		List<Kind> kinds = new KindService().getKindList();
 		session.setAttribute("kinds", kinds);
 
-		String cardNumber = (String)session.getAttribute("cardNumber");
+		String cardNumber = (String) session.getAttribute("cardNumber");
 		User userInfo = new UserService().getUser(Integer.parseInt(cardNumber));
 		session.setAttribute("userName", userInfo.getName());
 
@@ -54,17 +54,40 @@ public class LendConfirmationServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		Book book = new Book();
-		String bookId = (String)session.getAttribute("bookId");
+		String bookId = (String) session.getAttribute("bookId");
 		book.setId(Integer.parseInt(bookId));
 
-		String cardNumber = (String)session.getAttribute("cardNumber");
+		String cardNumber = (String) session.getAttribute("cardNumber");
 		User userCardNumber = new UserService().getUser(Integer.parseInt(cardNumber));
 
 		book.setBorrower(userCardNumber.getId());
 
 		new LendService().lend(book);
 
-		session.invalidate();
+		// 図書館情報のセッション削除
+		session.removeAttribute("libraries");
+		session.removeAttribute("shelves");
+		session.removeAttribute("kinds");
+
+		// 利用者情報のセッション削除
+		session.removeAttribute("userAddress");
+		session.removeAttribute("userName");
+		session.removeAttribute("userTel");
+		session.removeAttribute("userMail");
+		session.removeAttribute("userPassword");
+		session.removeAttribute("userLibraryId");
+		session.removeAttribute("userIsAdmin");
+		session.removeAttribute("userCardNumber");
+
+		// 本情報のセッション削除
+		session.removeAttribute("bookLibraryId");
+		session.removeAttribute("shelfId");
+		session.removeAttribute("ISBN");
+		session.removeAttribute("bookName");
+		session.removeAttribute("author");
+		session.removeAttribute("publisher");
+		session.removeAttribute("kindId");
+		session.removeAttribute("bookId");
 
 		response.sendRedirect("admin");
 	}

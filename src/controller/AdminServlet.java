@@ -18,7 +18,31 @@ public class AdminServlet extends HttpServlet {
 			throws IOException, ServletException {
 		HttpSession session = request.getSession();
 
-		session.invalidate();
+		//図書館情報のセッション削除
+		session.removeAttribute("libraries");
+		session.removeAttribute("shelves");
+		session.removeAttribute("kinds");
+
+		//利用者情報のセッション削除
+		session.removeAttribute("userAddress");
+		session.removeAttribute("userName");
+		session.removeAttribute("userTel");
+		session.removeAttribute("userMail");
+		session.removeAttribute("userPassword");
+		session.removeAttribute("userLibraryId");
+		session.removeAttribute("userIsAdmin");
+		session.removeAttribute("userCardNumber");
+
+		//本情報のセッション削除
+		session.removeAttribute("bookLibraryId");
+		session.removeAttribute("shelfId");
+		session.removeAttribute("ISBN");
+		session.removeAttribute("bookName");
+		session.removeAttribute("author");
+		session.removeAttribute("publisher");
+		session.removeAttribute("kindId");
+		session.removeAttribute("bookId");
+
 		request.getRequestDispatcher("admin.jsp").forward(request, response);
 	}
 

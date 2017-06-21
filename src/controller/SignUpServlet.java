@@ -52,8 +52,10 @@ public class SignUpServlet extends HttpServlet{
 			session.setAttribute("userMail", request.getParameter("mail"));
 			session.setAttribute("userPassword", password);
 			session.setAttribute("userLibraryId", request.getParameter("libraryId"));
+
+			//デフォルト値を0にすればif文を書かなくて済む！
 			if(request.getParameter("isAdmin") == null){
-				session.setAttribute("userIsAdmin", 0);
+				session.setAttribute("userIsAdmin",Integer.toString(0) );
 			}else{
 				session.setAttribute("userIsAdmin", request.getParameter("isAdmin"));
 			}

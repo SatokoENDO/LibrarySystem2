@@ -15,13 +15,13 @@ import beans.User;
 import service.LibraryService;
 import service.UserService;
 
-@WebServlet(urlPatterns = { "/user-confirm"})
-public class ConfirmationServlet extends HttpServlet{
+@WebServlet(urlPatterns = { "/user-confirm" })
+public class ConfirmationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
 		session.getAttribute("userLibraryId");
@@ -45,21 +45,43 @@ public class ConfirmationServlet extends HttpServlet{
 		user.setPassword((String) session.getAttribute("userPassword"));
 		String libraryId = (String) session.getAttribute("userLibraryId");
 		user.setLibraryId(Integer.parseInt(libraryId));
+
+		System.out.println(session.getAttribute("userIsAdmin"));
+
 		String isAdmin = (String) session.getAttribute("userIsAdmin");
 		user.setIsAdmin(Integer.parseInt(isAdmin));
 
-		System.out.println(session.getAttribute("userCardNumber"));
-
-		String cardNumber = (String) session.getAttribute("userCardNumber");
-		user.setCardNumber(Integer.parseInt(cardNumber));
+		Integer cardNumber = (Integer) session.getAttribute("userCardNumber");
+		user.setCardNumber(cardNumber);
 
 		new UserService().register(user);
 
-		session.invalidate();
+		// 図書館情報のセッション削除
+		session.removeAttribute("libraries");
+		session.removeAttribute("shelves");
+		session.removeAttribute("kinds");
+
+		// 利用者情報のセッション削除
+		session.removeAttribute("userAddress");
+		session.removeAttribute("userName");
+		session.removeAttribute("userTel");
+		session.removeAttribute("userMail");
+		session.removeAttribute("userPassword");
+		session.removeAttribute("userLibraryId");
+		session.removeAttribute("userIsAdmin");
+		session.removeAttribute("userCardNumber");
+
+		// 本情報のセッション削除
+		session.removeAttribute("bookLibraryId");
+		session.removeAttribute("shelfId");
+		session.removeAttribute("ISBN");
+		session.removeAttribute("bookName");
+		session.removeAttribute("author");
+		session.removeAttribute("publisher");
+		session.removeAttribute("kindId");
+		session.removeAttribute("bookId");
 
 		response.sendRedirect("admin");
-
-
 
 	}
 
