@@ -13,7 +13,8 @@ status int(1) not null,
 borrower int(11) not null,
 borrowed_time TimeStamp not null,
 returned_time TimeStamp not null,
-reservation_number int(3) not null);
+reservation_number int(3) not null
+due_date TimeStamp not null);
 
 create table library.users(
 id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
