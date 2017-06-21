@@ -10,9 +10,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/common.css" rel="stylesheet" type="text/css">
 <title>利用状況</title>
 </head>
 <body>
+<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
+<a href="admin">戻る</a>
 <table class="status">
 <tr>
 	<th>貸出中</th>
@@ -26,6 +29,7 @@
 </c:forEach>
 
 </table>
+<br><br>
 <table class="reservation">
 <tr>
 	<th>予約中</th>
