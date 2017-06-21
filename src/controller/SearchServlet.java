@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.KindService;
-import service.LibraryService;
-import beans.Kind;
-import beans.Library;
+import beans.Book;
+import service.SearchService;
 
 
 @WebServlet(urlPatterns = { "/search" })
@@ -23,17 +21,28 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		List<Kind> kinds = new KindService().getKindList();
-		List<Library> libraries = new LibraryService().getLibraryList();
+//		List<Kind> kinds = new KindService().getKindList();
+//		List<Library> libraries = new LibraryService().getLibraryList();
 
-		/*できないよー
 		String bookName = request.getParameter("bookName");
-		List<Book> searchedBooks = new BookService().getBookFromName(bookName);
-		request.setAttribute("books", searchedBooks);*/
+		System.out.println(bookName);
+		if(bookName != null){
 
-		request.setAttribute("kinds", kinds);
-		request.setAttribute("libraries", libraries);
+			List<Book> searchedBooks = new SearchService().getBookFromName(bookName);
+
+			request.setAttribute("books", searchedBooks);
+
+//			request.setAttribute("kinds", kinds);
+//			request.setAttribute("libraries", libraries);
+		}
+
 		request.getRequestDispatcher("/search.jsp").forward(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
