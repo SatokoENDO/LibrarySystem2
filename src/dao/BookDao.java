@@ -163,6 +163,7 @@ public class BookDao {
 			mySql.append(",borrowed_time = 0000-00-00 ");
 			mySql.append(", returned_time =CURRENT_TIMESTAMP ");
 			mySql.append(",borrower = 0 ");
+			mySql.append(",due_date = 0000-00-00 ");
 			mySql.append(" where ");
 			mySql.append(" id = ?");
 			mySql.append(";");
@@ -217,6 +218,7 @@ public class BookDao {
 			mySql.append(",borrowed_time = 0000-00-00");
 			mySql.append(", returned_time =CURRENT_TIMESTAMP ");
 			mySql.append(",borrower = 0 ");
+			mySql.append(",due_date = 0000-00-00 ");
 			mySql.append(" where");
 			mySql.append(" id = ?");
 			mySql.append(";");
