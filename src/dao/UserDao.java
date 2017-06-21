@@ -163,6 +163,7 @@ public class UserDao {
 				String password = rs.getString("password");
 				int libraryId = rs.getInt("library_id");
 				int borrowBooks = rs.getInt("borrow_books");
+				int isAdmin = rs.getInt("is_Admin");
 
 				User user = new User();
 				user.setId(id);
@@ -174,6 +175,7 @@ public class UserDao {
 				user.setPassword(password);
 				user.setLibraryId(libraryId);
 				user.setBorrowBooks(borrowBooks);
+				user.setIsAdmin(isAdmin);
 
 				ret.add(user);
 			}

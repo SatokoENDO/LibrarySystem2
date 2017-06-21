@@ -26,6 +26,56 @@ input[type=checkbox] {
     height: 30px;
     vertical-align: middle;
 }
+.search-btn{
+	margin-left:40px;
+	font-size: 50px;
+    display: inline-block;
+    padding:50px 50px;
+    text-decoration: none;
+    background:  #0174DF;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #0174DF;
+    border: dashed 1px #FFF;
+}
+
+.search-btn:hover{
+	border: dotted 1px #FFF;
+}
+
+.status-btn{
+	margin-left:40px;
+	font-size: 50px;
+    display: inline-block;
+    padding:50px 50px;
+    text-decoration: none;
+    background: #00FF40;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #00FF40;
+    border: dashed 1px #FFF;
+}
+
+.status-btn:hover{
+	border: dotted 1px #FFF;
+}
+
+.admin-btn{
+	margin-left:40px;
+	font-size: 50px;
+    display: inline-block;
+    padding:50px 50px;
+    text-decoration: none;
+    background:  #DF01D7;
+    color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 5px #DF01D7;
+    border: dashed 1px #FFF;
+}
+
+.admin-btn:hover{
+	border: dotted 1px #FFF;
+}
 
 .lend-btn{
 	margin-left:40px;
@@ -33,10 +83,10 @@ input[type=checkbox] {
     display: inline-block;
     padding:50px 50px;
     text-decoration: none;
-    background: #668ad8;
+    background: #00FF40;
     color: #FFF;
     border-radius: 4px;
-    box-shadow: 0px 0px 0px 5px #668ad8;
+    box-shadow: 0px 0px 0px 5px #00FF40;
     border: dashed 1px #FFF;
 }
 
