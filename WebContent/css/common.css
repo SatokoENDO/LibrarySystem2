@@ -83,10 +83,10 @@ input[type=checkbox] {
     display: inline-block;
     padding:50px 50px;
     text-decoration: none;
-    background: #00FF40;
+    background: #44affc;
     color: #FFF;
     border-radius: 4px;
-    box-shadow: 0px 0px 0px 5px #00FF40;
+    box-shadow: 0px 0px 0px 5px #44affc;
     border: dashed 1px #FFF;
 }
 
