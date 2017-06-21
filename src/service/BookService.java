@@ -4,6 +4,7 @@ import static utils.CloseableUtil.*;
 import static utils.DBUtil.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import beans.Book;
 import dao.BookDao;
@@ -39,6 +40,22 @@ public class BookService {
 
 			BookDao bookDao = new BookDao();
 			Book book = bookDao.getBook(connection, id);
+			return book ;
+		}finally{
+
+		}
+	}
+
+//	本の名前から本の情報を取得する
+	public  List<Book> getBookFromName(String bookName){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			BookDao bookDao = new BookDao();
+			List<Book> book = bookDao.getBookFromName(connection, bookName);
+
 			return book ;
 		}finally{
 

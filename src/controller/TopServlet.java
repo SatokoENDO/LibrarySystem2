@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Kind;
-import beans.Library;
 import service.KindService;
 import service.LibraryService;
+import beans.Kind;
+import beans.Library;
 
 
 @WebServlet(urlPatterns = { "/index.jsp" })
@@ -25,6 +25,11 @@ public class TopServlet extends HttpServlet {
 
 		List<Kind> kinds = new KindService().getKindList();
 		List<Library> libraries = new LibraryService().getLibraryList();
+
+		/*できないよー
+		String bookName = request.getParameter("bookName");
+		List<Book> searchedBooks = new BookService().getBookFromName(bookName);
+		request.setAttribute("books", searchedBooks);*/
 
 		request.setAttribute("kinds", kinds);
 		request.setAttribute("libraries", libraries);
