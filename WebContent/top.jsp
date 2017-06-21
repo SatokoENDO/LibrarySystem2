@@ -15,22 +15,24 @@
 <title>トップ</title>
 </head>
 <body>
+
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <c:if test="${loginUser == null}" >
 <a href="login">ログイン</a>
-
 </c:if>
-<c:if test="${loginUser != null}" >
-<a href="status">利用状況確認</a>
 
-</c:if>
-<c:if test="${loginUser.isAdmin == 1}">
-				<a href="admin">ユーザー管理</a>
-			</c:if>
 <c:if test="${loginUser != null}" >
 <div align="right"><a href="logout">ログアウト</a></div>
+
+
+<a href="status">利用状況確認</a> <c:if test="${loginUser.isAdmin==1}" >
+<a href="admin">運営業務</a>
+</c:if>
 <marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
 </c:if>
+
+
+
 
 <div class="search">
 	<form action="./" method="get">
