@@ -19,6 +19,7 @@ public class Book implements Serializable {
 	private Timestamp borrowedTime;
 	private Timestamp returnedTime;
 	private int reservationNumber;
+	private Timestamp dueTime;
 
 	public int getId() {
 		return id;
@@ -97,5 +98,11 @@ public class Book implements Serializable {
 	}
 	public void setReservationNumber(int reservationNumber) {
 		this.reservationNumber = reservationNumber;
+	}
+	public Timestamp getDueTime() {
+		return dueTime;
+	}
+	public void setDueTime(Timestamp dueTime) {
+		this.dueTime = dueTime;
 	}
 }

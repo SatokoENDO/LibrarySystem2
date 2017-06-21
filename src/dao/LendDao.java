@@ -21,6 +21,7 @@ public class LendDao {
 			sql.append(" status = 1 ");
 			sql.append(" ,borrower = ? ");
 			sql.append(" ,borrowed_time = CURRENT_TIMESTAMP ");
+			sql.append(" ,due_date = CURRENT_TIMESTAMP + interval 14 day ");
 			sql.append(" WHERE");
 			sql.append(" id = ?");
 
