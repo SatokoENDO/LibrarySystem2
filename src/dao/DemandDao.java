@@ -14,7 +14,7 @@ import exception.SQLRuntimeException;
 
 public class DemandDao {
 
-	public List<Book> getDelayedBook(Connection connection, String currentTime){
+	public List<Book> getDelayedBook(Connection connection){
 
 		PreparedStatement ps = null;
 		try{

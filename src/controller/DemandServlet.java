@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.DemandService;
 import service.KindService;
 import service.LibraryService;
+import beans.Book;
 import beans.Kind;
 import beans.Library;
 
@@ -23,11 +25,14 @@ public class DemandServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		List<Book> books = new DemandService().getDelayedBook();
 		List<Kind> kinds = new KindService().getKindList();
 		List<Library> libraries = new LibraryService().getLibraryList();
 
+		request.setAttribute("books", books);
 		request.setAttribute("kinds", kinds);
 		request.setAttribute("libraries", libraries );
+
 
 		request.getRequestDispatcher("/demand.jsp").forward(request, response);
 	}
