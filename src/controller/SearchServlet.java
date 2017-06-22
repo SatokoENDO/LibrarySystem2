@@ -52,7 +52,7 @@ public class SearchServlet extends HttpServlet {
 
 		}
 
-		request.getRequestDispatcher("/searched.jsp").forward(request, response);
+		response.sendRedirect("searched");
 	}
 
 }
