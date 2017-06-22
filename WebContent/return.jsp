@@ -39,7 +39,7 @@
 
 	</table>
 	<br>
-	<center><input type = "submit" value ="返却"></center><br/><br>
+	<center><input type = "submit" value ="返却" style="cursor: hand; cursor:pointer;"></center><br/><br>
 
 	</form>
 	</div>

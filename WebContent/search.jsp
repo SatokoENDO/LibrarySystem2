@@ -53,7 +53,7 @@
 						</option>
 				</c:forEach>
 			</select>    -->
-		<input type = "submit" value ="検索">
+		<input type = "submit" value ="検索" style="cursor: hand; cursor:pointer;">
 	</form>
 </div>
 <div class="searched">

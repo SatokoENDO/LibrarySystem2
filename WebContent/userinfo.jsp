@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>利用者登録情報</title>
+<title>登録情報変更</title>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -67,7 +67,7 @@
 	</table>
 	<input type ="hidden" name = "cardNumber" value = "${editUser.cardNumber}">
 	<input type ="hidden" name = "isAdmin" value = "${editUser.isAdmin}">
-<br><center><input type = "submit" value ="登録情報、パスワードを変更する"></center>
+<br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
 </form>
 </div>
 </body>

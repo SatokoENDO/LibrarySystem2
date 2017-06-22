@@ -36,7 +36,7 @@
 	<tr>
 		<th>パスワード</th><td><input type="password" name="password" /></td>
 	</tr>
-</table><br><center><input type = "submit" value ="ログイン"></center><br/><br>
+</table><br><center><input type = "submit" value ="ログイン" style="cursor: hand; cursor:pointer;"></center><br/><br>
 </form>
 </div>
 

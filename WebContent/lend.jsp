@@ -26,7 +26,7 @@
 
 	</table>
 <br>
-<center><input type = "submit" value ="貸出確認"></center><br/><br>
+<center><input type = "submit" value ="貸出確認" style="cursor: hand; cursor:pointer;"></center><br/><br>
 		</form>
 	</div>
 </body>

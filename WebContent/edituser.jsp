@@ -61,7 +61,7 @@
 			</select></td>
 	</tr>
 	</table>
-<br><center><input type = "submit" value ="登録"></center>
+<br><center><input type = "submit" value ="登録" style="cursor: hand; cursor:pointer;"></center>
 </form>
 </div>
 </body>
