@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Book;
+import beans.Kind;
+import beans.Library;
+import service.KindService;
+import service.LibraryService;
 import service.SearchService;
 
 
@@ -21,20 +25,11 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-//		List<Kind> kinds = new KindService().getKindList();
-//		List<Library> libraries = new LibraryService().getLibraryList();
+		List<Kind> kinds = new KindService().getKindList();
+		List<Library> libraries = new LibraryService().getLibraryList();
 
-		String bookName = request.getParameter("bookName");
-		System.out.println(bookName);
-		if(bookName != null){
-
-			List<Book> searchedBooks = new SearchService().getBookFromName(bookName);
-
-			request.setAttribute("books", searchedBooks);
-
-//			request.setAttribute("kinds", kinds);
-//			request.setAttribute("libraries", libraries);
-		}
+		request.setAttribute("kinds", kinds);
+		request.setAttribute("libraries", libraries );
 
 		request.getRequestDispatcher("/search.jsp").forward(request, response);
 	}
@@ -43,6 +38,21 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		String bookName = request.getParameter("bookName");
+		String author = request.getParameter("author");
+		String publisher = request.getParameter("publisher");
+		int libraryId = Integer.parseInt(request.getParameter("libraryId"));
+		int kind = Integer.parseInt(request.getParameter("kinds")) ;
+
+		if(bookName != null){
+
+			List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
+
+			request.setAttribute("books", searchedBooks);
+
+		}
+
+		request.getRequestDispatcher("/searched.jsp").forward(request, response);
 	}
 
 }

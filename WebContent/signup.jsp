@@ -54,7 +54,7 @@
 			</select></td>
 	</tr>
 	</table>
-<br><center><input type = "submit" value ="登録" style="cursor: hand; cursor:pointer;"></center>
+<br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
 </form>
 </div>
 </body>
