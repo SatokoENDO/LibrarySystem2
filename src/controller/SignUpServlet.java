@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import beans.Library;
-import beans.User;
 import service.LibraryService;
 import service.UserService;
+import beans.Library;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -29,6 +29,7 @@ public class SignUpServlet extends HttpServlet{
 		User user = new User();
 
 		List<Library> libraries = new LibraryService().getLibraryList();
+		session.setAttribute("libraries", libraries);
 
 		session.setAttribute("libraries", libraries);
 		request.setAttribute("user", user);

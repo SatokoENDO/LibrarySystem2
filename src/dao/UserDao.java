@@ -184,4 +184,46 @@ public class UserDao {
 			close(rs);
 		}
 	}
+
+	//ユーザー編集
+	public void update(Connection connection, User user){
+		PreparedStatement ps = null;
+
+		try{
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE users SET");
+			sql.append(" name = ?");
+			sql.append(", address = ?");
+			sql.append(", tel = ?");
+			sql.append(", mail = ?");
+			if(!(user.getPassword()).isEmpty()){
+			sql.append(", password = ?");
+			}
+			sql.append(", library_id = ?");
+			sql.append(" WHERE card_number = ?");
+			ps = connection.prepareStatement(sql.toString());
+
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getAddress());
+			ps.setString(3, user.getTel());
+			ps.setString(4, user.getMail());
+			if((user.getPassword()).isEmpty() ==true){
+				ps.setInt(5, user.getLibraryId());
+				ps.setLong(6, user.getCardNumber());
+			} else{
+				ps.setString(5, user.getPassword());
+				ps.setInt(6, user.getLibraryId());
+				ps.setLong(7, user.getCardNumber());
+			}
+			ps.executeUpdate();
+
+			System.out.println(ps.toString());
+		}  catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally{
+			close(ps);
+		}
+	}
 }
+
