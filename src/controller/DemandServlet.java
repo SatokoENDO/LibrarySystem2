@@ -11,14 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.KindService;
 import service.LibraryService;
-import service.SearchService;
-import beans.Book;
 import beans.Kind;
 import beans.Library;
 
 
-@WebServlet(urlPatterns = { "/search" })
-public class SearchServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/demand" })
+public class DemandServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -31,10 +29,9 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("kinds", kinds);
 		request.setAttribute("libraries", libraries );
 
-		request.getRequestDispatcher("/search.jsp").forward(request, response);
+		request.getRequestDispatcher("/demand.jsp").forward(request, response);
 	}
-
-	@Override
+/*@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -52,8 +49,7 @@ public class SearchServlet extends HttpServlet {
 
 		}
 
-		response.sendRedirect("searched");
-	}
+		request.getRequestDispatcher("/searched.jsp").forward(request, response);
+	}*/
 
 }
-/////

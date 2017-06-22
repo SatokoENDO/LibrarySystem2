@@ -25,7 +25,7 @@
 
 	<c:if test="${loginUser != null}">
 		<div align="right">
-			<a href="logout">ログアウト</a>
+			<a href="logout" class="logout-btn">ログアウト</a>
 		</div>
 		<marquee behavior="alternate">
 			<font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください
