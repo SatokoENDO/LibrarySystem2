@@ -21,7 +21,7 @@
 <a href="login">ログイン</a>
 <br>
 <br>
-<a href="search" class="search-btn">書籍検索</a>&nbsp;<img src="rakuda6.gif"><img src="rakuda6.gif"><img src="rakuda6.gif">
+<a href="search" class="search-btn">資料検索</a>&nbsp;<img src="rakuda6.gif"><img src="rakuda6.gif"><img src="rakuda6.gif">
 </c:if>
 <c:if test="${loginUser != null}" >
 <div align="right"><a href="logout">ログアウト</a></div>
@@ -32,7 +32,7 @@
 <br>
 
 <c:if test="${loginUser != null}" >
-<a href="search" class="search-btn">書籍検索</a>
+<a href="search" class="search-btn">資料検索</a>
 <a href="status" class="status-btn">利用状況確認</a> <c:if test="${loginUser.isAdmin==1}" >
 <a href="admin"  class="admin-btn">運営業務</a>
 
