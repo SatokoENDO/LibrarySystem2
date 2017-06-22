@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
+
 import beans.Kind;
 import beans.Library;
 import service.KindService;
@@ -19,6 +21,18 @@ public class SearchedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		if(!StringUtils.isEmpty(request.getParameter("kinds"))){
+			int kindId = Integer.parseInt(request.getParameter("kinds"));
+			request.setAttribute("kindId", kindId);
+			System.out.println("kindId:" + kindId);
+		}
+
+		if(!StringUtils.isEmpty(request.getParameter("libraryId"))){
+			int libraryId = Integer.parseInt(request.getParameter("libraryId"));
+			request.setAttribute("libraryId", libraryId);
+			System.out.println("libraryId:" + libraryId);
+		}
 
 		List<Kind> kinds = new KindService().getKindList();
 		List<Library> libraries = new LibraryService().getLibraryList();
