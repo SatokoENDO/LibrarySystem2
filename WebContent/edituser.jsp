@@ -7,11 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>利用者登録情報</title>
+<title>利用者登録画面</title>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<a href="./">戻る</a>
+<a href="admin">戻る</a>
 <c:if test="${loginUser != null}" >
 <div align="right"><a href="logout">ログアウト</a></div>
 <marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
@@ -30,12 +30,8 @@
 	<c:remove var="errorMessages" scope="session"/>
 </c:if>
 
-<form action="edituser" method="post"><br />
-<table class="editUser">
-
-	<tr>
-		<th>利用者番号</th><td>${editUser.cardNumber}</td>
-	</tr>
+<form action="update-confirm" method="post"><br />
+<table class="update-confirm">
 	<tr>
 		<th>氏名</th><td><input type="text" name="name" value="${editUser.name}" /></td>
 	</tr>
@@ -43,31 +39,29 @@
 		<th>住所</th><td><input type="text" name="address" value="${editUser.address}"/></td>
 	</tr>
 		<tr>
-		<th>電話番号</th><td><input type="text" name="tel" value="${editUser.tel}"/></td>
+		<th>電話番号</th><td><input type="text" name="tel" value="${sditUser.tel}"/></td>
 	</tr>
 		<tr>
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>
 	</tr>
-	<tr>
-		<th>パスワード</th><td><input type="password" name="password" /></td>
+		<tr>
+		<th>パスワード</th><td><input type="password" name="passwprd" value="">運営</td>
 	</tr>
 	<tr>
-		<th>パスワード（確認用）</th><td><input type="password" name="checkPassword" /></td>
+		<th>パスワード(確認)</th><td><input type="password" name="checkPassword" /></td>
 	</tr>
 
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"><c:if test = "${editUser.libraryId == library.id}"></c:if>
+						<option value="${library.id}"><c:if test = "${editUser.libraryId == library.id}">selected</c:if>
 							<c:out value="${library.name}" />
 						</option>
 				</c:forEach>
 			</select></td>
 	</tr>
 	</table>
-	<input type ="hidden" name = "cardNumber" value = "${editUser.cardNumber}">
-	<input type ="hidden" name = "isAdmin" value = "${editUser.isAdmin}">
-<br><center><input type = "submit" value ="登録情報、パスワードを変更する"></center>
+<br><center><input type = "submit" value ="登録"></center>
 </form>
 </div>
 </body>
