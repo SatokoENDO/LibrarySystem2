@@ -15,7 +15,7 @@
 <a href="search">戻る</a>
 <div class="refine">
 		<form action="searched" method="get">
-			種別:
+			資料種類:
 			<select name="kinds" size="1">
 					<option value="0">すべて表示</option>
 					<c:forEach items="${kinds}" var="kind">
