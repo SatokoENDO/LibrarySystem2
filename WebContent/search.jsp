@@ -5,8 +5,7 @@
 <%@page isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,50 +15,47 @@
 </head>
 <body>
 
-<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<c:if test="${loginUser == null}" >
-<a href="login">ログイン</a>
-</c:if>
+	<center>
+		<a href="http://localhost:8080/LibrarySystem2/"><img
+			src="Tottori-Library.png" alt="TAG index" border="0"></a>
+	</center>
+	<c:if test="${loginUser == null}">
+		<a href="login">ログイン</a>
+	</c:if>
 
-<c:if test="${loginUser != null}" >
-<div align="right"><a href="logout">ログアウト</a></div>
-<marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
-</c:if>
+	<c:if test="${loginUser != null}">
+		<div align="right">
+			<a href="logout">ログアウト</a>
+		</div>
+		<marquee behavior="alternate">
+			<font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください
+			</b></font>
+		</marquee>
+	</c:if>
 
 
-<br>
-<br>
-<div class="search">
-	<form action="search" method="get">
-		書名:
-		<input type = "text" name = "bookName" value = "${books.bookName }" ><br />
-		著者名:
-		<input type = "text" name = "author" value = "${books.author }"><br />
-		出版社名:
-		<input type = "text" name = "publisher" value = "${books.publisher }"><br />
-
-<!-- 	書類種類:<select name="kinds">
-
+	<br>
+	<br>
+	<div class="search">
+		<form action="search" method="post">
+			書名: <input type="text" name="bookName"><br /> 著者: <input
+				type="text" name="author"><br /> 出版社: <input type="text"
+				name="publisher"><br /> 種別:<select name="kinds">
+				<option value = "0" selected>すべて</option>
 				<c:forEach items="${kinds}" var="kind">
-						<option value="${kind.id}">
-							<c:out value="${kind.name}" />
-						</option>
+					<option value="${kind.id}">
+						<c:out value="${kind.name}" />
+					</option>
 				</c:forEach>
-			</select>
-		所蔵図書館:<select name="libraryId">
+			</select> 所蔵図書館:<select name="libraryId">
+			<option value = "0" selected>すべて</option>
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}">
-							<c:out value="${library.name}" />
-						</option>
+					<option value="${library.id}">
+						<c:out value="${library.name}" />
+					</option>
 				</c:forEach>
-			</select>    -->
-		<input type = "submit" value ="検索">
-	</form>
-</div>
-<div class="searched">
-	<c:forEach items = "${books }" var = "searchedBooks">
-		書名 : ${books.name }
-	</c:forEach>
-</div>
+			</select> <input type="submit" value="検索">
+		</form>
+	</div>
 </body>
 </html>

@@ -14,15 +14,45 @@ import exception.SQLRuntimeException;
 
 public class SearchDao {
 
-	public List<Book> getBookFromName(Connection connection, String bookName){
+	public List<Book> getBookFromName(Connection connection, String bookName, String author, String publisher, int libraryId, int kind){
 
 		PreparedStatement ps = null;
 		try{
-			String sql = "SELECT * FROM books WHERE name LIKE '% '?' %' ";
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM books ");
+			sql.append("WHERE  ");
 
-			ps = connection.prepareStatement(sql);
+			if(bookName != null){
+				sql.append(" name LIKE ? ");
+			}
 
-			ps.setString(1, bookName );
+			if(author != null){
+				sql.append("AND author LIKE ? ");
+			}
+
+			if(publisher != null){
+				sql.append("AND publisher LIKE ? ");
+			}
+
+			if(libraryId != 0){
+				sql.append("AND library_id = "+ libraryId );
+			}
+
+			if(kind != 0){
+				sql.append("AND kind = "+ kind);
+			}
+
+			ps = connection.prepareStatement(sql.toString());
+
+			if(bookName != null){
+				ps.setString(1, "%" + bookName + "%");
+			}
+			if(author != null){
+				ps.setString(2, "%" + author + "%");
+			}
+			if(publisher != null){
+				ps.setString(3, "%" + publisher + "%");
+			}
 
 
 			ResultSet rs = ps.executeQuery();
