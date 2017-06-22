@@ -35,7 +35,11 @@
 					<c:if test = "${delayedBooks.libraryId  == library.id}">
 						<c:out  value="${library.name}" />
 					</c:if></c:forEach></td>
-		<td>${delayedBooks.borrower }</td>
+		<td><c:forEach items="${users}" var="users">
+					<c:if test = "${delayedBooks.borrower  == users.id}">
+						<c:out value="${users.name}" />
+					</c:if>
+			</c:forEach></td>
 
 	</tr>
 </c:forEach>

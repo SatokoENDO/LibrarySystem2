@@ -149,7 +149,7 @@ public class UserDao {
 		}
 	}
 
-	/*public User getUser(Connection connection) {
+	public List<User> getAllUser(Connection connection) {
 
 		PreparedStatement ps = null;
 		try {
@@ -159,19 +159,19 @@ public class UserDao {
 
 			ResultSet rs = ps.executeQuery();
 
-			List<User> userList = toUserList(rs);
+			List<User> userName = toUserList(rs);
 
-			if(userList.isEmpty() == true) {
+			if(userName.isEmpty() == true) {
 				return null;
 			}else{
-				return userList;
+				return userName;
 			}
 		}catch (SQLException e){
 			throw new SQLRuntimeException(e);
 		}finally{
 			close(ps);
 		}
-	}*/
+	}
 
 	private List<User> toUserList(ResultSet rs) throws SQLException {
 

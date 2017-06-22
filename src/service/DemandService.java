@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import beans.Book;
+import beans.User;
 import dao.DemandDao;
+import dao.UserDao;
 
 public class DemandService {
 
@@ -21,6 +23,21 @@ public class DemandService {
 			List<Book> book = bookDao. getDelayedBook(connection);
 
 			return book ;
+		}finally{
+
+		}
+	}
+
+	public List<User> getUserName(){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			UserDao userDao = new UserDao();
+			List<User> userName = userDao. getAllUser(connection);
+
+			return userName ;
 		}finally{
 
 		}
