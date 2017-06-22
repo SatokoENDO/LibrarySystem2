@@ -22,6 +22,7 @@ public class AdminServlet extends HttpServlet {
 		session.removeAttribute("libraries");
 		session.removeAttribute("shelves");
 		session.removeAttribute("kinds");
+		session.removeAttribute("books");
 
 		//利用者情報のセッション削除
 		session.removeAttribute("userAddress");
