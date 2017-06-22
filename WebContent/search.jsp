@@ -40,7 +40,7 @@
 		<form action="search" method="post">
 			書名: <input type="text" name="bookName"><br /> 著者: <input
 				type="text" name="author"><br /> 出版社: <input type="text"
-				name="publisher"><br /> 書類種類:<select name="kinds">
+				name="publisher"><br /> 資料種類:<select name="kinds">
 				<option value = "0" selected>すべて表示</option>
 				<c:forEach items="${kinds}" var="kind">
 					<option value="${kind.id}">

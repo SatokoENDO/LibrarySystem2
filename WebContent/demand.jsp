@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>資料検索結果</title>
+<title>延滞書籍一覧</title>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -18,18 +18,25 @@
 	<th>書名</th>
 	<th>著者</th>
 	<th>出版社</th>
-	<th>書類種類</th>
+	<th>資料種類</th>
 	<th>所蔵図書館</th>
-	<th>利用状況</th>
+	<th>借りている人</th>
 </tr>
 <c:forEach items="${books }" var="delayedBooks">
 	<tr>
 		<td>${delayedBooks.name }</td>
 		<td>${delayedBooks.author }</td>
 		<td>${delayedBooks.publisher }</td>
-		<td>${delayedBooks.kind }</td>
-		<td>${delayedBooks.libraryId }</td>
-		<td>${delayedBooks.status }</td>
+		<td><c:forEach items="${kinds}" var="kind">
+					<c:if test = "${delayedBooks.kind  == kind.id}">
+						<c:out  value="${kind.name}" />
+					</c:if></c:forEach></td>
+		<td><c:forEach items="${libraries}" var="library">
+					<c:if test = "${delayedBooks.libraryId  == library.id}">
+						<c:out  value="${library.name}" />
+					</c:if></c:forEach></td>
+		<td>${delayedBooks.borrower }</td>
+
 	</tr>
 </c:forEach>
 
@@ -37,4 +44,4 @@
 <br><br>
 
 </body>
-</html></html>
+</html>
