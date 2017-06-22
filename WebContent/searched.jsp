@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>資料検索結果</title>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -16,7 +16,7 @@
 	<th>書名</th>
 	<th>著者</th>
 	<th>出版社</th>
-	<th>種別</th>
+	<th>書類種類</th>
 	<th>所蔵図書館</th>
 	<th>利用状況</th>
 </tr>

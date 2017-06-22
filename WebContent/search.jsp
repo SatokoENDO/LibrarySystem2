@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>書籍検索</title>
+<title>資料検索</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 		<form action="search" method="post">
 			書名: <input type="text" name="bookName"><br /> 著者: <input
 				type="text" name="author"><br /> 出版社: <input type="text"
-				name="publisher"><br /> 種別:<select name="kinds">
+				name="publisher"><br /> 書類種類:<select name="kinds">
 				<option value = "0" selected>すべて</option>
 				<c:forEach items="${kinds}" var="kind">
 					<option value="${kind.id}">
