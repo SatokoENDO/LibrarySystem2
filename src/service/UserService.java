@@ -100,24 +100,6 @@ public class UserService {
 		}
 	}
 
-	/*public User getUser(){
-		Connection connection = null;
-		try{
-			connection = getConnection();
-
-			UserDao userDao = new UserDao();
-			User user = userDao.getUser(connection);
-
-			commit(connection);
-
-			return user;
-		}catch (RuntimeException e){
-			rollback(connection);
-			throw e;
-		}finally{
-			close(connection);
-		}
-	}*/
 
 	//ユーザー編集
 	public void update(User user){

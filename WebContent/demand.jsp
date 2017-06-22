@@ -15,12 +15,13 @@
 <a href="search">戻る</a>
 <table class="searched">
 <tr>
-	<th>書名</th>
-	<th>著者</th>
-	<th>出版社</th>
-	<th>資料種類</th>
-	<th>所蔵図書館</th>
-	<th>借りている人</th>
+	<th> 書名 </th>
+	<th> 著者 </th>
+	<th> 出版社 </th>
+	<th> 資料種類 </th>
+	<th> 所蔵図書館 </th>
+	<th> 延滞者 </th>
+	<th>延滞者電話番号</th>
 </tr>
 <c:forEach items="${books }" var="delayedBooks">
 	<tr>
@@ -35,9 +36,14 @@
 					<c:if test = "${delayedBooks.libraryId  == library.id}">
 						<c:out  value="${library.name}" />
 					</c:if></c:forEach></td>
-		<td><c:forEach items="${users}" var="users">
-					<c:if test = "${delayedBooks.borrower  == users.id}">
-						<c:out value="${users.name}" />
+		<td><c:forEach items="${users}" var="user">
+					<c:if test = "${delayedBooks.borrower  == user.id}">
+						<c:out value="${user.name}" />
+					</c:if>
+			</c:forEach></td>
+			<td><c:forEach items="${users}" var="user">
+					<c:if test = "${delayedBooks.borrower  == user.id}">
+						<c:out value="${user.tel}" />
 					</c:if>
 			</c:forEach></td>
 
