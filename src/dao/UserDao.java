@@ -149,6 +149,30 @@ public class UserDao {
 		}
 	}
 
+	/*public User getUser(Connection connection) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM users ");
+			ps = connection.prepareStatement(sql.toString());
+
+			ResultSet rs = ps.executeQuery();
+
+			List<User> userList = toUserList(rs);
+
+			if(userList.isEmpty() == true) {
+				return null;
+			}else{
+				return userList;
+			}
+		}catch (SQLException e){
+			throw new SQLRuntimeException(e);
+		}finally{
+			close(ps);
+		}
+	}*/
+
 	private List<User> toUserList(ResultSet rs) throws SQLException {
 
 		List<User> ret = new ArrayList<User>();
@@ -166,6 +190,7 @@ public class UserDao {
 				int isAdmin = rs.getInt("is_Admin");
 
 				User user = new User();
+
 				user.setId(id);
 				user.setCardNumber(cardNumber);
 				user.setName(name);

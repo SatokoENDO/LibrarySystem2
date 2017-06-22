@@ -25,9 +25,12 @@ public class DemandServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//List<User> users = new UserService().getUser();
 		List<Book> books = new DemandService().getDelayedBook();
 		List<Kind> kinds = new KindService().getKindList();
 		List<Library> libraries = new LibraryService().getLibraryList();
+
+		//request.setAttribute("users", users);
 
 		request.setAttribute("books", books);
 		request.setAttribute("kinds", kinds);
