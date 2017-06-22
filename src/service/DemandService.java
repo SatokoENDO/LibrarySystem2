@@ -11,14 +11,14 @@ import dao.DemandDao;
 public class DemandService {
 
 //	延滞本を表示
-	public  List<Book>  getDelayedBook(String currentTime){
+	public  List<Book>  getDelayedBook(){
 
 		Connection connection = null;
 		try{
 			connection = getConnection();
 
 			DemandDao bookDao = new DemandDao();
-			List<Book> book = bookDao. getDelayedBook(connection, currentTime);
+			List<Book> book = bookDao. getDelayedBook(connection);
 
 			return book ;
 		}finally{
