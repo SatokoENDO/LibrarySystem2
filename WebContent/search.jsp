@@ -30,15 +30,15 @@
 <br>
 <br>
 <div class="search">
-	<form action="./" method="get">
+	<form action="search" method="get">
 		書名:
-		<input type = "text" name = "bookName" value = "${bookName }" ><br />
+		<input type = "text" name = "bookName" value = "${books.bookName }" ><br />
 		著者名:
-		<input type = "text" name = "author" value = "${author }"><br />
+		<input type = "text" name = "author" value = "${books.author }"><br />
 		出版社名:
-		<input type = "text" name = "publisher" value = "${publisher }"><br />
+		<input type = "text" name = "publisher" value = "${books.publisher }"><br />
 
-		書類種類:<select name="kinds">
+<!-- 	書類種類:<select name="kinds">
 
 				<c:forEach items="${kinds}" var="kind">
 						<option value="${kind.id}">
@@ -52,10 +52,14 @@
 							<c:out value="${library.name}" />
 						</option>
 				</c:forEach>
-			</select>
+			</select>    -->
 		<input type = "submit" value ="検索">
 	</form>
 </div>
-
+<div class="searched">
+	<c:forEach items = "${books }" var = "searchedBooks">
+		書名 : ${books.name }
+	</c:forEach>
+</div>
 </body>
 </html>
