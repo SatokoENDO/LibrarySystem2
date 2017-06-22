@@ -25,11 +25,18 @@ public class SearchedServlet extends HttpServlet {
 		if(!StringUtils.isEmpty(request.getParameter("kinds"))){
 			int kindId = Integer.parseInt(request.getParameter("kinds"));
 			request.setAttribute("kindId", kindId);
+		}else{
+			int kindId = 0;
+			request.setAttribute("kindId", kindId);
 			System.out.println("kindId:" + kindId);
 		}
 
 		if(!StringUtils.isEmpty(request.getParameter("libraryId"))){
 			int libraryId = Integer.parseInt(request.getParameter("libraryId"));
+			request.setAttribute("libraryId", libraryId);
+			System.out.println("libraryId:" + libraryId);
+		}else{
+			int libraryId = 0;
 			request.setAttribute("libraryId", libraryId);
 			System.out.println("libraryId:" + libraryId);
 		}

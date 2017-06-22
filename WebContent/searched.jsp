@@ -19,16 +19,16 @@
 			<select name="kinds" size="1">
 					<option value="0">すべて表示</option>
 					<c:forEach items="${kinds}" var="kind">
-						<option value="${kind.id}">
+						<option value="${kind.id}" >
 							<c:out value="${kind.name}" />
 						</option>
 					</c:forEach>
 			</select>
 			所蔵図書館:
 			<select name="libraryId">
-				<option value = "0" selected>すべて表示</option>
+				<option value = "0">すべて表示</option>
 					<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}">
+						<option value="${library.id}" >
 							<c:out value="${library.name}" />
 						</option>
 					</c:forEach>
@@ -44,9 +44,10 @@
     <th>所蔵図書館</th>
     <th>利用状況</th>
 </tr>
-<c:forEach items="${books }" var="searchedBooks">
-	<c:choose>
-		<c:when test = "${kindId == 0 && libraryId == 0  }">
+<c:choose>
+	<c:when test = "${kindId == 0 && libraryId == 0 }">
+		<c:forEach items="${books }" var="searchedBooks">
+
 				<tr>
 					<td>${searchedBooks.name }</td>
 					<td>${searchedBooks.author }</td>
@@ -69,33 +70,93 @@
 							<c:out value="整理中" />
 						</c:if></td>
 				</tr>
-		</c:when>
-		<c:when test = "${kindId == searchedBooks.kind && libraryId == searchedBooks.libraryId  }">
-			<tr>
-				<td>${searchedBooks.name }</td>
-				<td>${searchedBooks.author }</td>
-				<td>${searchedBooks.publisher }</td>
-				<td><c:forEach items="${kinds}" var="kind">
-						<c:if test="${searchedBooks.kind == kind.id }">
-							<c:out value="${kind.name}" />
-						</c:if>
-					</c:forEach></td>
-				<td><c:forEach items="${libraries}" var="library">
-						<c:if test="${searchedBooks.libraryId == library.id }">
-							<c:out value="${library.name}" />
-						</c:if>
-					</c:forEach></td>
-				<td><c:if test="${searchedBooks.status  == 0}">
-						<c:out value="貸出可" />
-					</c:if> <c:if test="${searchedBooks.status == 1}">
-						<c:out value="貸出中" />
-					</c:if> <c:if test="${searchedBooks.status == 2}">
-						<c:out value="整理中" />
-					</c:if></td>
-			</tr>
-		</c:when>
-	</c:choose>
 </c:forEach>
+</c:when>
+	<c:when test = "${kindId != 0 && libraryId == 0 }">
+		<c:forEach items="${books }" var="searchedBooks">
+			<c:if test = "${kindId == searchedBooks.kind }">
+				<tr>
+					<td>${searchedBooks.name }</td>
+					<td>${searchedBooks.author }</td>
+					<td>${searchedBooks.publisher }</td>
+					<td><c:forEach items="${kinds}" var="kind">
+							<c:if test="${searchedBooks.kind == kind.id }">
+								<c:out value="${kind.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:forEach items="${libraries}" var="library">
+							<c:if test="${searchedBooks.libraryId == library.id }">
+								<c:out value="${library.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:if test="${searchedBooks.status  == 0}">
+							<c:out value="貸出可" />
+						</c:if> <c:if test="${searchedBooks.status == 1}">
+							<c:out value="貸出中" />
+						</c:if> <c:if test="${searchedBooks.status == 2}">
+							<c:out value="整理中" />
+						</c:if></td>
+				</tr>
+				</c:if>
+</c:forEach>
+</c:when>
+<c:when test = "${kindId == 0 && libraryId != 0 }">
+		<c:forEach items="${books }" var="searchedBooks">
+			<c:if test = "${libraryId == searchedBooks.libraryId  }">
+				<tr>
+					<td>${searchedBooks.name }</td>
+					<td>${searchedBooks.author }</td>
+					<td>${searchedBooks.publisher }</td>
+					<td><c:forEach items="${kinds}" var="kind">
+							<c:if test="${searchedBooks.kind == kind.id }">
+								<c:out value="${kind.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:forEach items="${libraries}" var="library">
+							<c:if test="${searchedBooks.libraryId == library.id }">
+								<c:out value="${library.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:if test="${searchedBooks.status  == 0}">
+							<c:out value="貸出可" />
+						</c:if> <c:if test="${searchedBooks.status == 1}">
+							<c:out value="貸出中" />
+						</c:if> <c:if test="${searchedBooks.status == 2}">
+							<c:out value="整理中" />
+						</c:if></td>
+				</tr>
+				</c:if>
+</c:forEach>
+</c:when>
+<c:when test = "${kindId != 0 && libraryId != 0 }">
+		<c:forEach items="${books }" var="searchedBooks">
+			<c:if test = "${libraryId == searchedBooks.libraryId && kindId == searchedBooks.kind }">
+				<tr>
+					<td>${searchedBooks.name }</td>
+					<td>${searchedBooks.author }</td>
+					<td>${searchedBooks.publisher }</td>
+					<td><c:forEach items="${kinds}" var="kind">
+							<c:if test="${searchedBooks.kind == kind.id }">
+								<c:out value="${kind.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:forEach items="${libraries}" var="library">
+							<c:if test="${searchedBooks.libraryId == library.id }">
+								<c:out value="${library.name}" />
+							</c:if>
+						</c:forEach></td>
+					<td><c:if test="${searchedBooks.status  == 0}">
+							<c:out value="貸出可" />
+						</c:if> <c:if test="${searchedBooks.status == 1}">
+							<c:out value="貸出中" />
+						</c:if> <c:if test="${searchedBooks.status == 2}">
+							<c:out value="整理中" />
+						</c:if></td>
+				</tr>
+				</c:if>
+</c:forEach>
+</c:when>
+</c:choose>
 
 </table>
 <br><br>
