@@ -26,6 +26,92 @@ input[type=checkbox] {
     height: 30px;
     vertical-align: middle;
 }
+
+.login-btn {
+	margin-left:35px;
+	padding:5px 5px;
+	position: relative;
+	background-color: #1abc9c;
+	border-radius: 4px;
+	color: #fff;
+	line-height: 52px;
+	-webkit-transition: none;
+	transition: none;
+	box-shadow: 0 3px 0 #0e8c73;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+.login-btn:hover {
+	background-color: #31c8aa;
+	box-shadow: 0 3px 0 #23a188;
+}
+.login-btn:active {
+	top: 3px;
+	box-shadow: none;
+}
+
+.logout-btn {
+	margin-right:35px;
+	padding:5px 5px;
+	position: relative;
+	border-radius: 4px;
+	color: #fff;
+	line-height: 50px;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-transition: none;
+	transition: none;
+	text-shadow: 0px 1px 0px #f56778;
+}
+.logout-btn,
+.logout-btn:hover {
+	border-bottom: 4px solid #cb5462;
+	background-color: #f56778;
+	background-image: -webkit-linear-gradient(top, #f997b0, #f56778);
+	background-image: linear-gradient(to bottom, #f997b0, #f56778);
+	box-shadow: inset 1px 1px 0 #fbc1d0;
+}
+.logout-btn::before,
+.logout-btn::after {
+	bottom: -1px;
+	left: -1px;
+	width: 200px;
+	height: 50px;
+	border: 1px solid #ee8090;
+	border-bottom: 1px solid #b84d5a;
+	border-radius: 4px;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-transition: none;
+	transition: none;
+}
+.logout-btn::before {
+	height: 48px;
+	bottom: -4px;
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 1px 1px 0px #bfbfbf;
+}
+.logout-btn:hover {
+	background: #f56778;
+	background-image: -webkit-linear-gradient(top, #f56778, #f997b0);
+	background-image: linear-gradient(to bottom, #f56778, #f997b0);
+	color: #913944;
+	text-shadow: 0px 1px 0px #f9a0ad;
+}
+.logout-btn:active {
+	bottom: -4px;
+	margin-bottom: 4px;
+	border: none;
+	box-shadow: 1px 1px 0 #fff, inset 0 1px 1px rgba(0, 0, 0, .3);
+}
+.logout-btn:active::before,
+.logout-btn:active::after {
+	border: none;
+	box-shadow: none;
+}
+
 .search-btn{
 	margin-left:40px;
 	font-size: 50px;
