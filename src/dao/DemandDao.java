@@ -20,9 +20,17 @@ public class DemandDao {
 		try{
 			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT * FROM books ");
+<<<<<<< HEAD
 			sql.append("WHERE due_date <= CURRENT_TIMESTAMP ");
 			sql.append("AND status = 1 ");
 			sql.append("ORDER BY due_date");
+=======
+			sql.append("WHERE due_date <= CURRENT_TIMESTAMP AND status = 1 ORDER BY due_date");
+			/*sql.append("AND status = 1");
+			sql.append("ORDER BY due_date");*/
+
+			ps = connection.prepareStatement(sql.toString());
+>>>>>>> 067f138d87daa25a216497348fb755bc3a8d14f9
 
 			ps = connection.prepareStatement(sql.toString());
 
