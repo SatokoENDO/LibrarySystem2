@@ -8,13 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import service.KindService;
-import service.LibraryService;
-import service.SearchService;
 import beans.Book;
 import beans.Kind;
 import beans.Library;
+import service.KindService;
+import service.LibraryService;
+import service.SearchService;
 
 
 @WebServlet(urlPatterns = { "/search" })
@@ -38,6 +39,8 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+
 		String bookName = request.getParameter("bookName");
 		String author = request.getParameter("author");
 		String publisher = request.getParameter("publisher");
@@ -48,12 +51,10 @@ public class SearchServlet extends HttpServlet {
 
 			List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
 
-			request.setAttribute("books", searchedBooks);
-
+			session.setAttribute("books", searchedBooks);
 		}
 
-		request.getRequestDispatcher("/searched.jsp").forward(request, response);
+		response.sendRedirect("searched");
 	}
 
 }
-/////
