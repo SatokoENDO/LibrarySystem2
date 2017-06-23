@@ -22,13 +22,13 @@ public class SearchedServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if(!StringUtils.isEmpty(request.getParameter("kinds"))){
-			int kindId = Integer.parseInt(request.getParameter("kinds"));
+		if(!StringUtils.isEmpty(request.getParameter("kindId"))){
+			int kindId = Integer.parseInt(request.getParameter("kindId"));
 			request.setAttribute("kindId", kindId);
 		}else{
 			int kindId = 0;
 			request.setAttribute("kindId", kindId);
-			System.out.println("kindId:" + kindId);
+			System.out.println("ないよkindId:" + kindId);
 		}
 
 		if(!StringUtils.isEmpty(request.getParameter("libraryId"))){

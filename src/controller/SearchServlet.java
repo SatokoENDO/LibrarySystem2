@@ -45,14 +45,12 @@ public class SearchServlet extends HttpServlet {
 		String author = request.getParameter("author");
 		String publisher = request.getParameter("publisher");
 		int libraryId = Integer.parseInt(request.getParameter("libraryId"));
-		int kind = Integer.parseInt(request.getParameter("kinds")) ;
+		int kindId = Integer.parseInt(request.getParameter("kindId")) ;
 
-		if(bookName != null){
-
-			List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
+		List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kindId);
 
 			session.setAttribute("books", searchedBooks);
-		}
+
 
 		response.sendRedirect("searched");
 	}

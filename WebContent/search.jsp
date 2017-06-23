@@ -38,16 +38,20 @@
 	<br>
 	<div class="search">
 		<form action="search" method="post">
-			書名: <input type="text" name="bookName"><br /> 著者: <input
-				type="text" name="author"><br /> 出版社: <input type="text"
-				name="publisher"><br /> 資料種類:<select name="kinds">
+			書名: <input type="text" name="bookName"><br />
+			著者: <input
+				type="text" name="author"><br />
+			出版社: <input type="text"
+				name="publisher"><br />
+			資料種類:<select name="kindId">
 				<option value = "0" selected>すべて表示</option>
 				<c:forEach items="${kinds}" var="kind">
 					<option value="${kind.id}">
 						<c:out value="${kind.name}" />
 					</option>
 				</c:forEach>
-			</select> 所蔵図書館:<select name="libraryId">
+			</select>
+		所蔵図書館:<select name="libraryId">
 			<option value = "0" selected>すべて表示</option>
 				<c:forEach items="${libraries}" var="library">
 					<option value="${library.id}">
