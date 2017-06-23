@@ -80,3 +80,9 @@ name varchar(20));
 create table library.kinds(
 id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
 name varchar(20));
+
+これはsql文微妙なので自分で打ってください
+CREATE  TABLE `library`.`reservations` (
+  `book_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
+  `reservation_number` AUTO_INCREMENT　プライマリーキー　 NOT NULL );

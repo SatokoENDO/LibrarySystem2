@@ -106,6 +106,9 @@ public class BookDao {
 				int borrower = rs.getInt("borrower");
 				int kind = rs.getInt("kind");
 				int reservationNumber = rs.getInt("reservation_number");
+				int shelfId = rs.getInt("shelf_id");
+				String isbn = rs.getString("isbn");
+
 
 				Book book = new Book();
 
@@ -118,6 +121,9 @@ public class BookDao {
 				book.setBorrower(borrower);
 				book.setKind(kind);
 				book.setReservationNumber(reservationNumber);
+				book.setShelfId(shelfId);
+				book.setISBN(isbn);
+
 
 				ret.add(book);
 			}

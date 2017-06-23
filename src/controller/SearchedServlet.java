@@ -25,6 +25,7 @@ public class SearchedServlet extends HttpServlet {
 		if(!StringUtils.isEmpty(request.getParameter("kinds"))){
 			int kindId = Integer.parseInt(request.getParameter("kinds"));
 			request.setAttribute("kindId", kindId);
+			System.out.println("kindId:" + kindId);
 		}else{
 			int kindId = 0;
 			request.setAttribute("kindId", kindId);

@@ -17,9 +17,9 @@
 		<form action="searched" method="get">
 			資料種類:
 			<select name="kinds" size="1">
-					<option value="0" <c:if test = "${kind.id == 0 }"> selected </c:if>>すべて表示</option>
+					<option value="0" >すべて表示</option>
 					<c:forEach items="${kinds}" var="kind">
-						<option value="${kind.id}" >
+						<option value="${kind.id}" <c:if test = "${selected.equals(kind.id)}"> selected </c:if> >
 							<c:out value="${kind.name}" />
 						</option>
 					</c:forEach>
@@ -49,7 +49,7 @@
 		<c:forEach items="${books }" var="searchedBooks">
 
 				<tr>
-					<td>${searchedBooks.name }</td>
+					<td><a href="bookInfo?id=${searchedBooks.id }">${searchedBooks.name }</a></td>
 					<td>${searchedBooks.author }</td>
 					<td>${searchedBooks.publisher }</td>
 					<td><c:forEach items="${kinds}" var="kind">
@@ -76,7 +76,7 @@
 		<c:forEach items="${books }" var="searchedBooks">
 			<c:if test = "${kindId == searchedBooks.kind }">
 				<tr>
-					<td>${searchedBooks.name }</td>
+					<td><a href="bookInfo?id=${searchedBooks.id }">${searchedBooks.name }</a></td>
 					<td>${searchedBooks.author }</td>
 					<td>${searchedBooks.publisher }</td>
 					<td><c:forEach items="${kinds}" var="kind">
@@ -104,7 +104,7 @@
 		<c:forEach items="${books }" var="searchedBooks">
 			<c:if test = "${libraryId == searchedBooks.libraryId  }">
 				<tr>
-					<td>${searchedBooks.name }</td>
+					<td><a href="bookInfo?id=${searchedBooks.id }">${searchedBooks.name }</a></td>
 					<td>${searchedBooks.author }</td>
 					<td>${searchedBooks.publisher }</td>
 					<td><c:forEach items="${kinds}" var="kind">
@@ -132,7 +132,7 @@
 		<c:forEach items="${books }" var="searchedBooks">
 			<c:if test = "${libraryId == searchedBooks.libraryId && kindId == searchedBooks.kind }">
 				<tr>
-					<td>${searchedBooks.name }</td>
+					<td><a href="bookInfo?id=${searchedBooks.id }">${searchedBooks.name }</a></td>
 					<td>${searchedBooks.author }</td>
 					<td>${searchedBooks.publisher }</td>
 					<td><c:forEach items="${kinds}" var="kind">
