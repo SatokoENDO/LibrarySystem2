@@ -17,7 +17,7 @@
 		<form action="searched" method="get">
 			資料種類:
 			<select name="kinds" size="1">
-					<option value="0">すべて表示</option>
+					<option value="0" <c:if test = "${kind.id == 0 }"> selected </c:if>>すべて表示</option>
 					<c:forEach items="${kinds}" var="kind">
 						<option value="${kind.id}" >
 							<c:out value="${kind.name}" />
