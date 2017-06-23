@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Book;
-import beans.Kind;
-import beans.Library;
 import service.KindService;
 import service.LibraryService;
 import service.SearchService;
+import beans.Book;
+import beans.Kind;
+import beans.Library;
 
 
 @WebServlet(urlPatterns = { "/search" })

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
-import beans.Kind;
-import beans.Library;
 import service.KindService;
 import service.LibraryService;
+import beans.Kind;
+import beans.Library;
 
 @WebServlet("/searched")
 public class SearchedServlet extends HttpServlet {
