@@ -27,19 +27,19 @@ public class SearchDao {
 			}
 
 			if(author != null){
-				sql.append("AND author LIKE ? ");
+				sql.append(" AND author LIKE ? ");
 			}
 
 			if(publisher != null){
-				sql.append("AND publisher LIKE ? ");
+				sql.append(" AND publisher LIKE ? ");
 			}
 
 			if(libraryId != 0){
-				sql.append("AND library_id = "+ libraryId );
+				sql.append(" AND library_id = "+ libraryId );
 			}
 
 			if(kind != 0){
-				sql.append("AND kind = "+ kind);
+				sql.append(" AND kind = " + kind );
 			}
 
 			ps = connection.prepareStatement(sql.toString());

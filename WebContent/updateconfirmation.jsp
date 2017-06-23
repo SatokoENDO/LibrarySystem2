@@ -8,6 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <title>ユーザー編集確認画面</title>
+<script type="text/javascript">
+function update(){
+	window.alert('この内容で登録しますか？');
+}
+
+</script>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -51,7 +57,7 @@
 	<br>
 
 	<center> <form action="update-confirm" method="post">
-<input type="submit" value="この内容で登録" style="cursor: hand; cursor:pointer;" /><br />
+<div class="update"><input type="submit" value="この内容で登録" onClick="update()" style="cursor: hand; cursor:pointer;"></div><br />
 	</form>
 	<br>
 	<input type="button" onclick="location.href='http://localhost:8080/LibrarySystem2/userinfo'"value="修正" style="cursor: hand; cursor:pointer;"/>

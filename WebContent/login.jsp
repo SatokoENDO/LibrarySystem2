@@ -31,12 +31,12 @@
 <br>
 <table class="login">
 	<tr>
-		<th>利用者証番号</th><td><input type="text" name="cardNumber"/>&nbsp;(半角数字8文字)</td>
+		<th>利用者証番号</th><td><input type="text" name="cardNumber"/><br>(半角数字8文字)</td>
 	</tr>
 	<tr>
 		<th>パスワード</th><td><input type="password" name="password" /></td>
 	</tr>
-</table><br><center><input type = "submit" value ="ログイン" style="cursor: hand; cursor:pointer;"></center><br/><br>
+</table><br><center><div class="login"><br><input type = "submit" value ="ログイン"></div></center><br/><br>
 </form>
 </div>
 

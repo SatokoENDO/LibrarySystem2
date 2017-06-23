@@ -8,14 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import beans.Book;
-import beans.Kind;
-import beans.Library;
 import service.KindService;
 import service.LibraryService;
-import service.SearchService;
+import beans.Kind;
+import beans.Library;
 
 
 @WebServlet(urlPatterns = { "/search" })
@@ -39,20 +36,17 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 
 		String bookName = request.getParameter("bookName");
 		String author = request.getParameter("author");
 		String publisher = request.getParameter("publisher");
 		int libraryId = Integer.parseInt(request.getParameter("libraryId"));
-		int kind = Integer.parseInt(request.getParameter("kinds")) ;
+		int kindId = Integer.parseInt(request.getParameter("kindId")) ;
 
-		if(bookName != null){
+		List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kindId);
+		session.setAttribute("books", searchedBooks);*/
 
-			List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
-
-			session.setAttribute("books", searchedBooks);
-		}
 
 		response.sendRedirect("searched");
 	}

@@ -60,7 +60,8 @@ public class SignUpServlet extends HttpServlet{
 			}else{
 				session.setAttribute("userIsAdmin", request.getParameter("isAdmin"));
 			}
-			int userId = new UserService().getUserId()+1;   //まだDB登録されていないから最後に登録されている人の次のidを付加する
+			int userId = new UserService().getUserId()+1;
+			//まだDB登録されていないから最後に登録されている人の次のidを付加する
 			DecimalFormat dformat = new DecimalFormat("0000000");
 			int libraryNumber = Integer.parseInt(request.getParameter("libraryId")) ;
 			int cardNumber = Integer.parseInt(libraryNumber + dformat.format(userId));

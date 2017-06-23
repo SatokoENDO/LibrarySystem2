@@ -228,83 +228,6 @@ input[type=checkbox] {
 }
 
 
-.mainMessage {
-	position: relative;
-	background: #e1e8ef;
-	border: 1px solid #555873;
-	border-radius:10px;
-	padding:10px;
-	width:300px;
-}
-.mainMessage:after, .mainMessage:before {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.mainMessage:after {
-	border-color: rgba(189, 189, 189, 0);
-	border-right-color: #e1e8ef;
-	border-width: 20px;
-	margin-top: -20px;
-}
-.mainMessage:before {
-	border-color: rgba(9, 152, 213, 0);
-	border-right-color: #555873;
-	border-width: 21px;
-	margin-top: -21px;
-}
-
-.comments {
-	position: relative;
-	background: #afcfee;
-	border: 1px solid #555873;
-	border-radius:10px;
-	padding:10px;
-	width:300px;
-	margin-left:160px;
-}
-.comments:after, .comments:before {
-	left: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-
-
-}
-
-.comments:after {
-	border-color: rgba(121, 176, 213, 0);
-	border-left-color: #afcfee;
-	border-width: 20px;
-	margin-top: -20px;
-	margin-left:0px;
-
-}
-.comments:before {
-	border-color: rgba(85, 88, 115, 0);
-	border-left-color: #555873;
-	border-width: 21px;
-	margin-top: -21px;
-	margin-left:0px;
-
-}
-
-.comments-form{
-	margin-left:141px;
-}
-.comments-form-end {
-	margin-left:270px;
-}
 
 .errorMessages {
 	color:red;
@@ -326,29 +249,6 @@ input[type=checkbox] {
 	margin-left:10px;
 }
 
-.title{
-	margin-left:auto;
-}
-
-.category{
-	margin-left:auto;
-}
-
-.text{
-	margin-left:auto;
-}
-
-.deleteComment{
-	margin-left:-1px;
-}
-
-.deleteMessage{
-	margin-left:-2px;
-}
-
-.deleteUser{
-	color:red;
-}
 input {
 font-size: 100%;
 }
@@ -372,7 +272,7 @@ table {
 
 table {
 	margin:auto;
-    width:95%;
+    width:800px;
     border-collapse:collapse;
     border:1px solid #999;
     border-spacing:0;
@@ -401,3 +301,32 @@ table td {
     font-size:30px;
 }
 
+table.result{
+	margin:auto;
+    width:90%;
+    border-collapse:collapse;
+    border:1px solid #999;
+    border-spacing:0;
+    line-height:1.8;
+    text-align:middle;
+    height:x;
+}
+
+table.result th {
+    width:800px;
+    border:1px solid #999;
+    border-width:0 0 1px 1px;
+    background:#EFEBEF;
+    font-weight:bold;
+    font-size:20px;
+    text-align:middle;
+}
+
+table.result td {
+    width:800px;
+    border:1px solid #999;
+    border-width:0 0 1px 1px;
+    text-align:middle;
+    background:#ffffff;
+    font-size:15px;
+}
