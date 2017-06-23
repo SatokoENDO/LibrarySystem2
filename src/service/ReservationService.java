@@ -9,14 +9,14 @@ import dao.ReservationDao;
 
 public class ReservationService {
 
-	public void reservation(int loginId,int bookId) {
+	public void reservation(int loginUserId,int bookId) {
 
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
 			ReservationDao reservationDao = new ReservationDao();
-			reservationDao.insert(connection, loginId, bookId);
+			reservationDao.insert(connection, loginUserId, bookId);
 
 			commit(connection);
 		} catch (RuntimeException e) {

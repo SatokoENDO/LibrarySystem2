@@ -73,8 +73,10 @@
 	</tr>
 </table>
 <c:if test = "${status != 0 }">
-	<form action="bookInfo" method="post">
-		<br><center><input type = "submit" value ="予約する" style="cursor: hand; cursor:pointer;"></center>
+	<form action="reservation" method="post">
+		<br><center>
+		<input type = "hidden" name = bookId value = "${book.id }">
+		<input type = "submit" value ="予約する" style="cursor: hand; cursor:pointer;"></center>
 </form>
 </c:if>
 
