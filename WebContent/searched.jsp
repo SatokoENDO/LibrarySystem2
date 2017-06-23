@@ -35,7 +35,7 @@
 			</select> <input type="submit" value="絞り込む">
 		</form>
 	</div>
-<table class="searched">
+<table class="result">
 <tr>
     <th>書名</th>
     <th>著者</th>

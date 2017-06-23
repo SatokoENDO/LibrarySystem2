@@ -20,7 +20,7 @@
 			src="Tottori-Library.png" alt="TAG index" border="0"></a>
 	</center>
 	<c:if test="${loginUser == null}">
-		<a href="login">ログイン</a>
+		<a href="login" class="login-btn" style="cursor: hand; cursor:pointer;">ログイン</a>
 	</c:if>
 
 	<c:if test="${loginUser != null}">
