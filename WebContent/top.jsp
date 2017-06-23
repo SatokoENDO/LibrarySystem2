@@ -15,8 +15,8 @@
 <title>トップ</title>
 </head>
 <body>
-
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
+<br>
 <c:if test="${loginUser == null}" >
 <a href="login" class="login-btn">ログイン</a>
 <br>
