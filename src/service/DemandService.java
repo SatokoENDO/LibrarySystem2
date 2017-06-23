@@ -28,16 +28,16 @@ public class DemandService {
 		}
 	}
 
-	public List<User> getUserName(){
+	public List<User> getUserInfo(){
 
 		Connection connection = null;
 		try{
 			connection = getConnection();
 
 			UserDao userDao = new UserDao();
-			List<User> userName = userDao. getAllUser(connection);
+			List<User> userInfo = userDao. getAllUser(connection);
 
-			return userName ;
+			return userInfo ;
 		}finally{
 
 		}
