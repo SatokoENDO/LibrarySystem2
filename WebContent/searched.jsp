@@ -15,24 +15,37 @@
 <a href="search">戻る</a>
 <div class="refine">
 		<form action="searched" method="get">
+			<input type ="hidden" name = "bookName" value = "${bookName}">
+			<input type ="hidden" name = "author" value = "${author}">
+			<input type ="hidden" name = "publisher" value = "${publisher}">
 			資料種類:
-			<select name="kinds" size="1">
-					<option value="0" <c:if test = "${kind.id == 0 }"> selected </c:if>>すべて表示</option>
-					<c:forEach items="${kinds}" var="kind">
-						<option value="${kind.id}" >
-							<c:out value="${kind.name}" />
-						</option>
-					</c:forEach>
-			</select>
+			<select name="kindId" size = "1">
+			<c:if test = "${kindId == 0}">
+			<option value = "" selected >すべて表示</option>
+			<c:forEach items = "${kinds}" var = "kind">
+				<option value="${kind.id}"><c:out value = "${kind.name}"/></option>
+			</c:forEach>
+			</c:if>
+		<c:if test = "${kindId != null }">
+		<c:forEach items = "${kinds}" var = "kind">
+			<option value="${kind.id}" <c:if test="${kindId == kind.id}">selected</c:if>>
+			<c:out value = "${kind.name}"/></option>
+		</c:forEach>
+		</c:if>
+	</select>
 			所蔵図書館:
-			<select name="libraryId">
-				<option value = "0">すべて表示</option>
-					<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}" >
-							<c:out value="${library.name}" />
-						</option>
-					</c:forEach>
-			</select> <input type="submit" value="絞り込む">
+			<select name="libraryId" size = "1">
+			<c:if test = "${libraryId == 0}">
+			<option value = "" selected >すべて表示</option>
+			</c:if>
+			<c:if test = "${libraryId != null }">
+		<c:forEach items = "${libraries}" var = "library">
+			<option value="${library.id}" <c:if test="${libraryId == library.id}">selected</c:if>>
+			<c:out value = "${library.name}"/></option>
+		</c:forEach>
+		</c:if>
+	</select>
+			 <input type="submit" value="絞り込む">
 		</form>
 	</div>
 <table class="result">

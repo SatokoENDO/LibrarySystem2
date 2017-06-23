@@ -8,12 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import service.KindService;
 import service.LibraryService;
-import service.SearchService;
-import beans.Book;
 import beans.Kind;
 import beans.Library;
 
@@ -39,7 +36,7 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 
 		String bookName = request.getParameter("bookName");
 		String author = request.getParameter("author");
@@ -48,8 +45,7 @@ public class SearchServlet extends HttpServlet {
 		int kindId = Integer.parseInt(request.getParameter("kindId")) ;
 
 		List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kindId);
-
-			session.setAttribute("books", searchedBooks);
+		session.setAttribute("books", searchedBooks);*/
 
 
 		response.sendRedirect("searched");
