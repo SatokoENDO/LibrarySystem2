@@ -21,29 +21,6 @@ public class SearchedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session = request.getSession();
-
-<<<<<<< HEAD
-		if(!StringUtils.isEmpty(request.getParameter("kinds"))){
-			int kindId = Integer.parseInt(request.getParameter("kinds"));
-			request.setAttribute("kindId", kindId);
-			System.out.println("kindId:" + kindId);
-		}else{
-			int kindId = 0;
-			request.setAttribute("kindId", kindId);
-			System.out.println("kindId:" + kindId);
-		}
-
-		if(!StringUtils.isEmpty(request.getParameter("libraryId"))){
-			int libraryId = Integer.parseInt(request.getParameter("libraryId"));
-			request.setAttribute("libraryId", libraryId);
-			System.out.println("libraryId:" + libraryId);
-		}else{
-			int libraryId = 0;
-			request.setAttribute("libraryId", libraryId);
-			System.out.println("libraryId:" + libraryId);
-		}
-=======
 
 		String bookName = request.getParameter("bookName");
 		String author = request.getParameter("author");
@@ -54,7 +31,7 @@ public class SearchedServlet extends HttpServlet {
 
 		List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
 		request.setAttribute("books", searchedBooks);
->>>>>>> ae6e2eda80ec9a41f103c2c419d34caf1849903d
+
 
 		List<Kind> kinds = new KindService().getKindList();
 		List<Library> libraries = new LibraryService().getLibraryList();

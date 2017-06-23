@@ -19,16 +19,7 @@
 			<input type ="hidden" name = "author" value = "${author}">
 			<input type ="hidden" name = "publisher" value = "${publisher}">
 			資料種類:
-<<<<<<< HEAD
-			<select name="kinds" size="1">
-					<option value="0" >すべて表示</option>
-					<c:forEach items="${kinds}" var="kind">
-						<option value="${kind.id}" <c:if test = "${selected.equals(kind.id)}"> selected </c:if> >
-							<c:out value="${kind.name}" />
-						</option>
-					</c:forEach>
-			</select>
-=======
+
 			<select name="kindId" size = "1">
 			<c:if test = "${kindId == 0}">
 			<option value = "0" selected >すべて表示</option>
@@ -43,7 +34,7 @@
 		</c:forEach>
 		</c:if>
 	</select>
->>>>>>> ae6e2eda80ec9a41f103c2c419d34caf1849903d
+
 			所蔵図書館:
 			<select name="libraryId" size = "1">
 			<c:if test = "${libraryId == 0}">
