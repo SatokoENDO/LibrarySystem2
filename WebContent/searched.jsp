@@ -21,7 +21,7 @@
 			資料種類:
 			<select name="kindId" size = "1">
 			<c:if test = "${kindId == 0}">
-			<option value = "" selected >すべて表示</option>
+			<option value = "0" selected >すべて表示</option>
 			<c:forEach items = "${kinds}" var = "kind">
 				<option value="${kind.id}"><c:out value = "${kind.name}"/></option>
 			</c:forEach>
@@ -36,7 +36,7 @@
 			所蔵図書館:
 			<select name="libraryId" size = "1">
 			<c:if test = "${libraryId == 0}">
-			<option value = "" selected >すべて表示</option>
+			<option value = "0" selected >すべて表示</option>
 			</c:if>
 			<c:if test = "${libraryId != null }">
 		<c:forEach items = "${libraries}" var = "library">

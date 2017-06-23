@@ -32,7 +32,6 @@ public class SearchedServlet extends HttpServlet {
 
 
 		List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
-
 		request.setAttribute("books", searchedBooks);
 
 		List<Kind> kinds = new KindService().getKindList();

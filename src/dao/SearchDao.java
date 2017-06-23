@@ -39,7 +39,7 @@ public class SearchDao {
 			}
 
 			if(kind != 0){
-				sql.append(" AND kind = "+ kind );
+				sql.append(" AND kind = " + kind );
 			}
 
 			ps = connection.prepareStatement(sql.toString());
