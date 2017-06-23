@@ -34,10 +34,6 @@
 		</c:forEach>
 		</c:if>
 	</select>
-<<<<<<< HEAD
-=======
-
->>>>>>> acf48d5811bfe73aa7fa862abaf54c5372288ee5
 			所蔵図書館:
 			<select name="libraryId" size = "1">
 			<c:if test = "${libraryId == 0}">
