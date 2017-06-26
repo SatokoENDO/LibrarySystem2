@@ -27,47 +27,8 @@ password varchar(255) NOT NULL,
 is_admin int(1) NOT NULL,
 register_date TIMESTAMP,
 library_id int(1) NOT NULL,
-borrow_books int,
-reserved_book1 long,
-reserved_book2 long,
-reserved_book3 long,
-reserved_book4 long,
-reserved_book5 long,
-reserved_book6 long,
-reserved_book7 long,
-reserved_book8 long,
-reserved_book9 long,
-reserved_book10 long,
-reserved_book11 long,
-reserved_book12 long,
-reserved_book13 long,
-reserved_book14 long,
-reserved_book15 long,
-reserved_book16 long,
-reserved_book17 long,
-reserved_book18 long,
-reserved_book19 long,
-reserved_book20 long,
-reserved_time1 TIMESTAMP,
-reserved_time2 TIMESTAMP,
-reserved_time3 TIMESTAMP,
-reserved_time4 TIMESTAMP,
-reserved_time5 TIMESTAMP,
-reserved_time6 TIMESTAMP,
-reserved_time7 TIMESTAMP,
-reserved_time8 TIMESTAMP,
-reserved_time9 TIMESTAMP,
-reserved_time10 TIMESTAMP,
-reserved_time11 TIMESTAMP,
-reserved_time12 TIMESTAMP,
-reserved_time13 TIMESTAMP,
-reserved_time14 TIMESTAMP,
-reserved_time15 TIMESTAMP,
-reserved_time16 TIMESTAMP,
-reserved_time17 TIMESTAMP,
-reserved_time18 TIMESTAMP,
-reserved_time19 TIMESTAMP,
-reserved_time20 TIMESTAMP);
+borrow_books int default 0,
+reservation_books int default 0);
 
 create table library.libraries(
 id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
@@ -81,8 +42,8 @@ create table library.kinds(
 id int AUTO_INCREMENT NOT NULL PRIMARY KEY UNIQUE,
 name varchar(20));
 
-これはsql文微妙なので自分で打ってください
+縺薙ｌ縺ｯsql譁�蠕ｮ螯吶↑縺ｮ縺ｧ閾ｪ蛻�縺ｧ謇薙▲縺ｦ縺上□縺輔＞
 CREATE  TABLE `library`.`reservations` (
   `book_id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
-  `reservation_number` AUTO_INCREMENT　プライマリーキー　 NOT NULL );
+  `reservation_number` AUTO_INCREMENT縲PRIMARY KEY);

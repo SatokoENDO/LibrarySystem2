@@ -34,7 +34,6 @@
 		</c:forEach>
 		</c:if>
 	</select>
-
 			所蔵図書館:
 			<select name="libraryId" size = "1">
 			<c:if test = "${libraryId == 0}">
