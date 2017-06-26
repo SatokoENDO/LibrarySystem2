@@ -50,6 +50,7 @@
 			 <input type="submit" value="絞り込む">
 		</form>
 	</div>
+	<br>
 <table class="result">
 <tr>
     <th>書名</th>
