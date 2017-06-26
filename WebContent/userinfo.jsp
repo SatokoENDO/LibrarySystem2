@@ -36,6 +36,8 @@
 	<tr>
 		<th>利用者番号</th><td>${editUser.cardNumber}</td>
 	</tr>
+
+	<c:if test = "${loginUser.isAdmin == 1 }">
 	<tr>
 		<th>氏名</th><td><input type="text" name="name" value="${editUser.name}" /></td>
 	</tr>
@@ -45,6 +47,18 @@
 		<tr>
 		<th>電話番号</th><td><input type="text" name="tel" value="${editUser.tel}"/></td>
 	</tr>
+	</c:if>
+	<c:if test = "${loginUser.isAdmin ==0 }">
+	<tr>
+		<th>氏名</th><td><c:out value= "${editUser.name}" /></td>
+	</tr>
+		<tr>
+		<th>住所</th><td><c:out value= "${editUser.address}"/></td>
+	</tr>
+		<tr>
+		<th>電話番号</th><td><c:out value="${editUser.tel}"/></td>
+	</tr>
+	</c:if>
 		<tr>
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>
 	</tr>
@@ -67,6 +81,12 @@
 	</table>
 	<input type ="hidden" name = "cardNumber" value = "${editUser.cardNumber}">
 	<input type ="hidden" name = "isAdmin" value = "${editUser.isAdmin}">
+	<c:if test = "${loginUser.isAdmin == 0 }">
+		<input type ="hidden" name = "name" value = "${editUser.name}">
+		<input type ="hidden" name = "address" value = "${editUser.address}">
+		<input type ="hidden" name = "tel" value = "${editUser.tel}">
+		<br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
+	</c:if>
 <br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
 </form>
 </div>

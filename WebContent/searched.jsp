@@ -79,7 +79,7 @@
 					<td><c:if test="${searchedBooks.status  == 0}">
 							<c:out value="貸出可" />
 						</c:if> <c:if test="${searchedBooks.status == 1}">
-							<c:out value="貸出中" />
+							<c:out value="貸出中 予約者数:${searchedBooks.reservationNumber }人"  />
 						</c:if> <c:if test="${searchedBooks.status == 2}">
 							<c:out value="整理中" />
 						</c:if></td>

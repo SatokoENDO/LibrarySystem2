@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.LibraryService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
 
 @WebServlet(urlPatterns = { "/edituser"})
 public class EditUserServlet extends HttpServlet{
@@ -42,6 +42,7 @@ public class EditUserServlet extends HttpServlet{
 
 			session.setAttribute("userCardNumber", Integer.parseInt(request.getParameter("cardNumber")));
 			session.setAttribute("userName", request.getParameter("name"));
+			System.out.println(request.getParameter("name"));
 			session.setAttribute("userAddress", request.getParameter("address"));
 			session.setAttribute("userTel", request.getParameter("tel"));
 			session.setAttribute("userMail", request.getParameter("mail"));

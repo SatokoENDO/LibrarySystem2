@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.KindService;
-import service.LibraryService;
-import service.SearchService;
 import beans.Book;
 import beans.Kind;
 import beans.Library;
+import service.KindService;
+import service.LibraryService;
+import service.SearchService;
 
 @WebServlet("/searched")
 public class SearchedServlet extends HttpServlet {
