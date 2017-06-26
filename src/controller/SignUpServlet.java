@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,9 +42,10 @@ public class SignUpServlet extends HttpServlet{
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		List<String> messages = new ArrayList<String>();
 
 
-//		if(isValid(request, messages) == true) {
+		if(isValid(request, messages) == true) {
 
 			String password = RandomStringUtils.randomAlphabetic(8);
 
@@ -69,7 +71,57 @@ public class SignUpServlet extends HttpServlet{
 
 			response.sendRedirect("user-confirm");
 
-//		}
+		}else {
+			User errorUser = new User();
+			errorUser.setName(request.getParameter("name"));
+			errorUser.setAddress(request.getParameter("address"));
+			errorUser.setTel(request.getParameter("tel"));
+			errorUser.setMail(request.getParameter("mail"));
+			errorUser.setPassword(request.getParameter("password"));
+			errorUser.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
+			session.setAttribute("errorUser", errorUser);
+			session.setAttribute("errorMessages", messages);
+			response.sendRedirect("signup");
+		}
+	}
+	private boolean isValid(HttpServletRequest request, List<String> messages) {
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String tel = request.getParameter("tel");
+		String mail = request.getParameter("mail");
+
+
+		if (name.length() ==0) {
+			messages.add("名前を入力してください");
+		}
+
+		if (address.length() ==0) {
+			messages.add("住所を入力してください");
+		}
+
+		if (tel.length() ==0) {
+			messages.add("電話番号を入力してください");
+		}
+
+		if (!tel.matches("[0-9]+$")) {
+			messages.add("電話番号は半角数字のみで入力してください");
+		}
+
+		if (mail.length() ==0) {
+			messages.add("メールアドレスを入力してください");
+		}
+
+		if(!mail.matches("[-_@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
+			messages.add("メールアドレスは@を含む半角英数字で入力してください");
+		}
+
+		if (messages.size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
+
 }
+
