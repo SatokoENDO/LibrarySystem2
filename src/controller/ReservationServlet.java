@@ -28,6 +28,7 @@ public class ReservationServlet extends HttpServlet {
 		int bookId = Integer.parseInt(request.getParameter("bookId"));
 
 		new ReservationService().reservation(loginUser.getId(), bookId );
+
 	}
 
 }

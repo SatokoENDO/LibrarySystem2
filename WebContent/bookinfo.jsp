@@ -71,6 +71,13 @@
 					</c:if>
 				</c:forEach></td>
 	</tr>
+
+	<c:if test = "${book.reservationNumber >= 0 }">
+	<tr>
+	<th>予約者数</th><td><c:out value="${book.reservationNumber}" /></td>
+	</tr>
+	</c:if>
+
 </table>
 <c:if test = "${status != 0 }">
 	<form action="reservation" method="post">

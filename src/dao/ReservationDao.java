@@ -10,7 +10,7 @@ import exception.SQLRuntimeException;
 
 public class ReservationDao {
 
-	//予約
+	// 予約
 	public void insert(Connection connection, int loginUserId, int bookId) {
 
 		PreparedStatement ps = null;
@@ -34,6 +34,40 @@ public class ReservationDao {
 			throw new SQLRuntimeException(e);
 		} finally {
 			close(ps);
+		}
+
+		PreparedStatement ps1 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE users SET");
+			sql.append(" reserved_books = reserved_books +1 ");
+			sql.append(" WHERE id = "+ loginUserId );
+
+			ps1 = connection.prepareStatement(sql.toString());
+
+			ps1.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps1);
+		}
+
+		PreparedStatement ps2 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE books SET");
+			sql.append(" reservation_number = reservation_number +1 ");
+			sql.append(" WHERE id = "+ bookId );
+
+			ps2 = connection.prepareStatement(sql.toString());
+
+			ps2.executeUpdate();
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps2);
 		}
 	}
 }

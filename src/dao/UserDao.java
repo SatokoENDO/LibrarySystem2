@@ -188,6 +188,7 @@ public class UserDao {
 				int libraryId = rs.getInt("library_id");
 				int borrowBooks = rs.getInt("borrow_books");
 				int isAdmin = rs.getInt("is_Admin");
+				int reservedBooks = rs.getInt("reserved_books");
 
 				User user = new User();
 
@@ -201,6 +202,7 @@ public class UserDao {
 				user.setLibraryId(libraryId);
 				user.setBorrowBooks(borrowBooks);
 				user.setIsAdmin(isAdmin);
+				user.setReservedBooks(reservedBooks);
 
 				ret.add(user);
 			}
@@ -243,7 +245,6 @@ public class UserDao {
 			}
 			ps.executeUpdate();
 
-			System.out.println(ps.toString());
 		}  catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally{

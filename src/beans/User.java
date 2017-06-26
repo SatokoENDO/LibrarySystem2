@@ -54,6 +54,7 @@ public class User {
 	private Timestamp reservedTime18;
 	private Timestamp reservedTime19;
 	private Timestamp reservedTime20;
+	private int reservedBooks;
 
 	public Timestamp getReservedTime1() {
 		return reservedTime1;
@@ -361,6 +362,12 @@ public class User {
 	}
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+	public int getReservedBooks() {
+		return reservedBooks;
+	}
+	public void setReservedBooks(int reservedBooks) {
+		this.reservedBooks = reservedBooks;
 	}
 
 
