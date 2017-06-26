@@ -7,7 +7,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<title><c:out value= "${book.name }" /></title>
+<script type="text/javascript">
+<!--
+
+function disp(str){
+	if(confirm(str+"を予約しますか？")){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function request(book,library){
+	if(confirm(book + "を" + library + "へ取り寄せますか？")){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+// -->
+</script>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -72,22 +93,58 @@
 				</c:forEach></td>
 	</tr>
 
-	<c:if test = "${book.reservationNumber >= 0 }">
 	<tr>
-	<th>予約者数</th><td><c:out value="${book.reservationNumber}" /></td>
-	</tr>
-	</c:if>
+	<th>利用状況</th>
+	<c:choose>
+		<c:when test = "${book.status == 1 || book.status ==2}">
+			<c:if test = "${book.status == 1 }">
+				<td><c:out value="貸出中" /></td>
+			</c:if>
+			<c:if test = "${book.status == 2 }">
+				<td><c:out value="整理中" /></td>
+			</c:if>
+			<tr>
+			<th>予約者数</th><td><c:out value="${book.reservationNumber}人" /></td>
+			</tr>
+		</c:when>
+		<c:when test = "${book.status == 0 }">
+			<td><c:out value="貸出可" /></td>
+		</c:when>
+	</c:choose>
 
 </table>
-<c:if test = "${status != 0 }">
-	<form action="reservation" method="post">
-		<br><center>
-		<input type = "hidden" name = bookId value = "${book.id }">
-		<input type = "submit" value ="予約する" style="cursor: hand; cursor:pointer;"></center>
-</form>
+<c:if test = "${book.status != 0 }">
+	<c:choose>
+		<c:when test="${loginUser.id == null }">
+			<c:out value="予約をするにはログインしてください" /></c:when>
+		<c:otherwise>
+			<form action="reservation" method="post">
+				<br><center>
+				<input type = "hidden" name = bookId value = "${book.id }">
+				<input type = "submit" value ="予約する" style="cursor: hand; cursor:pointer;" onClick="return disp('${book.name}');"></center>
+			</form>
+		</c:otherwise>
+	</c:choose>
 </c:if>
-
-
+<c:if test = "${book.status == 0 }">
+	<c:choose>
+		<c:when test="${loginUser.id == null }">
+			<c:out value="受取図書館への取り寄せを希望するにはログインしてください" /></c:when>
+		<c:otherwise>
+			<form action="reservation" method="post">
+				<br><center>
+				<c:if test = "${book.libraryId != loginUser.libraryId }">
+				<input type = "hidden" name = bookId value = "${book.id }">
+				<c:forEach items="${libraries}" var="library">
+					<c:if test = "${loginUser.libraryId  == library.id}">
+						<input type = "submit" value ="受取図書館へ取り寄せる" style="cursor: hand; cursor:pointer;" onClick="return request('${book.name}','${library.name }');">
+					</c:if>
+				</c:forEach>
+				</c:if></center>
+			</form>
+		</c:otherwise>
+	</c:choose>
+</c:if>
 	</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import beans.Book;
+import beans.User;
 import dao.SearchDao;
 
 public class SearchService {
@@ -21,6 +22,21 @@ public class SearchService {
 			List<Book> book = bookDao.getBookFromName(connection, bookName, author, publisher, libraryId, kind);
 
 			return book ;
+		}finally{
+
+		}
+	}
+//	氏名、住所から利用者を照会する
+	public User getUser(String name, String address){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			SearchDao userDao = new SearchDao();
+			User user = userDao.getUser(connection, name, address);
+
+			return user ;
 		}finally{
 
 		}
