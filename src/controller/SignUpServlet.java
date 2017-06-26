@@ -107,13 +107,13 @@ public class SignUpServlet extends HttpServlet{
 			messages.add("電話番号は半角数字のみで入力してください");
 		}
 
-		if (mail.length() ==0) {
-			messages.add("メールアドレスを入力してください");
+		if (mail.length() >0) {
+			if(!mail.matches("[-_@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
+				messages.add("メールアドレスは@を含む半角英数字で入力してください");
+			}
 		}
 
-		if(!mail.matches("[-_@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
-			messages.add("メールアドレスは@を含む半角英数字で入力してください");
-		}
+
 
 		if (messages.size() == 0) {
 			return true;
