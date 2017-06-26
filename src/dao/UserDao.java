@@ -183,6 +183,9 @@ public class UserDao {
 				String name = rs.getString("name");
 				String address = rs.getString("address");
 				String tel = rs.getString("tel");
+				if(!(rs.getString("Mail")).isEmpty()){
+					String mail = rs.getString("mail");;
+					}
 				String mail = rs.getString("mail");
 				String password = rs.getString("password");
 				int libraryId = rs.getInt("library_id");
@@ -197,7 +200,11 @@ public class UserDao {
 				user.setName(name);
 				user.setAddress(address);
 				user.setTel(tel);
-				user.setMail(mail);
+				if((rs.getString("mail")).isEmpty() ==true){
+					user.setMail(null);
+				} else{
+					user.setMail(mail);
+				}
 				user.setPassword(password);
 				user.setLibraryId(libraryId);
 				user.setBorrowBooks(borrowBooks);
