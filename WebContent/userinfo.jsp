@@ -85,7 +85,6 @@
 		<input type ="hidden" name = "name" value = "${editUser.name}">
 		<input type ="hidden" name = "address" value = "${editUser.address}">
 		<input type ="hidden" name = "tel" value = "${editUser.tel}">
-		<br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
 	</c:if>
 <br><center><input type = "submit" value ="入力内容確認" style="cursor: hand; cursor:pointer;"></center>
 </form>

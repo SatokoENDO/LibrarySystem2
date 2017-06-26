@@ -26,9 +26,5 @@
 <a href="demand" class="demand-btn">督促</a>&nbsp;
 <a href="/LibrarySystem2/inquiry" class="inquiry-btn">利用者照会</a>&nbsp;
 </div>
-
-
-</form>
-</div>
 </body>
 </html>
