@@ -101,8 +101,8 @@ private boolean isValid(HttpServletRequest request, List<String> messages) {
 		messages.add("出版社名を入力してください");
 	}
 
-	if(!ISBN.matches("[-0-9]+$") || !ISBN.matches(".*-.*") || ISBN.length() != 17){
-		messages.add("ISBNは-(ハイフン)を含む半角数字17文字で入力してください");
+	if(!ISBN.matches("[-0-9X]+$") || !ISBN.matches(".*-.*") || ISBN.length() > 17){
+		messages.add("ISBNは-(ハイフン)を含む半角数字17文字以内で入力してください");
 	}
 
 	if (messages.size() == 0) {

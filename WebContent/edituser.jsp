@@ -45,7 +45,7 @@
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>
 	</tr>
 		<tr>
-		<th>パスワード ※8文字以上255字以下の半角文字</th><td><input type="password" name="passwprd" value="">運営</td>
+		<th>パスワード ※8文字以上255字以下の半角文字</th><td><input type="password" name="passwprd" value=""></td>
 	</tr>
 	<tr>
 		<th>パスワード(確認)</th><td><input type="password" name="checkPassword" /></td>
