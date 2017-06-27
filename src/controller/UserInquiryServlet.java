@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,11 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import beans.Library;
-import beans.User;
 import service.LibraryService;
 import service.SearchService;
+import beans.Library;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/inquiry" })
 public class UserInquiryServlet extends HttpServlet {
@@ -27,16 +29,50 @@ public class UserInquiryServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		List<String> messages = new ArrayList<String>();
+
+
+		if(isValid(request, messages) == true) {
+
+
+			String name = request.getParameter("name");
+			String address = request.getParameter("address");
+
+			User searchedUser = new SearchService().getUser(name, address);
+			List<Library> libraries = new LibraryService().getLibraryList();
+
+			request.setAttribute("editUser", searchedUser);
+			request.setAttribute("libraries", libraries);
+
+			request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
+		}else {
+			User errorUser = new User();
+			errorUser.setName(request.getParameter("name"));
+			errorUser.setAddress(request.getParameter("address"));
+			session.setAttribute("errorUser", errorUser);
+			session.setAttribute("errorMessages", messages);
+			response.sendRedirect("inquiry");
+		}
+	}
+	private boolean isValid(HttpServletRequest request, List<String> messages) {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 
-		User searchedUser = new SearchService().getUser(name, address);
-		List<Library> libraries = new LibraryService().getLibraryList();
 
-		request.setAttribute("editUser", searchedUser);
-		request.setAttribute("libraries", libraries);
+		if (name.length() ==0) {
+			messages.add("名前を入力してください");
+		}
 
-		request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
+		if (address.length() ==0) {
+			messages.add("住所を入力してください");
+		}
+
+		if (messages.size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
-
 }

@@ -15,6 +15,9 @@ public class User {
 	private int isAdmin;
 	private int borrowBooks;
 	private int reservedBooks;
+	private int demandCount;
+	private Timestamp demandTime;
+
 
 	public void setRegisterTime(Timestamp registerTime) {
 		this.registerTime = registerTime;
@@ -90,6 +93,23 @@ public class User {
 	public void setReservedBooks(int reservedBooks) {
 		this.reservedBooks = reservedBooks;
 	}
+
+	public int getDemandCount() {
+		return demandCount;
+	}
+
+	public void setDemandCount(int demandCount) {
+		this.demandCount = demandCount;
+	}
+
+	public Timestamp getDemandTime() {
+		return demandTime;
+	}
+
+	public void setDemandTime(Timestamp demandTime) {
+		this.demandTime = demandTime;
+	}
+
 
 
 }
