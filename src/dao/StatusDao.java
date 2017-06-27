@@ -120,4 +120,82 @@ public class StatusDao {
 		}
 	}
 
+	public List<Integer> getReservationNumber(Connection connection, int bookId) {
+
+		PreparedStatement ps = null;
+		try {
+			String sql = "select * from reservations where book_id = ? and reservation_type = 0 ";
+
+			ps = connection.prepareStatement(sql);
+
+			ps.setInt(1, bookId);
+
+			ResultSet rs = ps.executeQuery();
+			List<Integer> reservationNumberList = toReservationNumberList(rs);
+
+			if (reservationNumberList.isEmpty() == true) {
+				return null;
+			} else {
+				return reservationNumberList;
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
+	private List<Integer> toReservationNumberList(ResultSet rs) throws SQLException {
+
+		List<Integer> ret = new ArrayList<Integer>();
+		try {
+			while (rs.next()) {
+				int reservationNumber = rs.getInt("reservation_number");
+
+				ret.add(reservationNumber);
+			}return ret;
+		} finally {
+			close(rs);
+		}
+	}
+	// ログインIDから指定の本の予約番号をとる
+	public int getReservationNumberOf(Connection connection, int loginId, int bookId) {
+
+		PreparedStatement ps = null;
+		try {
+			String sql = "select * from reservations where book_id = ? and user_id = ? ";
+
+			ps = connection.prepareStatement(sql);
+
+			ps.setInt(1, bookId);
+			ps.setInt(2, loginId);
+
+			ResultSet rs = ps.executeQuery();
+			int reservationNumberOf = toReservationNumberOf(rs);
+
+			if (reservationNumberOf == 0) {
+				return 0;
+			} else {
+				return reservationNumberOf;
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+	private int toReservationNumberOf(ResultSet rs) throws SQLException {
+
+		int ret = 0;
+		try {
+			while (rs.next()) {
+				int reservationNumber = rs.getInt("reservation_number");
+
+				ret = reservationNumber;
+			}return ret;
+		} finally {
+			close(rs);
+		}
+	}
+
 }

@@ -38,4 +38,32 @@ public class StatusService {
 
 		}
 	}
+
+	public List<Integer> getReservationNumber(int bookId){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			StatusDao getBookDao = new StatusDao();
+			List<Integer> reservationNumber = getBookDao.getReservationNumber(connection, bookId);
+			return reservationNumber ;
+		}finally{
+
+		}
+	}
+
+	public int getReservationNumberOf(int loginId, int bookId){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			StatusDao getBookDao = new StatusDao();
+			int reservationNumber = getBookDao.getReservationNumberOf(connection, loginId, bookId);
+			return reservationNumber ;
+		}finally{
+
+		}
+	}
 }

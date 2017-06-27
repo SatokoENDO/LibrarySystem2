@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
-import service.LibraryService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
 
 @WebServlet(urlPatterns = { "/edituser"})
 public class EditUserServlet extends HttpServlet{

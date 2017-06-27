@@ -14,10 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import service.LibraryService;
-import service.UserService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
