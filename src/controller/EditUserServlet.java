@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
+
+import service.LibraryService;
 import beans.Library;
 import beans.User;
-import service.LibraryService;
 
 @WebServlet(urlPatterns = { "/edituser"})
 public class EditUserServlet extends HttpServlet{
@@ -75,15 +77,15 @@ public class EditUserServlet extends HttpServlet{
 		String checkPassword = request.getParameter("checkPassword");
 
 
-		if (name.length() ==0 || name.length() > 255) {
+		if (StringUtils.isBlank(name) ||name.length() ==0 || name.length() > 255) {
 			messages.add("名前は255文字以下で入力してください");
 		}
 
-		if (address.length() ==0 || address.length() > 255) {
+		if (StringUtils.isBlank(address) ||address.length() ==0 || address.length() > 255) {
 			messages.add("住所は255文字以下で入力してください");
 		}
 
-		if (tel.length() ==0 || tel.length() > 11) {
+		if (StringUtils.isBlank(tel) ||tel.length() ==0 || tel.length() > 11) {
 			messages.add("電話番号は11文字以下で入力してください");
 		}
 

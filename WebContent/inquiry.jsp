@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/common.css" rel="stylesheet" type="text/css">
 <title>利用者照会</title>
 </head>
 <body>
@@ -26,6 +27,16 @@
 			</b></font>
 		</marquee>
 	</c:if>
+	<c:if test="${ not empty errorMessages }">
+	<div class="errorMessages">
+		<ul>
+			<c:forEach items="${errorMessages}" var="message">
+				<li><c:out value="${message}" />
+			</c:forEach>
+		</ul>
+	</div>
+	<c:remove var="errorMessages" scope="session"/>
+</c:if>
 
 
 	<br>

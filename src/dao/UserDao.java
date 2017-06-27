@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -192,6 +193,8 @@ public class UserDao {
 				int borrowBooks = rs.getInt("borrow_books");
 				int isAdmin = rs.getInt("is_Admin");
 				int reservedBooks = rs.getInt("reserved_books");
+				int demandCount = rs.getInt("demand_count");
+				Timestamp demandTime = rs.getTimestamp("demand_time");
 
 				User user = new User();
 
@@ -210,6 +213,8 @@ public class UserDao {
 				user.setBorrowBooks(borrowBooks);
 				user.setIsAdmin(isAdmin);
 				user.setReservedBooks(reservedBooks);
+				user.setDemandCount(demandCount);
+				user.setDemandTime(demandTime);
 
 				ret.add(user);
 			}
