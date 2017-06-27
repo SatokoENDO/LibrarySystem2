@@ -80,4 +80,44 @@ public class StatusDao {
 			close(rs);
 		}
 	}
+
+	public List<Integer> getReservedBookId(Connection connection, int loginUserId) {
+
+		PreparedStatement ps = null;
+		try {
+			String sql = "select * from reservations where user_id = ? ";
+
+			ps = connection.prepareStatement(sql);
+
+			ps.setInt(1, loginUserId);
+
+			ResultSet rs = ps.executeQuery();
+			List<Integer> bookList = toBookIdList(rs);
+
+			if (bookList.isEmpty() == true) {
+				return null;
+			} else {
+				return bookList;
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
+	private List<Integer> toBookIdList(ResultSet rs) throws SQLException {
+
+		List<Integer> ret = new ArrayList<Integer>();
+		try {
+			while (rs.next()) {
+				int bookId = rs.getInt("book_id");
+
+				ret.add(bookId);
+			}return ret;
+		} finally {
+			close(rs);
+		}
+	}
+
 }

@@ -46,4 +46,5 @@ name varchar(20));
 CREATE  TABLE `library`.`reservations` (
   `book_id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
+  `reservation_type` INT  ,
   `reservation_number` AUTO_INCREMENT　PRIMARY KEY);

@@ -27,9 +27,11 @@ public class StatusServlet extends HttpServlet{
 		User loginUser = (User) session.getAttribute("loginUser");
 
 		List<Book> borrowBookList = new StatusService().getBookInfo(loginUser);
+		List<Integer> reservedBookIdList = new StatusService().getReservedBookId(loginUser.getId());
+
+		System.out.println(reservedBookIdList);
 
 		session.setAttribute("borrowBooks", borrowBookList);
-
 
 
 
