@@ -14,6 +14,16 @@
 	<div class="main-contents">
 	<center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 	<a href = "admin">戻る</a>
+	<c:if test = "${not empty errorMessages}">
+	<div class = "errorMessages">
+		<ul>
+			<c:forEach items = "${errorMessages}" var = "message">
+				<li><c:out value = "${message}"/>
+			</c:forEach>
+		</ul>
+	</div>
+	<c:remove var = "errorMessages" scope = "session"/>
+</c:if>
 	<form action="lend" method="post">
 	<br>
 	<table class="lend">

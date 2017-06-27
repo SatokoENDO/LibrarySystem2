@@ -53,7 +53,7 @@ public class ReturnServlet extends HttpServlet {
 			}
 		}else {
 			session.setAttribute("errorMessages", messages);
-			response.sendRedirect("return");
+			response.sendRedirect("adimin");
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
