@@ -66,4 +66,18 @@ public class StatusService {
 
 		}
 	}
+
+	public List<Integer> getDeliverBookId(int loginUserId){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			StatusDao getBookDao = new StatusDao();
+			List<Integer> deliverBookId = getBookDao.getDelivery(connection, loginUserId);
+			return deliverBookId ;
+		}finally{
+
+		}
+	}
 }

@@ -32,7 +32,6 @@ public class LendServlet extends HttpServlet {
 
 		if(isValid(request, messages) == true) {
 
-
 			session.setAttribute("bookId", request.getParameter("bookId"));
 			session.setAttribute("cardNumber", request.getParameter("cardNumber"));
 

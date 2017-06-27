@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import beans.Book;
 import beans.User;
 import service.BookService;
+import service.ReservationService;
 import service.StatusService;
 
 @WebServlet(urlPatterns = { "/status" })
@@ -51,18 +52,43 @@ public class StatusServlet extends HttpServlet{
 
 					int reservation = new StatusService().getReservationNumberOf(loginUser.getId(), book.getId());
 
-					System.out.println(reservation);
 					reservationNumber.add(eachReservedBookNumber.indexOf(reservation));
 				}
 			}
 		}
 
-		System.out.println(reservedBookNumber);
-		System.out.println(reservationNumber);
+		List<Integer> deliverBookIdList = new ArrayList<Integer>();
+		List<Book> deliverBookList = new ArrayList<Book>();
+
+		if(new StatusService().getDeliverBookId(loginUser.getId()) != null){
+			deliverBookIdList = new StatusService().getDeliverBookId(loginUser.getId());
+
+			for(int i = 0 ; i < deliverBookIdList.size() ; i++ ){
+
+				Book book = new BookService().getBook(deliverBookIdList.get(i));
+				deliverBookList.add(book);
+			}
+		}
+
 		request.setAttribute("reservedBookList", reservedBookList);
 		request.setAttribute("borrowBooks", borrowBookList);
 		request.setAttribute("reservationNumber", reservationNumber);
+		request.setAttribute("deliverBookList", deliverBookList);
 
 		request.getRequestDispatcher("status.jsp").forward(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
+		HttpSession session = request.getSession();
+
+		int bookId = Integer.parseInt(request.getParameter("bookId"));
+		User loginUser = (User) session.getAttribute("loginUser");
+
+		new ReservationService().delete(loginUser.getId(), bookId);
+
+		response.sendRedirect("status");
 	}
 }

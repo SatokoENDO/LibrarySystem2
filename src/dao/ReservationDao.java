@@ -119,4 +119,60 @@ public class ReservationDao {
 			close(ps2);
 		}
 	}
+
+	public void delete(Connection connection, int loginUserId, int bookId) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("delete from reservations ");
+			sql.append(" WHERE book_id = ? ");
+			sql.append(" and user_id = ? " );
+
+			ps = connection.prepareStatement(sql.toString());
+
+			ps.setInt(1, bookId);
+			ps.setInt(2, loginUserId);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+
+		PreparedStatement ps1 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE users SET");
+			sql.append(" reserved_books = reserved_books -1 ");
+			sql.append(" WHERE id = "+ loginUserId );
+
+			ps1 = connection.prepareStatement(sql.toString());
+			ps1.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+
+		PreparedStatement ps2 = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE books SET");
+			sql.append(" reservation_number = reservation_number -1 ");
+			sql.append(" WHERE id = "+ bookId );
+
+			ps2 = connection.prepareStatement(sql.toString());
+			ps2.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
 }

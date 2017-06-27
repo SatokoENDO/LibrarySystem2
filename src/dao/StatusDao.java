@@ -85,7 +85,7 @@ public class StatusDao {
 
 		PreparedStatement ps = null;
 		try {
-			String sql = "select * from reservations where user_id = ? ";
+			String sql = "select * from reservations where user_id = ? and reservation_type = 0 ";
 
 			ps = connection.prepareStatement(sql);
 
@@ -198,4 +198,42 @@ public class StatusDao {
 		}
 	}
 
+	// ログインIDから受取申請資料のIDを取る
+		public List<Integer> getDelivery(Connection connection, int loginId) {
+
+			PreparedStatement ps = null;
+			try {
+				String sql = "select * from reservations where reservation_type = 1 and user_id = ? ";
+
+				ps = connection.prepareStatement(sql);
+
+				ps.setInt(1, loginId);
+
+				ResultSet rs = ps.executeQuery();
+				List<Integer> toDeliverBookId = toDeliverBookId(rs);
+
+				if (toDeliverBookId.isEmpty() == true) {
+					return null;
+				} else {
+					return toDeliverBookId;
+				}
+			} catch (SQLException e) {
+				throw new SQLRuntimeException(e);
+			} finally {
+				close(ps);
+			}
+		}
+		private List<Integer> toDeliverBookId(ResultSet rs) throws SQLException {
+
+			List<Integer> ret = new ArrayList<Integer>();
+			try {
+				while (rs.next()) {
+					int reservationNumber = rs.getInt("book_id");
+
+					ret.add(reservationNumber);
+				}return ret;
+			} finally {
+				close(rs);
+			}
+		}
 }

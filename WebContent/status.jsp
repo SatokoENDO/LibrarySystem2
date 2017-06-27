@@ -23,7 +23,7 @@
 </c:if>
 <table class="status">
 <tr>
-	<th>貸出中</th>
+	<th>貸出資料</th>
 	<th>返却日</th>
 </tr>
 <c:forEach var="borrowBookList" items="${borrowBooks }">
@@ -35,18 +35,42 @@
 
 </table>
 <br><br>
+
+<table class="delivery">
+<tr>
+	<th>受取申請資料</th>
+	<th>著者</th>
+</tr>
+<c:forEach var="deliverBookList" items="${deliverBookList }">
+	<tr>
+		<td>${deliverBookList.name }</td>
+		<td>${deliverBookList.author }</td>
+	</tr>
+</c:forEach>
+</table>
+
+<br><br>
 <table class="reservation">
 <tr>
-	<th>予約中</th>
+	<th>予約資料</th>
+	<th>著者</th>
 	<th>予約順</th>
-	<th>取消</th>
+	<th></th>
 </tr>
 
 <c:forEach var="reservedBook" items="${reservedBookList }" varStatus="status" >
+
 	<tr>
-		<td>${reservedBook.name }</td>
-		<td>${reservationNumber[status.index] + 1 }番目</td>
+		<td><center>${reservedBook.name }</center></td>
+		<td><center>${reservedBook.author }</center></td>
+		<td><center>${reservationNumber[status.index] + 1 }番目</center></td>
+		<td><center>
+		<form action="status" method="post">
+		<input type="hidden" name="bookId" value="${reservedBook.id }"/>
+		<input type="submit" value="予約取消" />
+		</form></center>
 	</tr>
+
 </c:forEach>
 
 </table>
