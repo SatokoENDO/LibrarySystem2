@@ -16,7 +16,7 @@ import service.KindService;
 import service.LibraryService;
 import service.SearchService;
 
-@WebServlet("/searched")
+@WebServlet(urlPatterns = { "/searched" })
 public class SearchedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

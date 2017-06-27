@@ -30,7 +30,7 @@ public class ReservationDao {
 
 			ps.setInt(1, bookId);
 			ps.setInt(2, loginUserId);
-			ps.setInt(3, 0);
+
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

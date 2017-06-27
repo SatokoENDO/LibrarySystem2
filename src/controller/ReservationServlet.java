@@ -31,12 +31,13 @@ public class ReservationServlet extends HttpServlet {
 
 		Book book = new BookService().getBook(bookId);
 
-		System.out.println(book.getStatus());
 		if(book.getStatus() == 1 || book.getStatus() == 2){
 			new ReservationService().reservation(loginUser.getId(), bookId );
 		} else {
 			new ReservationService().request(loginUser.getId(), bookId);
 		}
+
+		response.sendRedirect("search");
 	}
 
 }
