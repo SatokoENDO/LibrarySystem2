@@ -38,10 +38,15 @@
 <table class="reservation">
 <tr>
 	<th>予約中</th>
-	<th>返却予定日</th>
+	<th>予約者数</th>
 	<th>取消</th>
 </tr>
+<c:forEach var="reservedBook" items="${reservedBookList }">
+	<tr>
+		<td>${reservedBook.name }</td>
 
+	</tr>
+</c:forEach>
 </table>
 </body>
 </html>

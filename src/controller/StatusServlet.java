@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Book;
 import beans.User;
+import service.BookService;
 import service.StatusService;
 
 @WebServlet(urlPatterns = { "/status" })
@@ -28,13 +30,17 @@ public class StatusServlet extends HttpServlet{
 
 		List<Book> borrowBookList = new StatusService().getBookInfo(loginUser);
 		List<Integer> reservedBookIdList = new StatusService().getReservedBookId(loginUser.getId());
+		List<Book> reservedBookList = new ArrayList<Book>();
 
-		System.out.println(reservedBookIdList);
+		for(int i = 0 ; i < reservedBookIdList.size() ; i++ ){
+			Book book = new BookService().getBook(reservedBookIdList.get(i));
+			reservedBookList.add(book);
+		}
 
-		session.setAttribute("borrowBooks", borrowBookList);
+		System.out.println(reservedBookList.get(0).getName());
+		request.setAttribute("reservedBookList", reservedBookList);
+		request.setAttribute("borrowBooks", borrowBookList);
 
-
-
-		response.sendRedirect("status.jsp");
+		request.getRequestDispatcher("status.jsp").forward(request, response);
 	}
 }
