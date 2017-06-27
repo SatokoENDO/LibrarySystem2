@@ -1,5 +1,6 @@
 package service;
 
+import static utils.CloseableUtil.*;
 import static utils.DBUtil.*;
 
 import java.sql.Connection;
@@ -42,4 +43,19 @@ public class DemandService {
 
 		}
 	}
+
+	public void updateDemandTime(int userId){
+		Connection connection = null;
+		try{
+			connection = getConnection();
+			DemandDao demandDao = new DemandDao();
+			demandDao.updateDemandTime(connection, userId);
+			commit(connection);
+
+		} finally{
+			close(connection);
+		}
+	}
+
+
 }
