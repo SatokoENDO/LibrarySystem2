@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
-import service.LibraryService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
 
 @WebServlet(urlPatterns = { "/edituser"})
 public class EditUserServlet extends HttpServlet{
@@ -97,7 +97,7 @@ public class EditUserServlet extends HttpServlet{
 			messages.add("メールアドレスは255文字以下で入力してください");
 		}
 
-		if(!mail.matches("[-_@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
+		if(!mail.matches("[-_.@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
 			messages.add("メールアドレスは@を含む半角英数字で入力してください");
 		}
 

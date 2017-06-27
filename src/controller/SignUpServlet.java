@@ -14,10 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import service.LibraryService;
-import service.UserService;
 import beans.Library;
 import beans.User;
+import service.LibraryService;
+import service.UserService;
 
 @WebServlet(urlPatterns = { "/signup"})
 public class SignUpServlet extends HttpServlet{
@@ -108,7 +108,7 @@ public class SignUpServlet extends HttpServlet{
 		}
 
 		if (mail.length() >0) {
-			if(!mail.matches("[-_@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
+			if(!mail.matches("[-_.@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
 				messages.add("メールアドレスは@を含む半角英数字で入力してください");
 			}
 		}

@@ -28,18 +28,40 @@ public class StatusServlet extends HttpServlet{
 
 		User loginUser = (User) session.getAttribute("loginUser");
 
-		List<Book> borrowBookList = new StatusService().getBookInfo(loginUser);
-		List<Integer> reservedBookIdList = new StatusService().getReservedBookId(loginUser.getId());
+		List<Book> borrowBookList = null;
 		List<Book> reservedBookList = new ArrayList<Book>();
+		List<List<Integer>> reservedBookNumber = new ArrayList<List<Integer>>();
+		List<Integer> reservationNumber = new ArrayList<Integer>();
 
-		for(int i = 0 ; i < reservedBookIdList.size() ; i++ ){
-			Book book = new BookService().getBook(reservedBookIdList.get(i));
-			reservedBookList.add(book);
+		if(new StatusService().getBookInfo(loginUser) != null){
+			borrowBookList = new StatusService().getBookInfo(loginUser);
 		}
 
-		System.out.println(reservedBookList.get(0).getName());
+		if(new StatusService().getReservedBookId(loginUser.getId()) != null){
+			List<Integer> reservedBookIdList = new StatusService().getReservedBookId(loginUser.getId());
+
+			if(reservedBookIdList != null){
+				for(int i = 0 ; i < reservedBookIdList.size() ; i++ ){
+
+					Book book = new BookService().getBook(reservedBookIdList.get(i));
+
+					List<Integer> eachReservedBookNumber =new StatusService().getReservationNumber(book.getId());
+					reservedBookNumber.add(eachReservedBookNumber) ;
+					reservedBookList.add(book);
+
+					int reservation = new StatusService().getReservationNumberOf(loginUser.getId(), book.getId());
+
+					System.out.println(reservation);
+					reservationNumber.add(eachReservedBookNumber.indexOf(reservation));
+				}
+			}
+		}
+
+		System.out.println(reservedBookNumber);
+		System.out.println(reservationNumber);
 		request.setAttribute("reservedBookList", reservedBookList);
 		request.setAttribute("borrowBooks", borrowBookList);
+		request.setAttribute("reservationNumber", reservationNumber);
 
 		request.getRequestDispatcher("status.jsp").forward(request, response);
 	}
