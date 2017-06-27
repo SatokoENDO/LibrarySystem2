@@ -39,7 +39,7 @@
 		<th>住所</th><td><input type="text" name="address" value="${editUser.address}"/></td>
 	</tr>
 		<tr>
-		<th>電話番号</th><td><input type="text" name="tel" value="${sditUser.tel}"/></td>
+		<th>電話番号</th><td><input type="text" name="tel" value="${editUser.tel}"/></td>
 	</tr>
 		<tr>
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>

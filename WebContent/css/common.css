@@ -281,7 +281,7 @@ a {
 }
 
 p {
-    margin:10px;
+    margin:5px;
 }
 
 table {
@@ -299,7 +299,6 @@ table {
 }
 
 table th {
-    padding:5px;
     width:800px;
     border:1px solid #999;
     border-width:0 0 1px 1px;
@@ -310,7 +309,6 @@ table th {
 }
 
 table td {
-    padding:5px;
     width:600px;
     border:1px solid #999;
     border-width:0 0 1px 1px;
@@ -321,7 +319,7 @@ table td {
 
 table.result{
 	margin:auto;
-    width:90%;
+    width:99%;
     border-collapse:collapse;
     border:1px solid #999;
     border-spacing:0;
@@ -336,7 +334,7 @@ table.result th {
     border-width:0 0 1px 1px;
     background:#EFEBEF;
     font-weight:bold;
-    font-size:20px;
+    font-size:15px;
     text-align:middle;
 }
 
@@ -346,5 +344,5 @@ table.result td {
     border-width:0 0 1px 1px;
     text-align:middle;
     background:#ffffff;
-    font-size:15px;
+    font-size:13px;
 }

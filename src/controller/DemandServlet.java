@@ -41,25 +41,17 @@ public class DemandServlet extends HttpServlet {
 
 		request.getRequestDispatcher("/demand.jsp").forward(request, response);
 	}
-/*@Override
+
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response)throws IOException, ServletException{
 
-		String bookName = request.getParameter("bookName");
-		String author = request.getParameter("author");
-		String publisher = request.getParameter("publisher");
-		int libraryId = Integer.parseInt(request.getParameter("libraryId"));
-		int kind = Integer.parseInt(request.getParameter("kinds")) ;
+		int userId = Integer.parseInt(request.getParameter("userId"));
 
-		if(bookName != null){
+		System.out.println("aaaa"+userId);
 
-			List<Book> searchedBooks = new SearchService().getBookFromName(bookName, author, publisher, libraryId, kind);
+		new DemandService().updateDemandTime(userId);
 
-			request.setAttribute("books", searchedBooks);
-
-		}
-
-		request.getRequestDispatcher("/searched.jsp").forward(request, response);
-	}*/
+		response.sendRedirect("demand");
+	}
 
 }

@@ -45,15 +45,22 @@ public class LendServlet extends HttpServlet {
 		String id =(request.getParameter("bookId"));
 		String cardNumber = request.getParameter("cardNumber");
 
-
-
-		if (StringUtils.isBlank(id) || id.length()==0) {
-			messages.add("一連番号を入力してください");
+		if(StringUtils.isBlank(cardNumber) || cardNumber.length()==0){
+			messages.add("利用者証番号を入力して下さい");
 		}
 
 		if (! cardNumber.matches("[0-9]{8}")) {
 			messages.add("利用者証番号は半角数字8文字で入力してください");
 		}
+
+		if (StringUtils.isBlank(id) || id.length()==0) {
+			messages.add("一連番号を入力してください");
+		}
+
+		if(!id.matches("[0-9]")){
+			messages.add("一連番号は半角数字で入力して下さい");
+		}
+
 
 		if (messages.size() == 0) {
 			return true;
