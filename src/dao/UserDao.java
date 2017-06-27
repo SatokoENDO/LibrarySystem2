@@ -193,7 +193,6 @@ public class UserDao {
 				int borrowBooks = rs.getInt("borrow_books");
 				int isAdmin = rs.getInt("is_Admin");
 				int reservedBooks = rs.getInt("reserved_books");
-				int demandCount = rs.getInt("demand_count");
 				Timestamp demandTime = rs.getTimestamp("demand_time");
 
 				User user = new User();
@@ -213,7 +212,6 @@ public class UserDao {
 				user.setBorrowBooks(borrowBooks);
 				user.setIsAdmin(isAdmin);
 				user.setReservedBooks(reservedBooks);
-				user.setDemandCount(demandCount);
 				user.setDemandTime(demandTime);
 
 				ret.add(user);
@@ -235,7 +233,9 @@ public class UserDao {
 			sql.append(" name = ?");
 			sql.append(", address = ?");
 			sql.append(", tel = ?");
+			if(!(user.getMail()).isEmpty()){
 			sql.append(", mail = ?");
+			}
 			if(!(user.getPassword()).isEmpty()){
 			sql.append(", password = ?");
 			}
@@ -246,17 +246,21 @@ public class UserDao {
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getAddress());
 			ps.setString(3, user.getTel());
+			if((user.getMail()).isEmpty() ==true){
+				if((user.getPassword()).isEmpty() ==true){
+					ps.setInt(4, user.getLibraryId());
+					ps.setLong(5, user.getCardNumber());
+				}else{
+					ps.setString(4, user.getPassword());
+					ps.setInt(5, user.getLibraryId());
+					ps.setLong(6, user.getCardNumber());
+				}
+			}else{
 			ps.setString(4, user.getMail());
-			if((user.getPassword()).isEmpty() ==true){
-				ps.setInt(5, user.getLibraryId());
-				ps.setLong(6, user.getCardNumber());
-			} else{
-				ps.setString(5, user.getPassword());
-				ps.setInt(6, user.getLibraryId());
-				ps.setLong(7, user.getCardNumber());
+			ps.setInt(5, user.getLibraryId());
+			ps.setLong(6, user.getCardNumber());
 			}
 			ps.executeUpdate();
-
 		}  catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally{

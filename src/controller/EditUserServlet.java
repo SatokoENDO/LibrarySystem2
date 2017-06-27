@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
+import service.LibraryService;
 import beans.Library;
 import beans.User;
-import service.LibraryService;
 
 @WebServlet(urlPatterns = { "/edituser"})
 public class EditUserServlet extends HttpServlet{
@@ -63,9 +63,9 @@ public class EditUserServlet extends HttpServlet{
 			errorUser.setMail(request.getParameter("mail"));
 			errorUser.setPassword(request.getParameter("password"));
 			errorUser.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
-			session.setAttribute("errorUser", errorUser);
+			session.setAttribute("editUser", errorUser);
 			session.setAttribute("errorMessages", messages);
-			response.sendRedirect("signup");
+			response.sendRedirect("edituser.jsp");
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
@@ -93,12 +93,14 @@ public class EditUserServlet extends HttpServlet{
 			messages.add("電話番号は半角数字のみで入力してください");
 		}
 
-		if (mail.length() ==0 || mail.length() > 255) {
+		if (mail.length() > 255) {
 			messages.add("メールアドレスは255文字以下で入力してください");
 		}
 
-		if(!mail.matches("[-_.@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
-			messages.add("メールアドレスは@を含む半角英数字で入力してください");
+		if (mail.length() >0) {
+			if(!mail.matches("[-_.@A-Za-z0-9]+$") || !mail.matches(".*@.*")){
+				messages.add("メールアドレスは@を含む半角英数字で入力してください");
+			}
 		}
 
 		if(!password.equals(checkPassword)){

@@ -13,7 +13,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>延滞書籍一覧</title>
+<title>督促</title>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -24,7 +24,7 @@
 	<th> 資料名 </th>
 	<th> 所蔵図書館 </th>
 	<th> 返却締め切り日 </th>
-	<th> 延滞者 </th>
+	<th> 延滞者名 </th>
 	<th>延滞者電話番号</th>
 	<th>延滞者メールアドレス</th>
 	<th>最新督促日時</th>
@@ -41,7 +41,7 @@
 					</c:if></c:forEach></td>
 		<td><c:forEach items="${users}" var="user">
 					<c:if test = "${delayedBooks.borrower  == user.id}">
-					<fmt:formatDate value="${delayedBooks.dueDate }" pattern="yyyy年MM月dd日"/>
+					<fmt:formatDate value="${delayedBooks.dueDate }" pattern="yyyy年MM月dd日（E）"/>
 					</c:if>
 			</c:forEach></td>
 
@@ -63,7 +63,7 @@
 			</c:forEach></td>
 			<td><c:forEach items="${users}" var="user">
 					<c:if test = "${delayedBooks.borrower  == user.id}">
-						<fmt:formatDate value="${user.demandTime }" pattern="yyyy年MM月dd日"/>
+						<fmt:formatDate value="${user.demandTime }" pattern="yyyy年MM月dd日（E）"/>
 						<form action="demand" method="post">
 						<input type="hidden" name="userId" value="${user.id}">
 								<p>
