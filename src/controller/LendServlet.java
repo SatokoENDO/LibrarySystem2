@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
+import service.UserService;
+
 @WebServlet(urlPatterns = { "/lend" })
 public class LendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,6 +46,15 @@ public class LendServlet extends HttpServlet {
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
 		String id =(request.getParameter("bookId"));
 		String cardNumber = request.getParameter("cardNumber");
+		long cardNumberForBooks = Long.parseLong(request.getParameter("cardNumber"));
+		System.out.println(cardNumberForBooks);
+
+		UserService userService = new UserService();
+		int borrowBooks = userService.getBorrowBooks(cardNumberForBooks);
+
+		if(borrowBooks == 20){
+			messages.add("貸し出し冊数が上限です");
+		}
 
 		if(StringUtils.isBlank(cardNumber) || cardNumber.length()==0){
 			messages.add("利用者証番号を入力して下さい");
