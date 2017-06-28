@@ -256,9 +256,16 @@ public class UserDao {
 					ps.setLong(6, user.getCardNumber());
 				}
 			}else{
-			ps.setString(4, user.getMail());
-			ps.setInt(5, user.getLibraryId());
-			ps.setLong(6, user.getCardNumber());
+				if((user.getPassword()).isEmpty() ==true){
+					ps.setString(4, user.getMail());
+					ps.setInt(5, user.getLibraryId());
+					ps.setLong(6, user.getCardNumber());
+				}else{
+					ps.setString(4, user.getMail());
+					ps.setString(5, user.getPassword());
+					ps.setInt(6, user.getLibraryId());
+					ps.setLong(7, user.getCardNumber());
+				}
 			}
 			ps.executeUpdate();
 		}  catch (SQLException e) {
