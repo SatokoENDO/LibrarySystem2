@@ -66,19 +66,17 @@ public class LendDao {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append("delete from reservations ");
-			sql.append(" WHERE");
+			sql.append(" WHERE ");
 			sql.append(" user_id = ?");
-			sql.append(" and book_id = ?");
+			sql.append(" and book_id = ? ");
 
 			ps2 = connection.prepareStatement(sql.toString());
 
 			ps2.setInt(1, book.getBorrower());
 			ps2.setInt(2, book.getId());
 
-			int count = ps2.executeUpdate();
-			if (count == 0) {
-				throw new NoRowsUpdatedRuntimeException();
-			}
+			ps2.executeUpdate();
+
 		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally {
