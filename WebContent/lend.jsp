@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>貸出画面</title>
+<title>貸出</title>
 </head>
 <body>
 	<div class="main-contents">

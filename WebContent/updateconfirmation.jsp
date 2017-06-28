@@ -59,7 +59,7 @@ function update(){
 	<center> <form action="update-confirm" method="post">
 <div class="update"><input type="submit" value="この内容で登録" onClick="update()" style="cursor: hand; cursor:pointer;"></div><br />
 	</form>
-	<br>
+
 	<input type="button" onclick="location.href='http://localhost:8080/LibrarySystem2/userinfo'"value="修正" style="cursor: hand; cursor:pointer;"/>
 	</center>
 	</div>
