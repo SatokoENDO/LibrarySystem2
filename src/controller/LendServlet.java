@@ -57,7 +57,7 @@ public class LendServlet extends HttpServlet {
 			messages.add("一連番号を入力してください");
 		}
 
-		if(!id.matches("[0-9]")){
+		if(!id.matches("^[0-9]+$")){
 			messages.add("一連番号は半角数字で入力して下さい");
 		}
 
