@@ -33,7 +33,8 @@
 
 <c:if test="${loginUser != null}" >
 <a href="search" class="search-btn">資料検索</a>
-<a href="status" class="status-btn">利用状況確認</a><c:if test="${loginUser.isAdmin==1}" >
+<a href="status" class="status-btn">利用状況確認</a>
+<c:if test="${loginUser.isAdmin==1}" >
 <a href="admin"  class="admin-btn">運営業務</a>
 
 </c:if>

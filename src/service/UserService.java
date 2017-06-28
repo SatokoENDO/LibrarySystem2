@@ -144,4 +144,27 @@ public class UserService {
 			 close(connection);
 		 }
 	}
+
+//	利用者証番号から借りている冊数を照会する
+	public int getBorrowBooks(long cardNumberForBooks){
+
+		Connection connection = null;
+		try {
+		connection = getConnection();
+		UserDao userDao = new UserDao();
+		int ret = userDao.getBorrowBooks(connection, cardNumberForBooks);
+
+		commit(connection);
+
+		return ret;
+	} catch (RuntimeException e) {
+		rollback(connection);
+		throw e;
+	} catch (Error e) {
+		rollback(connection);
+		throw e;
+	} finally {
+		close(connection);
+	}
+}
 }

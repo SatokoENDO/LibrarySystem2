@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>ユーザー編集確認画面</title>
+<title>登録情報変更確認</title>
 <script type="text/javascript">
 function update(){
 	window.alert('この内容で登録しますか？');
@@ -59,7 +59,7 @@ function update(){
 	<center> <form action="update-confirm" method="post">
 <div class="update"><input type="submit" value="この内容で登録" onClick="update()" style="cursor: hand; cursor:pointer;"></div><br />
 	</form>
-	<br>
+
 	<input type="button" onclick="location.href='http://localhost:8080/LibrarySystem2/userinfo'"value="修正" style="cursor: hand; cursor:pointer;"/>
 	</center>
 	</div>

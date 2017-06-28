@@ -245,6 +245,32 @@ public class UserDao {
 		}
 	}
 
+	//借りてる冊数を参照
+	public int getBorrowBooks(Connection connection, long cardNumberForBooks) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT borrow_books FROM users WHERE card_number = ? " );
+			System.out.println(connection);
+			ps = connection.prepareStatement(sql.toString());
+			ps.setLong(1, cardNumberForBooks);
+			ResultSet rs = ps.executeQuery();
+
+			int borrowBooksCount = 0;
+			while (rs.next()) {
+				int borrowBooks = rs.getInt("borrow_books");
+				borrowBooksCount = borrowBooks;
+			}
+			return borrowBooksCount;
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
+
 	//ユーザー編集
 	public void update(Connection connection, User user){
 		PreparedStatement ps = null;
@@ -289,9 +315,12 @@ public class UserDao {
 					ps.setInt(6, user.getLibraryId());
 					ps.setLong(7, user.getCardNumber());
 				}
+<<<<<<< HEAD
 			ps.setString(4, user.getMail());
 			ps.setInt(5, user.getLibraryId());
 			ps.setLong(6, user.getCardNumber());
+=======
+>>>>>>> 9e05c0472d76390a3f3608df1fe78e78c1afac05
 			}
 			ps.executeUpdate();
 		}  catch (SQLException e) {

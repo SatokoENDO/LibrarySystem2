@@ -21,6 +21,7 @@ import beans.Book;
 public class ReturnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -37,7 +38,7 @@ public class ReturnServlet extends HttpServlet {
 
 		if(isValid(request, messages) == true) {
 
-			//予約の有無にかかわらず2に戻す
+
 			int id = Integer.parseInt(request.getParameter("bookId"));
 			Book book =  new BookService().getBook(id);
 
@@ -46,14 +47,19 @@ public class ReturnServlet extends HttpServlet {
 			int reservationNumber = book.getReservationNumber();
 			if(reservationNumber>0){
 				new BookService().returnBookToFront(book);
-				System.out.println("reservation aruyo");
 
+				String validationMessage = "予約者がいます。書棚には戻さず、カウンターで保管してください";
+
+				session.setAttribute("validationMessage", validationMessage);
+
+				response.sendRedirect("return");
 			}else{
 				new BookService().returnBookToShelf(book);
+				response.sendRedirect("return");
 			}
 		}else {
 			session.setAttribute("errorMessages", messages);
-			response.sendRedirect("adimin");
+			response.sendRedirect("return");
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {

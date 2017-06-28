@@ -14,7 +14,7 @@
 <a href="./">戻る</a> <div align="right"><a href="logout" class = "logout-btn">ログアウト</a></div>
 <br>
 
-<a href="lend" class="lend-btn">貸し出し</a>&nbsp;
+<a href="lend" class="lend-btn">貸出</a>&nbsp;
 <a href="return" class="return-btn">返却</a>&nbsp;&nbsp;<img src="rakuda6.gif"><img src="rakuda6.gif">&nbsp;
 
 <br>

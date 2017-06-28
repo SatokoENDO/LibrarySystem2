@@ -35,7 +35,7 @@
 	<br>
 	<div class="search">
 		<form action="searched" method="get">
-			書名: <input type="text" name="bookName"><br />
+			資料名: <input type="text" name="bookName"><br />
 			著者: <input
 				type="text" name="author"><br />
 			出版社: <input type="text"

@@ -73,7 +73,7 @@ public class RegistrationServlet extends HttpServlet {
 		errorBook.setAuthor(request.getParameter("author"));
 		errorBook.setPublisher(request.getParameter("publisher"));
 		errorBook.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
-		session.setAttribute("errorBooks", errorBook);
+		session.setAttribute("Books", errorBook);
 		session.setAttribute("errorMessages", messages);
 		response.sendRedirect("registration");
 	}
