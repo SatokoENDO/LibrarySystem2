@@ -47,16 +47,19 @@ public class ReturnServlet extends HttpServlet {
 			int reservationNumber = book.getReservationNumber();
 			if(reservationNumber>0){
 				new BookService().returnBookToFront(book);
-				System.out.println("reservation aruyo");//
-				session.setAttribute("validationMessages", messages);
-				messages.add("予約者がいます。書棚には戻さず、カウンターで保管してください");
 
+				String validationMessage = "予約者がいます。書棚には戻さず、カウンターで保管してください";
+
+				session.setAttribute("validationMessage", validationMessage);
+
+				response.sendRedirect("return");
 			}else{
 				new BookService().returnBookToShelf(book);
+				response.sendRedirect("return");
 			}
 		}else {
 			session.setAttribute("errorMessages", messages);
-			request.getRequestDispatcher("return.jsp").forward(request, response);
+			response.sendRedirect("return");
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
