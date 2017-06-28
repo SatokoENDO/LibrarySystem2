@@ -81,6 +81,28 @@ public class StatusDao {
 		}
 	}
 
+	public List<Integer> getReservedBookId(Connection connection) {
+
+		PreparedStatement ps = null;
+		try {
+			String sql = "select * from reservations where reservation_type = 0 ";
+
+			ps = connection.prepareStatement(sql);
+
+			ResultSet rs = ps.executeQuery();
+			List<Integer> bookList = toBookIdList(rs);
+
+			if (bookList.isEmpty() == true) {
+				return null;
+			} else {
+				return bookList;
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
 	public List<Integer> getReservedBookId(Connection connection, int loginUserId) {
 
 		PreparedStatement ps = null;

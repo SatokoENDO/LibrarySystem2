@@ -29,13 +29,17 @@
 	<th>連絡確認</th>
 	<th>取消ボタン</th>
 </tr>
-<c:forEach var="reservationBookList" items="${reservationBooks }">
+<c:forEach var="reservedBookList" items="${reservedBookList }" varStatus="status">
 	<tr>
+		<td></td>
+		<td>${reservedBookList.id }</td>
+		<td>${reservedBookList.name }</td>
+		<td>${reservedBookUserList[status.index].name }</td>
+		<td>${reservedBookUserList[status.index].mail }</td>
+		<td>${reservedBookUserList[status.index].tel }</td>
+		<td>${reservedBookUserList[status.index].address }</td>
 		<td>(工事中)</td>
-		<td>${reservationBookList.id }</td>
-		<td>${reservationBookList.name }</td>
 		<td>(工事中)</td>
-		<td>${reservationBookList.id }</td>
 	</tr>
 </c:forEach>
 

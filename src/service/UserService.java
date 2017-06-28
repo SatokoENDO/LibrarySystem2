@@ -5,9 +5,9 @@ import static utils.DBUtil.*;
 
 import java.sql.Connection;
 
-import utils.CipherUtil;
 import beans.User;
 import dao.UserDao;
+import utils.CipherUtil;
 
 public class UserService {
 //  登録
@@ -100,7 +100,24 @@ public class UserService {
 		}
 	}
 
+	public User getUser(int userId){
+		Connection connection = null;
+		try{
+			connection = getConnection();
 
+			UserDao userDao = new UserDao();
+			User user = userDao.getUser(connection, userId);
+
+			commit(connection);
+
+			return user;
+		}catch (RuntimeException e){
+			rollback(connection);
+			throw e;
+		}finally{
+			close(connection);
+		}
+	}
 	//ユーザー編集
 	public void update(User user){
 		Connection connection = null;

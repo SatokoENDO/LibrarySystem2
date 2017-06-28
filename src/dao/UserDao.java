@@ -150,6 +150,29 @@ public class UserDao {
 		}
 	}
 
+	public User getUser(Connection connection, int userId) {
+
+		PreparedStatement ps = null;
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM users WHERE id = ? ");
+			ps = connection.prepareStatement(sql.toString());
+			ps.setLong(1, userId);
+			ResultSet rs = ps.executeQuery();
+			List<User> userList = toUserList(rs);
+
+			if (userList.isEmpty() == true) {
+				return null;
+			} else {
+				return userList.get(0);
+			}
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
 	public List<User> getAllUser(Connection connection) {
 
 		PreparedStatement ps = null;
@@ -256,6 +279,16 @@ public class UserDao {
 					ps.setLong(6, user.getCardNumber());
 				}
 			}else{
+				if((user.getPassword()).isEmpty() ==true){
+					ps.setString(4, user.getMail());
+					ps.setInt(5, user.getLibraryId());
+					ps.setLong(6, user.getCardNumber());
+				}else{
+					ps.setString(4, user.getMail());
+					ps.setString(5, user.getPassword());
+					ps.setInt(6, user.getLibraryId());
+					ps.setLong(7, user.getCardNumber());
+				}
 			ps.setString(4, user.getMail());
 			ps.setInt(5, user.getLibraryId());
 			ps.setLong(6, user.getCardNumber());

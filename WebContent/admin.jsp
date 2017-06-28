@@ -25,6 +25,7 @@
 <a href="signup" class="register-btn">利用者登録</a>&nbsp;
 <a href="inquiry" class="inquiry-btn">利用者照会</a>&nbsp;
 <a href="demand" class="demand-btn">督促</a>&nbsp;
+<a href="reservationlist" class="demand-btn">予約者リスト</a>&nbsp;
 
 </div>
 </body>
