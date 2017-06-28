@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
-<title>ユーザー編集確認画面</title>
+<title>登録情報変更確認</title>
 <script type="text/javascript">
 function update(){
 	window.alert('この内容で登録しますか？');
