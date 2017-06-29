@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,6 +109,8 @@ public class BookDao {
 				int reservationNumber = rs.getInt("reservation_number");
 				int shelfId = rs.getInt("shelf_id");
 				String isbn = rs.getString("isbn");
+				int deliveryStatus = rs.getInt("delivery_status");
+				Timestamp notificationTime = rs.getTimestamp("notification_time");
 
 
 				Book book = new Book();
@@ -123,6 +126,9 @@ public class BookDao {
 				book.setReservationNumber(reservationNumber);
 				book.setShelfId(shelfId);
 				book.setISBN(isbn);
+				book.setDeliveryStatus(deliveryStatus);
+				book.setNotificationTime(notificationTime);
+
 
 
 				ret.add(book);
