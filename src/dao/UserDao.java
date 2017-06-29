@@ -209,7 +209,7 @@ public class UserDao {
 				String tel = rs.getString("tel");
 				if(!(rs.getString("Mail")).isEmpty()){
 					String mail = rs.getString("mail");;
-					}
+				}
 				String mail = rs.getString("mail");
 				String password = rs.getString("password");
 				int libraryId = rs.getInt("library_id");
@@ -283,10 +283,10 @@ public class UserDao {
 			sql.append(", address = ?");
 			sql.append(", tel = ?");
 			if(!(user.getMail()).isEmpty()){
-			sql.append(", mail = ?");
+				sql.append(", mail = ?");
 			}
 			if(!(user.getPassword()).isEmpty()){
-			sql.append(", password = ?");
+				sql.append(", password = ?");
 			}
 			sql.append(", library_id = ?");
 			sql.append(" WHERE card_number = ?");
@@ -315,13 +315,9 @@ public class UserDao {
 					ps.setInt(6, user.getLibraryId());
 					ps.setLong(7, user.getCardNumber());
 				}
-<<<<<<< HEAD
-=======
-
->>>>>>> 812c06f1607b1643aefa1d567bf2d29932ab1895
+				ps.executeUpdate();
 			}
-			ps.executeUpdate();
-		}  catch (SQLException e) {
+		}catch (SQLException e) {
 			throw new SQLRuntimeException(e);
 		} finally{
 			close(ps);
