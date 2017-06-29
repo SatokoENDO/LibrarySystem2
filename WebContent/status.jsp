@@ -16,11 +16,11 @@
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
 <a href="admin"  class="prev">戻る</a>
-<a href="userinfo">登録情報の確認・変更</a>
 <c:if test="${loginUser != null}" >
 <div align="right"><a href="logout" class = "logout-btn">ログアウト</a></div>
 <marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
 </c:if>
+<a href="userinfo" class = "userinfo-btn">登録情報の確認・変更</a>
 <table class="status">
 <tr>
 	<th>貸出資料</th>
@@ -36,7 +36,7 @@
 </table>
 <br><br>
 
-<table class="delivery">
+<table class="status">
 <tr>
 	<th>受取申請資料</th>
 	<th>著者</th>
@@ -50,7 +50,7 @@
 </table>
 
 <br><br>
-<table class="reservation">
+<table class="status">
 <tr>
 	<th>予約資料</th>
 	<th>著者</th>

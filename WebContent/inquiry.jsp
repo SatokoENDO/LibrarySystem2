@@ -41,12 +41,16 @@
 
 	<br>
 	<br>
-	<div class="inquiry">
-		<form action="inquiry" method="post">
-			氏名: <input type="text" name="name"><br />
-			住所: <input type="text" name="address"><br />
-			<input type="submit" value="照会">
-		</form>
-	</div>
+	<form action = "inquiry" method = "post">
+<table class="inquiry">
+	<tr>
+		<th>氏名</th><td><input type="text" name="name"/><br>(半角数字8文字)</td>
+	</tr>
+	<tr>
+		<th>住所</th><td><input type="text" name="address" /></td>
+	</tr>
+</table><br><center><input type = "submit" value ="照会"></center><br/><br>
+</form>
+
 </body>
 </html>
