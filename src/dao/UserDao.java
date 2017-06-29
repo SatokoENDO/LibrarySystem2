@@ -315,6 +315,10 @@ public class UserDao {
 					ps.setInt(6, user.getLibraryId());
 					ps.setLong(7, user.getCardNumber());
 				}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 812c06f1607b1643aefa1d567bf2d29932ab1895
 			}
 			ps.executeUpdate();
 		}  catch (SQLException e) {

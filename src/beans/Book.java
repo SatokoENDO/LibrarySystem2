@@ -20,7 +20,8 @@ public class Book implements Serializable {
 	private Timestamp returnedTime;
 	private int reservationNumber;
 	private Timestamp dueDate;
-
+	private Timestamp notificationTime;
+	private int deliveryStatus;
 	public int getId() {
 		return id;
 	}
@@ -104,5 +105,17 @@ public class Book implements Serializable {
 	}
 	public void setDueDate(Timestamp dueDate) {
 		this.dueDate = dueDate;
+	}
+	public Timestamp getNotificationTime() {
+		return notificationTime;
+	}
+	public void setNotificationTime(Timestamp notificationTime) {
+		this.notificationTime = notificationTime;
+	}
+	public int getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(int deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
 }

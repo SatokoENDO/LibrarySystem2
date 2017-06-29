@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +12,6 @@ import javax.servlet.http.HttpSession;
 import beans.Book;
 import beans.User;
 import service.BookService;
-import service.StatusService;
-import service.UserService;
 
 @WebServlet(urlPatterns = { "/reservationlist" })
 public class ReservationListServlet extends HttpServlet {
@@ -27,29 +23,11 @@ public class ReservationListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		User loginUser = (User) session.getAttribute("loginUser");
-		List<Book> reservedBookList = new ArrayList<Book>();
-		List<Integer> reservedBookIdList = new ArrayList<Integer>();
-		List<User> reservedBookUserList = new ArrayList<User>();
 
-		if (new StatusService().getReservedBookId() != null) {
-			reservedBookIdList = new StatusService().getReservedBookId();
-
-			for (int i = 0; i < reservedBookIdList.size(); i++) {
-				Book book = new BookService().getBook(reservedBookIdList.get(i));
-				if (loginUser.getLibraryId() == book.getLibraryId()) {
-					User reservedUser = new UserService().getUser(book.getBorrower());
-					System.out.println(book.getBorrower());
-					reservedBookUserList.add(reservedUser);
-					reservedBookList.add(book);
-				}
-
-
-			}
-
-			request.setAttribute("reservedBookUserList", reservedBookUserList);
-			request.setAttribute("reservedBookList", reservedBookList);
+		if(request.getParameter("bookId") != null){
+			int bookId = Integer.parseInt(request.getParameter("bookId"));
+			Book book = new BookService().getBook(bookId);
 		}
-
 		request.getRequestDispatcher("reservationlist.jsp").forward(request, response);
 	}
 
