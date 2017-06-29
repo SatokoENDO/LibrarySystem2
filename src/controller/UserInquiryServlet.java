@@ -58,15 +58,21 @@ public class UserInquiryServlet extends HttpServlet {
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
+		User searchedUser = new SearchService().getUser(name, address);
 
+		if (searchedUser==null) {
+			messages.add("該当する利用者は見つかりません");
+		}else{
+			if (name.length() ==0) {
+				messages.add("名前を入力してください");
+			}
 
-		if (name.length() ==0) {
-			messages.add("名前を入力してください");
+			if (address.length() ==0) {
+				messages.add("住所を入力してください");
+			}
 		}
 
-		if (address.length() ==0) {
-			messages.add("住所を入力してください");
-		}
+
 
 		if (messages.size() == 0) {
 			return true;
