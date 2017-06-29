@@ -45,7 +45,7 @@
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>
 	</tr>
 		<tr>
-		<th>パスワード ※8文字以上255字以下の半角文字</th><td><input type="password" name="passwprd" value=""></td>
+		<th>パスワード </th><td><input type="password" name="password" value=""></td>
 	</tr>
 	<tr>
 		<th>パスワード(確認)</th><td><input type="password" name="checkPassword" /></td>
@@ -54,9 +54,16 @@
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"><c:if test = "${editUser.libraryId == library.id}">selected</c:if>
+				<c:if test = "${editUser.libraryId == library.id}">
+						<option value="${library.id}"selected>
 							<c:out value="${library.name}" />
 						</option>
+						</c:if>
+				<c:if test = "${editUser.libraryId != library.id}">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+						</c:if>
 				</c:forEach>
 			</select></td>
 	</tr>

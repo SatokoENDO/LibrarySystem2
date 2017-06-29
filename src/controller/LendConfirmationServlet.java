@@ -89,6 +89,6 @@ public class LendConfirmationServlet extends HttpServlet {
 		session.removeAttribute("kindId");
 		session.removeAttribute("bookId");
 
-		response.sendRedirect("admin");
+		response.sendRedirect("lend");
 	}
 }

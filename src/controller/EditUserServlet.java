@@ -65,7 +65,7 @@ public class EditUserServlet extends HttpServlet{
 			errorUser.setLibraryId(Integer.parseInt(request.getParameter("libraryId")));
 			session.setAttribute("editUser", errorUser);
 			session.setAttribute("errorMessages", messages);
-			response.sendRedirect("edituser.jsp");
+			response.sendRedirect("edituser");
 		}
 	}
 	private boolean isValid(HttpServletRequest request, List<String> messages) {

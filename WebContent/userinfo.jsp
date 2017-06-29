@@ -72,9 +72,16 @@
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"<c:if test = "${editUser.libraryId == library.id}">selected</c:if>>
+				<c:if test = "${editUser.libraryId == library.id}">
+						<option value="${library.id}"selected>
 							<c:out value="${library.name}" />
 						</option>
+						</c:if>
+				<c:if test = "${editUser.libraryId != library.id}">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+						</c:if>
 				</c:forEach>
 			</select></td>
 	</tr>

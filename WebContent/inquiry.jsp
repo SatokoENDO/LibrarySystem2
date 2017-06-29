@@ -44,7 +44,7 @@
 	<form action = "inquiry" method = "post">
 <table class="inquiry">
 	<tr>
-		<th>氏名</th><td><input type="text" name="name"/><br>(半角数字8文字)</td>
+		<th>氏名</th><td><input type="text" name="name"/><br></td>
 	</tr>
 	<tr>
 		<th>住所</th><td><input type="text" name="address" /></td>

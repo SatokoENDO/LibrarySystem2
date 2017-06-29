@@ -46,19 +46,25 @@ public class LendServlet extends HttpServlet {
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
 		String id =(request.getParameter("bookId"));
 		String cardNumber = request.getParameter("cardNumber");
+		int borrowBooks=0;
+		try{
 		long cardNumberForBooks = Long.parseLong(request.getParameter("cardNumber"));
 		System.out.println(cardNumberForBooks);
 
 		UserService userService = new UserService();
-		int borrowBooks = userService.getBorrowBooks(cardNumberForBooks);
+		borrowBooks = userService.getBorrowBooks(cardNumberForBooks);
+		}catch(NumberFormatException e){
+			messages.add("利用者証番号を入力して下さい");
+		}
+
 
 		if(borrowBooks == 20){
 			messages.add("貸し出し冊数が上限です");
 		}
 
-		if(StringUtils.isBlank(cardNumber) || cardNumber.length()==0){
+		/*if(StringUtils.isBlank(cardNumber) || cardNumber.length()==0){
 			messages.add("利用者証番号を入力して下さい");
-		}
+		}*/
 
 		if (! cardNumber.matches("[0-9]{8}")) {
 			messages.add("利用者証番号は半角数字8文字で入力してください");

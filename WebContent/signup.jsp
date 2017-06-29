@@ -29,16 +29,16 @@
 <form action="signup" method="post"><br />
 <table class="signup">
 	<tr>
-		<th>氏名</th><td><input type="text" name="name" value="${user.name}" /></td>
+		<th>氏名</th><td><input type="text" name="name" value="${errorUser.name}" /></td>
 	</tr>
 		<tr>
-		<th>住所</th><td><input type="text" name="address" value="${user.address}"/></td>
+		<th>住所</th><td><input type="text" name="address" value="${errorUser.address}"/></td>
 	</tr>
 		<tr>
-		<th>電話番号</th><td><input type="text" name="tel" value="${user.tel}"/></td>
+		<th>電話番号</th><td><input type="text" name="tel" value="${errorUser.tel}"/></td>
 	</tr>
 		<tr>
-		<th>メールアドレス</th><td><input type="text" name="mail" value="${user.mail}"/></td>
+		<th>メールアドレス</th><td><input type="text" name="mail" value="${errorUser.mail}"/></td>
 	</tr>
 		<tr>
 		<th>権限</th><td><input type="checkbox" name="isAdmin" value="1">運営</td>
@@ -47,9 +47,16 @@
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"><c:if test = "${user.libraryId == library.id}">selected</c:if>
+				<c:if test = "${errorUser.libraryId == library.id}">
+						<option value="${library.id}"selected>
 							<c:out value="${library.name}" />
 						</option>
+						</c:if>
+				<c:if test = "${errorUser.libraryId != library.id}">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+						</c:if>
 				</c:forEach>
 			</select></td>
 	</tr>

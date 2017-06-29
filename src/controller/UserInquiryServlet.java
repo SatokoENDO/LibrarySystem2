@@ -47,10 +47,10 @@ public class UserInquiryServlet extends HttpServlet {
 
 			request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
 		}else {
-			User errorUser = new User();
-			errorUser.setName(request.getParameter("name"));
-			errorUser.setAddress(request.getParameter("address"));
-			session.setAttribute("errorUser", errorUser);
+			User editUser = new User();
+			editUser.setName(request.getParameter("name"));
+			editUser.setAddress(request.getParameter("address"));
+			session.setAttribute("editUser", editUser);
 			session.setAttribute("errorMessages", messages);
 			response.sendRedirect("inquiry");
 		}
