@@ -42,6 +42,7 @@
 		<th>連絡日時</th><td><fmt:formatDate value="${book.notificationTime }" pattern="yyyy年MM月dd日（E）"/></td>
 	</tr>
 	</c:if>
+	<c:if test = "${reservedUser != null }">
 	<tr>
 	<th>受取図書館</th><td>
 				<c:forEach items="${libraries}" var="library">
@@ -63,24 +64,25 @@
 	<tr>
 		<th>住所</th><td><c:out value="${reservedUser.address }" /></td>
 	</tr>
+	</c:if>
 	</table>
-
-<c:if test = "${reservedUser.libraryId == loginUser.libraryId }">
-<form action = "reservationlist" method = "post">
-	<input type = "hidden" name = reservationBookId value = "${book.id }">
-	<input type = "submit" value = "連絡日時更新">
-</form>
-</c:if>
-<c:if test = "${reservedUser.libraryId != loginUser.libraryId}">
-	<form action = "reservationlist" method = "post">
-		<input type = "hidden" name = reservationBookIdTo value = "${book.id }">
-		<input type = "submit" value = "配送確認">
-	</form>
-</c:if>
-<c:if test="${(reservationUser.name == null) && (book.libraryId == loginUser.libraryId) }">
+<br>
+<c:if test="${(reservationUser == null) && (book.libraryId == loginUser.libraryId) }">
 	<form action = "reservationlist" method = "post">
 		<input type = "hidden" name = returnBookId value = "${book.id }">
-		<input type = "submit" value = "受取確認">
+		<center><input type = "submit" value = "受取確認"></center>
+	</form>
+</c:if>
+<c:if test = "${(reservationUser != null) && (reservedUser.libraryId == loginUser.libraryId )}">
+<form action = "reservationlist" method = "post">
+	<input type = "hidden" name = reservationBookId value = "${book.id }">
+	<center><input type = "submit" value = "連絡日時更新"></center>
+</form>
+</c:if>
+<c:if test = "${(reservationUser != null) && (reservedUser.libraryId != loginUser.libraryId)}">
+	<form action = "reservationlist" method = "post">
+		<input type = "hidden" name = reservationBookIdTo value = "${book.id }">
+		<center><input type = "submit" value = "配送確認"></center>
 	</form>
 </c:if>
 

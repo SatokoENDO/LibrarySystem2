@@ -43,6 +43,7 @@ public class ReservationListServlet extends HttpServlet {
 		request.setAttribute("libraries", libraries);
 		request.setAttribute("loginUser", loginUser);
 		request.setAttribute("bookId", bookId);
+
 		request.getRequestDispatcher("reservationlist.jsp").forward(request, response);
 	}
 
