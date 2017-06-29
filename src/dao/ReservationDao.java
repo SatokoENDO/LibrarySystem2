@@ -4,7 +4,9 @@ import static utils.CloseableUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import exception.SQLRuntimeException;
 
@@ -174,5 +176,49 @@ public class ReservationDao {
 			close(ps);
 		}
 	}
+//book.idから次予約または受取申請しているuserIdを探し出す
+	public int select(Connection connection, int bookId ){
 
+		PreparedStatement ps = null;
+		try {
+			Statement statement = connection.createStatement();
+			String mySql = "select user_id from reservations WHERE reservation_number=(SELECT MIN(reservation_number) FROM reservations ) and book_id = " + bookId ;
+			ResultSet rs = statement.executeQuery(mySql);
+
+			int reservationUserId = 0;
+			while (rs.next()){
+				int id = rs.getInt("user_id");
+				reservationUserId = id ;
+			}
+			return reservationUserId;
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
+			close(ps);
+		}
+	}
+
+	public void updateNotificationTime(Connection connection, int bookId){
+		PreparedStatement ps = null;
+
+		try{
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE books SET");
+			sql.append(" notification_time = CURRENT_TIMESTAMP ");
+			sql.append(" WHERE id = ? ;");
+
+			ps = connection.prepareStatement(sql.toString());
+
+			ps.setInt(1, bookId);
+
+			ps.executeUpdate();
+
+		}  catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally{
+			close(ps);
+		}
+	}
 }

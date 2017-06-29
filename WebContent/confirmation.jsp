@@ -36,7 +36,6 @@
 		<th>メールアドレス</th><td><c:out value="${userMail }"/></td>
 	</tr>
 		<tr>
-		<tr>
 		<th>初期パスワード</th><td><c:out value="${userPassword }"/></td>
 	</tr>
 	<tr>

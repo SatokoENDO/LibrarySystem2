@@ -71,4 +71,39 @@ public class ReservationService {
 			close(connection);
 		}
 	}
+
+	public int select(int bookId){
+
+		Connection connection = null;
+		try{
+			connection = getConnection();
+
+			ReservationDao reservationDao = new ReservationDao();
+			int ret = reservationDao.select(connection, bookId);
+			commit(connection);
+
+			return ret;
+		} catch (RuntimeException e) {
+			rollback(connection);
+			throw e;
+		} catch (Error e) {
+			rollback(connection);
+			throw e;
+		} finally {
+			close(connection);
+		}
+	}
+
+	public void updateNotificationTime(int bookId){
+		Connection connection = null;
+		try{
+			connection = getConnection();
+			ReservationDao reservationDao = new ReservationDao();
+			reservationDao.updateNotificationTime(connection, bookId);
+			commit(connection);
+
+		} finally{
+			close(connection);
+		}
+	}
 }
