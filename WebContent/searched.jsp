@@ -12,7 +12,7 @@
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<a href="search">戻る</a>
+<a href="search"  class="prev">戻る</a>
 <div class="refine">
 		<form action="searched" method="get">
 			<input type ="hidden" name = "bookName" value = "${bookName}">
