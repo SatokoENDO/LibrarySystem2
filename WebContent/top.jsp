@@ -16,6 +16,22 @@
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
+<c:if test = "${not empty errorMessages}">
+		<div class ="errorMessages">
+			<ul>
+				<c:forEach items = "${errorMessages}" var = "message">
+					<li><c:out value = "${message}"/>
+				</c:forEach>
+			</ul>
+		</div>
+	<c:remove var = "errorMessages" scope = "session"/>
+	</c:if>
+	<c:if test = "${empty errorMessages}">
+		<div class ="validationMessage">
+			<p><c:out value = "${validationMessage}"/></p>
+		</div>
+	<c:remove var = "validationMessage" scope = "session"/>
+	</c:if>
 <br>
 <c:if test="${loginUser == null}" >
 <a href="login" class="login-btn">ログイン</a>

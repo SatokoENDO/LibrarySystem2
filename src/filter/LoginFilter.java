@@ -1,4 +1,4 @@
-/*package filter;
+package filter;
 
 import java.io.IOException;
 
@@ -55,4 +55,4 @@ public class LoginFilter implements Filter{
 	}
 
 
-}*/
+}

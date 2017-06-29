@@ -11,7 +11,7 @@
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<a href="admin">戻る</a>
+<a href="admin"  class="prev">戻る</a>
 <c:if test="${loginUser != null}" >
 <div align="right"><a href="logout" class = "logout-btn">ログアウト</a></div>
 <marquee behavior="alternate"><font color="#000000" face="メイリオ" size="5"><b>ログイン中です<br>席を離れるときは必ずログアウトしてください</b></font></marquee>
@@ -45,7 +45,7 @@
 		<th>メールアドレス</th><td><input type="text" name="mail" value="${editUser.mail}"/></td>
 	</tr>
 		<tr>
-		<th>パスワード ※8文字以上255字以下の半角文字</th><td><input type="password" name="passwprd" value=""></td>
+		<th>パスワード </th><td><input type="password" name="password" value=""></td>
 	</tr>
 	<tr>
 		<th>パスワード(確認)</th><td><input type="password" name="checkPassword" /></td>
@@ -54,9 +54,16 @@
 		<tr>
 	<th>受取図書館</th><td><select name="libraryId">
 				<c:forEach items="${libraries}" var="library">
-						<option value="${library.id}"><c:if test = "${editUser.libraryId == library.id}">selected</c:if>
+				<c:if test = "${editUser.libraryId == library.id}">
+						<option value="${library.id}"selected>
 							<c:out value="${library.name}" />
 						</option>
+						</c:if>
+				<c:if test = "${editUser.libraryId != library.id}">
+						<option value="${library.id}">
+							<c:out value="${library.name}" />
+						</option>
+						</c:if>
 				</c:forEach>
 			</select></td>
 	</tr>

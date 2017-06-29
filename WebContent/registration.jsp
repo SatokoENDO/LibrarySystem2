@@ -30,7 +30,7 @@
 	</c:if>
 	<div class="main">
 
-		<br><a href = "admin">戻る</a>
+		<br><a href = "admin"  class="prev">戻る</a>
 <form action="registration" method="post">
 <table class="registration">
 	<tr>

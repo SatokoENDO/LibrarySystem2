@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Book;
-import beans.Kind;
-import beans.User;
 import service.BookService;
 import service.KindService;
 import service.LendService;
 import service.UserService;
+import beans.Book;
+import beans.Kind;
+import beans.User;
 
 @WebServlet(urlPatterns = { "/lend-confirm" })
 public class LendConfirmationServlet extends HttpServlet {
@@ -40,7 +40,7 @@ public class LendConfirmationServlet extends HttpServlet {
 		session.setAttribute("kinds", kinds);
 
 		String cardNumber = (String) session.getAttribute("cardNumber");
-		User userInfo = new UserService().getUser(Integer.parseInt(cardNumber));
+		User userInfo = new UserService().getUser(Long.parseLong(cardNumber));
 		session.setAttribute("userName", userInfo.getName());
 
 		request.getRequestDispatcher("confirmation.jsp").forward(request, response);
@@ -58,7 +58,7 @@ public class LendConfirmationServlet extends HttpServlet {
 		book.setId(Integer.parseInt(bookId));
 
 		String cardNumber = (String) session.getAttribute("cardNumber");
-		User userCardNumber = new UserService().getUser(Integer.parseInt(cardNumber));
+		User userCardNumber = new UserService().getUser(Long.parseLong(cardNumber));
 
 		book.setBorrower(userCardNumber.getId());
 
@@ -89,6 +89,6 @@ public class LendConfirmationServlet extends HttpServlet {
 		session.removeAttribute("kindId");
 		session.removeAttribute("bookId");
 
-		response.sendRedirect("admin");
+		response.sendRedirect("lend");
 	}
 }
