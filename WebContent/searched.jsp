@@ -82,7 +82,7 @@
 						</c:if> <c:if test="${searchedBooks.status == 1}">
 							<c:out value="貸出中 予約者数:${searchedBooks.reservationNumber }人"  />
 						</c:if> <c:if test="${searchedBooks.status == 2}">
-							<c:out value="整理中" />
+							<c:out value="整理中 予約者数:${searchedBooks.reservationNumber }人" />
 						</c:if></td>
 				</tr>
 </c:forEach>

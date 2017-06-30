@@ -106,4 +106,17 @@ public class ReservationService {
 			close(connection);
 		}
 	}
+
+	public void update(int bookId){
+		Connection connection = null;
+		try{
+			connection = getConnection();
+			ReservationDao reservationDao = new ReservationDao();
+			reservationDao.updateNotificationTime(connection, bookId);
+			commit(connection);
+
+		} finally{
+			close(connection);
+		}
+	}
 }

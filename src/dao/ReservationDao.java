@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import exception.SQLRuntimeException;
 
@@ -47,7 +46,7 @@ public class ReservationDao {
 
 			sql.append("UPDATE users SET");
 			sql.append(" reserved_books = reserved_books +1 ");
-			sql.append(" WHERE id = "+ loginUserId );
+			sql.append(" WHERE id = " + loginUserId);
 
 			ps1 = connection.prepareStatement(sql.toString());
 
@@ -64,7 +63,7 @@ public class ReservationDao {
 
 			sql.append("UPDATE books SET");
 			sql.append(" reservation_number = reservation_number +1 ");
-			sql.append(" WHERE id = "+ bookId );
+			sql.append(" WHERE id = " + bookId);
 
 			ps2 = connection.prepareStatement(sql.toString());
 
@@ -75,7 +74,8 @@ public class ReservationDao {
 			close(ps2);
 		}
 	}
-//	本の取寄せ
+
+	// 本の取寄せ
 	public void request(Connection connection, int loginUserId, int bookId) {
 
 		PreparedStatement ps = null;
@@ -110,7 +110,7 @@ public class ReservationDao {
 
 			sql.append("UPDATE books SET");
 			sql.append(" status = 2 ");
-			sql.append(" WHERE id = "+ bookId );
+			sql.append(" WHERE id = " + bookId);
 
 			ps2 = connection.prepareStatement(sql.toString());
 
@@ -129,7 +129,7 @@ public class ReservationDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("delete from reservations ");
 			sql.append(" WHERE book_id = ? ");
-			sql.append(" and user_id = ? " );
+			sql.append(" and user_id = ? ");
 
 			ps = connection.prepareStatement(sql.toString());
 
@@ -149,7 +149,7 @@ public class ReservationDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("UPDATE users SET");
 			sql.append(" reserved_books = reserved_books -1 ");
-			sql.append(" WHERE id = "+ loginUserId );
+			sql.append(" WHERE id = " + loginUserId);
 
 			ps1 = connection.prepareStatement(sql.toString());
 			ps1.executeUpdate();
@@ -164,8 +164,9 @@ public class ReservationDao {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append("UPDATE books SET");
-			sql.append(" reservation_number = reservation_number -1 ");
-			sql.append(" WHERE id = "+ bookId );
+			sql.append(" reservation_number = reservation_number -1, ");
+			sql.append(" notification_time = NULL ");
+			sql.append(" WHERE id = " + bookId);
 
 			ps2 = connection.prepareStatement(sql.toString());
 			ps2.executeUpdate();
@@ -176,19 +177,22 @@ public class ReservationDao {
 			close(ps);
 		}
 	}
-//book.idから次予約または受取申請しているuserIdを探し出す
-	public int select(Connection connection, int bookId ){
+
+	// book.idから次予約または受取申請しているuserIdを探し出す
+	public int select(Connection connection, int bookId) {
 
 		PreparedStatement ps = null;
 		try {
-			Statement statement = connection.createStatement();
-			String mySql = "select user_id from reservations WHERE reservation_number=(SELECT MIN(reservation_number) FROM reservations ) and book_id = " + bookId ;
-			ResultSet rs = statement.executeQuery(mySql);
+			StringBuilder sql = new StringBuilder();
+			sql.append("select user_id from reservations WHERE reservation_number=(SELECT MIN(reservation_number) FROM reservations where book_id = ?  )" );
+			ps = connection.prepareStatement(sql.toString());
+			ps.setInt(1, bookId);
+			ResultSet rs = ps.executeQuery();
 
 			int reservationUserId = 0;
-			while (rs.next()){
+			while (rs.next()) {
 				int id = rs.getInt("user_id");
-				reservationUserId = id ;
+				reservationUserId = id;
 			}
 			return reservationUserId;
 
@@ -199,10 +203,10 @@ public class ReservationDao {
 		}
 	}
 
-	public void updateNotificationTime(Connection connection, int bookId){
+	public void updateNotificationTime(Connection connection, int bookId) {
 		PreparedStatement ps = null;
 
-		try{
+		try {
 			StringBuilder sql = new StringBuilder();
 
 			sql.append("UPDATE books SET");
@@ -215,9 +219,32 @@ public class ReservationDao {
 
 			ps.executeUpdate();
 
-		}  catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
-		} finally{
+		} finally {
+			close(ps);
+		}
+	}
+
+	public void update(Connection connection, int bookId) {
+		PreparedStatement ps = null;
+
+		try {
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("UPDATE books SET");
+			sql.append(" status = 2 ");
+			sql.append(" WHERE id = ? ;");
+
+			ps = connection.prepareStatement(sql.toString());
+
+			ps.setInt(1, bookId);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new SQLRuntimeException(e);
+		} finally {
 			close(ps);
 		}
 	}

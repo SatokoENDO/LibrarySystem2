@@ -39,7 +39,17 @@
 	</tr>
 	<c:if test = "${book.notificationTime != null }">
 	<tr>
-		<th>連絡日時</th><td><fmt:formatDate value="${book.notificationTime }" pattern="yyyy年MM月dd日（E）"/></td>
+		<th>連絡日時</th><td><fmt:formatDate value="${book.notificationTime }" pattern="yyyy年MM月dd日（E）"/>
+		</td>
+	</tr>
+	<tr>
+		<th>予約削除</th><td>
+			<form action = "reservationlist" method = "post">
+				<input type = "hidden" name = reservedUser value = "${reservedUser.id }">
+				<input type = "hidden" name = deleteReservation value = "${book.id }">
+				<center><input type = "submit" value = "予約削除"></center>
+			</form>
+		</td>
 	</tr>
 	</c:if>
 	<c:if test = "${reservedUser != null }">
@@ -67,24 +77,32 @@
 	</c:if>
 	</table>
 <br>
-<c:if test="${(reservationUser == null) && (book.libraryId == loginUser.libraryId) }">
+<c:if test="${(reservedUser == null) && (book.libraryId == loginUser.libraryId) }">
 	<form action = "reservationlist" method = "post">
 		<input type = "hidden" name = returnBookId value = "${book.id }">
 		<center><input type = "submit" value = "受取確認"></center>
 	</form>
 </c:if>
-<c:if test = "${(reservationUser != null) && (reservedUser.libraryId == loginUser.libraryId )}">
+<c:if test = "${(reservedUser != null) && (reservedUser.libraryId == loginUser.libraryId )}">
 <form action = "reservationlist" method = "post">
 	<input type = "hidden" name = reservationBookId value = "${book.id }">
 	<center><input type = "submit" value = "連絡日時更新"></center>
 </form>
 </c:if>
-<c:if test = "${(reservationUser != null) && (reservedUser.libraryId != loginUser.libraryId)}">
+<c:if test = "${(reservedUser == null) && (book.libraryId != loginUser.libraryId) }">
 	<form action = "reservationlist" method = "post">
 		<input type = "hidden" name = reservationBookIdTo value = "${book.id }">
 		<center><input type = "submit" value = "配送確認"></center>
 	</form>
 </c:if>
+
+<c:if test = "${(reservedUser != null) && (reservedUser.libraryId != loginUser.libraryId) }">
+	<form action = "reservationlist" method = "post">
+		<input type = "hidden" name = reservationBookIdTo value = "${book.id }">
+		<center><input type = "submit" value = "配送確認"></center>
+	</form>
+</c:if>
+
 
 </c:if>
 
