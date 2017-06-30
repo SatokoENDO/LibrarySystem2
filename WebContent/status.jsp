@@ -12,6 +12,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <title>利用状況</title>
+<script type="text/javascript">
+<!--
+function cancel(){
+	if(confirm( "とりけすか？")){
+		return true;
+	}else{
+		return false;
+	}
+}
+//-->
+</script>
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
@@ -66,8 +77,9 @@
 		<td><center>${reservationNumber[status.index] + 1 }番目</center></td>
 		<td><center>
 		<form action="status" method="post">
+		<input type="submit" value="予約取消" onClick="return cancel()" />
 		<input type="hidden" name="bookId" value="${reservedBook.id }"/>
-		<input type="submit" value="予約取消" />
+
 		</form></center>
 	</tr>
 
