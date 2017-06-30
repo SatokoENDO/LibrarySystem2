@@ -68,6 +68,7 @@ public class ReservationListServlet extends HttpServlet {
 			new BookService().returnBookToShelf(book);
 			response.sendRedirect("reservationlist");
 		}else if(request.getParameter("deleteReservation") != null){
+			//予約削除
 			int bookId = Integer.parseInt(request.getParameter("deleteReservation"));
 			int reservedUserId = Integer.parseInt(request.getParameter("reservedUser"));
 			new ReservationService().delete(reservedUserId, bookId);
