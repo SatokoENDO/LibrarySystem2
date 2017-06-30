@@ -97,11 +97,11 @@ public class ReturnServlet extends HttpServlet {
 	//int reservationNumber = book.getReservationNumber();
 
 	private boolean isValid(HttpServletRequest request, List<String> messages) {
-		String id =(request.getParameter("bookId"));
+		String bookId =(request.getParameter("bookId"));
 
 
 
-		if (StringUtils.isBlank(id) || id.length()==0) {
+		if (StringUtils.isBlank(bookId) || bookId.length()==0) {
 			messages.add("一連番号を入力してください");
 		}
 

@@ -15,7 +15,7 @@
 <script type="text/javascript">
 <!--
 function cancel(){
-	if(confirm( "とりけすか？")){
+	if(confirm( "この予約を取り消しますか？")){
 		return true;
 	}else{
 		return false;
