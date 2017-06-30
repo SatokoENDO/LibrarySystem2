@@ -33,6 +33,7 @@ public class ReservationListServlet extends HttpServlet {
 		if(request.getParameter("bookId") != null){
 			bookId = Integer.parseInt(request.getParameter("bookId"));
 			Book book = new BookService().getBook(bookId);
+			System.out.println(new ReservationService().select(bookId));
 			if((new ReservationService().select(book.getId()) != 0) ){
 				reservedUser = new UserService().getUser(new ReservationService().select(book.getId()));
 				request.setAttribute("reservedUser", reservedUser);
@@ -50,12 +51,27 @@ public class ReservationListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//連絡日時更新
 		if(request.getParameter("reservationBookId") != null){
 			int bookId = Integer.parseInt(request.getParameter("reservationBookId"));
 			new ReservationService().updateNotificationTime(bookId);
 			response.sendRedirect("reservationlist");
 		}else if(request.getParameter("reservationBookIdTo") != null){
-
+			//配送確認
+			int bookId = Integer.parseInt(request.getParameter("reservationBookIdTo"));
+			new ReservationService().update(bookId);
+			response.sendRedirect("reservationlist");
+		}else if(request.getParameter("returnBookId") != null){
+			//受取確認
+			int bookId = Integer.parseInt(request.getParameter("returnBookId"));
+			Book book = new BookService().getBook(bookId);
+			new BookService().returnBookToShelf(book);
+			response.sendRedirect("reservationlist");
+		}else if(request.getParameter("deleteReservation") != null){
+			int bookId = Integer.parseInt(request.getParameter("deleteReservation"));
+			int reservedUserId = Integer.parseInt(request.getParameter("reservedUser"));
+			new ReservationService().delete(reservedUserId, bookId);
+			response.sendRedirect("reservationlist");
 		}
 
 	}
