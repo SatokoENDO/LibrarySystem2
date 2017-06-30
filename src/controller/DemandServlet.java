@@ -47,7 +47,7 @@ public class DemandServlet extends HttpServlet {
 
 		int userId = Integer.parseInt(request.getParameter("userId"));
 
-		System.out.println("aaaa"+userId);
+		//System.out.println("aaaa"+userId);
 
 		new DemandService().updateDemandTime(userId);
 
