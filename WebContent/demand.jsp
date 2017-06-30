@@ -17,7 +17,9 @@
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<a href="search" class="prev">戻る</a>
+<a href="admin"  class="prev-btn">←戻る</a>
+<br>
+<br>
 <table class="result">
 <tr>
 	<th> 一連番号</th>

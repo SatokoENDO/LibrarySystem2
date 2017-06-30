@@ -11,7 +11,7 @@
 </head>
 <body>
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-<a href = "./" class="prev">戻る</a> <div align="right"><a href="logout" class = "logout-btn">ログアウト</a></div>
+<a href="./"  class="prev-btn">←戻る</a> <div align="right"><a href="logout" class = "logout-btn">ログアウト</a></div>
 <br>
 
 <a href="lend" class="lend-btn">貸出</a>&nbsp;
@@ -23,7 +23,7 @@
 <div align="right">
 <a href="registration" class="register-btn">資料登録</a>&nbsp;
 <a href="signup" class="register-btn">利用者登録</a>&nbsp;
-<a href="reservationlist" class="reservation-btn">予約者リスト</a>&nbsp;
+<a href="reservationlist" class="reservation-btn">連絡・配送関連</a>&nbsp;
 <a href="inquiry" class="inquiry-btn">利用者照会</a>&nbsp;
 <a href="demand" class="demand-btn">督促</a>&nbsp;
 

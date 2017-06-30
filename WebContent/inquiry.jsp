@@ -14,6 +14,7 @@
 		<a href="http://localhost:8080/LibrarySystem2/"><img
 			src="Tottori-Library.png" alt="TAG index" border="0"></a>
 	</center>
+	<a href="admin"  class="prev-btn">←戻る</a>
 	<c:if test="${loginUser == null}">
 		<a href="login" class="login-btn" style="cursor: hand; cursor:pointer;">ログイン</a>
 	</c:if>

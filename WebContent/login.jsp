@@ -14,7 +14,7 @@
 
 <div class = "main-contents">
 <center><a href="http://localhost:8080/LibrarySystem2/"><img src="Tottori-Library.png" alt="TAG index" border="0"></a></center>
-
+<a href="./"  class="prev-btn">←戻る</a>
 
 <c:if test = "${not empty errorMessages}">
 	<div class = "errorMessages">

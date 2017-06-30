@@ -26,6 +26,35 @@ input[type=checkbox] {
     height: 30px;
     vertical-align: middle;
 }
+
+.prev-btn {
+	margin-bottom:10px;
+	padding:2px 2px;
+	border: 1px solid #58FAAC;
+	background-color: #01DFA5;
+	background-image: -webkit-linear-gradient(top, #01DFA5, #58FAAC);
+	background-image: linear-gradient(to bottom, #01DFA5, #58FAAC);
+	border-radius: 4px;
+	color: #fff;
+	line-height: 50px;
+	-webkit-transition: none;
+	transition: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	margin-left:40px;
+}
+.prev-btn:hover {
+	border:1px solid #1090c3;
+	background-color: #1ab0ec;
+	background-image: -webkit-linear-gradient(top, #1ab0ec, #1a92c2);
+	background-image: linear-gradient(to bottom, #1ab0ec, #1a92c2);
+}
+.prev-btn:active {
+	background: #1a92c2;
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .2);
+	color: #1679a1;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
+
 .userinfo-btn{
     display: inline-block;
     padding: 0.5em 1em;
@@ -293,17 +322,13 @@ input[type=checkbox] {
 	color:blue;
 }
 
-.messageSubmit{
-	margin-left:auto;
-}
+
 
 .update{
 	margin-left:10px;
 }
 
-.userSubmit{
-	margin-left:10px;
-}
+
 
 input {
 font-size: 100%;
