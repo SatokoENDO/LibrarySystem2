@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.User;
-@WebFilter(description = "権限フィルター", filterName = "AuthorityFilter", urlPatterns = {"/admin", "/edituser", "/demand", "/edituser", "/inquiry", "/lend", "/registration", "/reservationlist", "/return", "/signup", "/usersearched"})
+@WebFilter(description = "権限フィルター", filterName = "AuthorityFilter", urlPatterns = {"/admin", "/demand" , "/inquiry", "/lend", "/registration", "/reservationlist", "/return", "/signup", "/usersearched"})
 public class AuthorityFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
