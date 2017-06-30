@@ -393,7 +393,7 @@ table.result{
 table.result th {
     width:800px;
     border:1px solid #999;
-    border-width:0 0 1px 1px;
+    border-width:0 0 2px 2px;
     background:#EFEBEF;
     font-weight:bold;
     font-size:18px;
@@ -403,7 +403,7 @@ table.result th {
 table.result td {
     width:800px;
     border:1px solid #999;
-    border-width:0 0 1px 1px;
+    border-width:0 0 2px 2px;
     text-align:middle;
     background:#ffffff;
     font-size:18px;
