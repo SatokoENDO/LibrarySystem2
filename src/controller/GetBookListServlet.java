@@ -20,7 +20,7 @@ import service.ReservationService;
 import service.UserService;
 
 
-@WebServlet(urlPatterns = { "/demand" })
+@WebServlet(urlPatterns = { "/getbooklist" })
 public class GetBookListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -25,7 +25,9 @@
 <a href="signup" class="register-btn">利用者登録</a>&nbsp;
 <a href="reservationlist" class="reservation-btn">連絡・配送関連</a>&nbsp;
 <a href="inquiry" class="inquiry-btn">利用者照会</a>&nbsp;
+<a href="getbooklist" class="inquiry-btn">受取リスト</a>&nbsp;
 <a href="demand" class="demand-btn">督促</a>&nbsp;
+
 
 
 </div>
