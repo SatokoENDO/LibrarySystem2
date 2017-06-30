@@ -396,7 +396,7 @@ table.result th {
     border-width:0 0 1px 1px;
     background:#EFEBEF;
     font-weight:bold;
-    font-size:15px;
+    font-size:18px;
     text-align:middle;
 }
 
@@ -406,7 +406,7 @@ table.result td {
     border-width:0 0 1px 1px;
     text-align:middle;
     background:#ffffff;
-    font-size:13px;
+    font-size:18px;
 }
 
 table.status{
